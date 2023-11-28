@@ -1,2 +1,9 @@
 <h1>Pages#home</h1>
 <p>Find me in app/views/pages/home.html.erb</p>
+<%= link_to "lien vers new session user", new_user_session_path %>
+<br>
+<%= link_to "lien vers index des lieux", places_path %>
+<br>
+<%= link_to "lien vers détail d'un lieu", place_path(:id) %>
+<br>
+<%= link_to "lien vers parcours", journey_path(:id) %>
