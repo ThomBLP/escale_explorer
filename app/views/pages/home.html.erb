@@ -1,6 +1,6 @@
 <%# lien pour se diriger pendant le dev, a sup à la fin %>
 
-<h1>Pages#home</h1>
+<h1>Bienvenue à Lyon</h1>
 <p>Find me in app/views/pages/home.html.erb</p>
 <%= link_to "lien vers new session user", new_user_session_path %>
 <br>
@@ -10,27 +10,21 @@
 <br>
 <%= link_to "lien vers parcours", journey_path(:id) %>
 
-<%# form pour rechercher un lieu %>
-<div>
-<%= simple_form_for :place, url: places_path, method: :get do |f| %>
-  <%= f.input :name, input_html: { placeholder: "Nom du lieu" } %>
-  <%= f.button :submit, "OK" %>
-<% end %>
-</div>
-
-
+<h2>Jusqu'à quelle heure es-tu disponible?</h2>
 
 <%# affichage des catégories fait OK %>
+<h2>Que souhaites-tu faire pendant ce temps?</h2>
+<div class="categories">
 <% if @categories.present? %>
   <% @categories.each do |category| %>
-      <div>
-      <h3><%= category.name %></h3>
+      <div  class="stylecategory">
+        <h3><%= category.name %></h3>
       </div>
   <% end %>
 <% else %>
   <p>Aucune catégorie disponible.</p>
 <% end %>
-
+</div>
 
 
 <%# formulaire pour le temps dispo fait OK%>
@@ -41,3 +35,6 @@
     <%= f.button :submit, "Valider" %>
   <% end %>
 </div>
+
+<p class="button salmon-button"><%= link_to "lien vers parcours", journey_path(:id) %>
+</p>

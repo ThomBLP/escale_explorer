@@ -1,7 +1,33 @@
-<%= link_to "lien vers new session user", new_user_session_path %>
-<br>
-<%= link_to "lien vers index des lieux", places_path %>
-<br>
-<%= link_to "lien vers détail d'un lieu", place_path(:id) %>
-<br>
-<%= link_to "lien vers home", root_path %>
+<h1>Récap de mon parcours</h1>
+
+<div class="card-all-total-time">
+  <div class="card-total-time">
+    <h2>Temps total</h2>
+  </div>
+</div>
+
+<div class="card-journey">
+  <div class="card-journey-details">
+    <img src="https://i.ibb.co/b2561r7/Capture-d-cran-20230124-110316.png" alt="Capture-d-cran-20230124-110316" width="242" height="92" style="border-radius: 8px; background: linear-gradient(0deg, rgba(0, 0, 0, 0.20) 0%, rgba(0, 0, 0, 0.20) 100% lightgray 0px -85.639px / 100% 197.283% no-repeat";>
+    <h3>Amphithéatre Gallo-Romain</h3>
+    <h3>10h05-10h40 (35 min)</h3>
+    <%= link_to "Détails de l'activité", place_path(:id), class: "button salmon-button details-place-button" %>
+    <h3 class="button delete-button"><%= link_to "Supprimer", root_path %></h3>
+  </div>
+</div>
+
+<%= link_to "Valider", root_path, class: "button salmon-button validate-button" %>
+
+
+
+
+
+<%= image_tag "tata", class: "image-chemin-design" %>
+
+<%# <%= link_to "lien vers new session user", new_user_session_path %>
+<%# <br> %>
+<%# <%= link_to "lien vers index des lieux", places_path %>
+<%# <br> %>
+<%# <%= link_to "lien vers détail d'un lieu", place_path(:id) %>
+<%# <br> %>
+<%# <%= link_to "lien vers home", root_path %>

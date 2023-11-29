@@ -1,1 +1,30 @@
 // Specific CSS for your home-page
+* {
+  box-sizing: border-box;
+}
+
+.stylecategory {
+  width: 180px;
+  height: 61.43px;
+  border-radius: 16px;
+  padding: 8px;
+  padding-right: 24px;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.categories {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.image-chemin-design {
+  position: fixed;
+  top: 200px;
+  left: 20px;
+  z-index: -1;
+}
