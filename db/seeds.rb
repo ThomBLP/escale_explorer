@@ -7,43 +7,64 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
-[Review, Place, Visit, Journey, User].each { |model| model.destroy_all }
-Category.destroy_all
-
-# 100.times do
-#   place = Place.new
-#   place.name = Faker::Company.name
-#   place.description = Faker::Lorem.sentence
-#   place.address = Faker::Address.full_address
-#   place.visit_duration = rand(60..180)
-#   place.lat = rand(45.73..45.78)
-# place.long = rand(4.82..4.87)
-#   place.category_id = Category.pluck(:id).sample
-#   place.save
-# end
 
 require "csv"
-filepath = "db/migrate/seed3.csv"
 
+[Review, Place, Visit, Journey, User].each { |model| model.destroy_all }
+
+Category.create!({name: "spectacles"})
+Category.create!({name: "patrimoine"})
+Category.create!({name: "restaurants"})
+Category.create!({name: "loisirs"})
+Category.create!({name: "bars"})
+Category.create!({name: "musees"})
+puts "categories créées."
+
+
+filepath = "db/seed3.csv"
 CSV.foreach(filepath, headers: :first_row, col_sep: ";") do |row|
-  name = row['name']
-  ap name
-  # address = row.dig('address', 'streetAddress') + " " + row.dig('address', 'addressLocality')
-  address = row['address'].gsub("'", '"')
-  p address
-  ap JSON.parse(address)
-  # visit_duration = row['Visit_duration']
-  # long = row['long']
-  # lat = row['lat']
-  # category_id = row['Category_id']
-  # shortdescription = row['shortdescription']
-  # longdescription = row['longdescription']
-  # contact = row['contact']
-  # opening = row['opening']
-  # tarif = row['tarif']
-  # illustration = row['illustration']
+  begin
+    parsed_address = JSON.parse(row['address'].gsub("'", '"'))
+    address = "#{parsed_address['streetAddress']} #{parsed_address['addressLocality']}"
+  rescue JSON::ParserError => e
+    address = nil
+  end
+
+  begin
+    parsed_contact = row['contact'].nil? ? nil : JSON.parse(row['contact'].gsub("'", '"'))
+  rescue JSON::ParserError => e
+    parsed_contact = nil
+  end
+
+  begin
+    parsed_illustration = row['illustration'].nil? ? nil : JSON.parse(row['illustration'].gsub("'", '"'))
+  rescue JSON::ParserError => e
+    parsed_illustration = nil
+  end
+
+  category = Category.find_by(name: row['category_slug'])
+
+  attributes = {
+    name: row[0],
+    address: address,
+    visit_duration: row['visit_duration'],
+    long: row['long'],
+    lat: row['lat'],
+    category: category,
+    shortdescription: row['shortdescription'],
+    longdescription: row['longdescription'],
+    tel: parsed_contact&.find { |e| e.key?('Téléphone') }&.values&.first,
+    mail: parsed_contact&.find { |e| e.key?('Mél') }&.values&.first,
+    website: parsed_contact&.find { |e| e.key?('Site web (URL)') }&.values&.first,
+    opening: row['opening'],
+    tarif: row['tarif'],
+    illustration: parsed_illustration&.find { |e| e.key?('url') }&.values&.first
+  }
+
+  place = Place.create!(attributes)
+
+  puts "Lieu #{place.name} créé"
 end
-puts "Lieux créés."
 
 User.create!({nickname: "Vincent", email: "toto+1@free.fr", password: "azerty"})
 User.create!({nickname: "Thomas", email: "toto+2@free.fr", password: "azerty"})
