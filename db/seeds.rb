@@ -8,14 +8,7 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 [Review, Place, Visit, Journey, User].each { |model| model.destroy_all }
-
-Category.create!({name: "spectacles"})
-Category.create!({name: "patrimoine"})
-Category.create!({name: "restaurants"})
-Category.create!({name: "loisirs"})
-Category.create!({name: "bars"})
-Category.create!({name: "musées"})
-puts "categories créées."
+Category.destroy_all
 
 # 100.times do
 #   place = Place.new
