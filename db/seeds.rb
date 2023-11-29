@@ -20,6 +20,7 @@ Category.create!({name: "bars"})
 Category.create!({name: "musees"})
 puts "categories créées."
 
+
 filepath = "db/seed3.csv"
 CSV.foreach(filepath, headers: :first_row, col_sep: ";") do |row|
   begin
