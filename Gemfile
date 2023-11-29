@@ -1,7 +1,7 @@
 source "https://rubygems.org"
 
-
 ruby "3.1.2"
+# gem 'openweathermap/ruby'
 
 gem 'faker', '~> 3.2'
 
@@ -53,6 +53,10 @@ gem "autoprefixer-rails"
 gem "font-awesome-sass", "~> 6.1"
 gem "simple_form", github: "heartcombo/simple_form"
 gem "sassc-rails"
+gem 'mapbox-sdk'
+gem "awesome_print"
+# gem json
+gem "json", "~> 2.5", ">= 2.5.1"
 
 group :development, :test do
   gem "dotenv-rails"
