@@ -9,26 +9,48 @@
 #   end
 [Review, Place, Visit, Journey, User].each { |model| model.destroy_all }
 
-10.times do
-  Category.create!(name: Faker::GreekPhilosophers.name)
+Category.create!({name: "spectacles"})
+Category.create!({name: "patrimoine"})
+Category.create!({name: "restaurants"})
+Category.create!({name: "loisirs"})
+Category.create!({name: "bars"})
+Category.create!({name: "musées"})
+puts "categories créées."
+
+# 100.times do
+#   place = Place.new
+#   place.name = Faker::Company.name
+#   place.description = Faker::Lorem.sentence
+#   place.address = Faker::Address.full_address
+#   place.visit_duration = rand(60..180)
+#   place.lat = rand(45.73..45.78)
+# place.long = rand(4.82..4.87)
+#   place.category_id = Category.pluck(:id).sample
+#   place.save
+# end
+
+require "csv"
+filepath = "db/migrate/seed3.csv"
+
+CSV.foreach(filepath, headers: :first_row, col_sep: ";") do |row|
+  name = row['name']
+  ap name
+  # address = row.dig('address', 'streetAddress') + " " + row.dig('address', 'addressLocality')
+  address = row['address'].gsub("'", '"')
+  p address
+  ap JSON.parse(address)
+  # visit_duration = row['Visit_duration']
+  # long = row['long']
+  # lat = row['lat']
+  # category_id = row['Category_id']
+  # shortdescription = row['shortdescription']
+  # longdescription = row['longdescription']
+  # contact = row['contact']
+  # opening = row['opening']
+  # tarif = row['tarif']
+  # illustration = row['illustration']
 end
-
-puts "catégories creées."
-
-100.times do
-  place = Place.new
-  place.name = Faker::Company.name
-  place.description = Faker::Lorem.sentence
-  place.address = Faker::Address.full_address
-  place.visit_duration = rand(60..180)
-  place.lat = rand(45.73..45.78)
-  place.long = rand(4.82..4.87)
-  place.category_id = Category.pluck(:id).sample
-  place.save
-end
-
 puts "Lieux créés."
-
 
 User.create!({nickname: "Vincent", email: "toto+1@free.fr", password: "azerty"})
 User.create!({nickname: "Thomas", email: "toto+2@free.fr", password: "azerty"})
