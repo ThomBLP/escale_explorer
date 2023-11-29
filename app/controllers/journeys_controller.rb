@@ -3,8 +3,13 @@ class JourneysController < ApplicationController
     @journey = Journey.new(journey_params)
     @journey.user = current_user
     @journey.save
+
   end
 
   def show
+  end
+
+  def localize
+    puts params
   end
 end
