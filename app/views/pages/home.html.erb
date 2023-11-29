@@ -1,43 +1,41 @@
 <%# lien pour se diriger pendant le dev, a sup à la fin %>
 
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
-<%= link_to "lien vers new session user", new_user_session_path %>
-<br>
-<%= link_to "lien vers index des lieux", places_path %>
-<br>
-<%= link_to "lien vers détail d'un lieu", place_path(:id) %>
-<br>
-<%= link_to "lien vers parcours", journey_path(:id) %>
+<div class="container">
+  <h1 class="titre_principal_home">Bienvenue à Lyon ☀️</h1>
 
-<%# form pour rechercher un lieu %>
-<div>
-<%= simple_form_for :place, url: places_path, method: :get do |f| %>
-  <%= f.input :name, input_html: { placeholder: "Nom du lieu" } %>
-  <%= f.button :submit, "OK" %>
-<% end %>
+
+  <div class="question">
+    <h2>Jusqu’a quelle heure es-tu disponible ?</h2>
+    <div class="text-center">
+      <span class="layout_home">
+        12:00
+      </span>
+    </div>
+  </div>
+
+
+  <%# affichage des catégories fait OK %>
+  <div class="question">
+    <h2 class="titre_secondaire_home">Que souhaites-tu faire pendant ce temps?</h2>
+    <div class="categories">
+    <% if @categories.present? %>
+      <% @categories.each do |category| %>
+          <div class="stylecategory">
+            <div class="emoji"><%= Category::EMOJI_CATEGORIES[category.name] %></div>
+            <h3><%= category.name %></h3>
+          </div>
+      <% end %>
+    <% else %>
+      <p>Aucune catégorie disponible.</p>
+    <% end %>
+    </div>
+  </div>
+  <div>
+    <button class="orange-button">C'est parti</button>
+  </div>
+  <%= image_tag "sam_design", class: "image_sam" %>
 </div>
-
-
-
-<%# affichage des catégories fait OK %>
-<% if @categories.present? %>
-  <% @categories.each do |category| %>
-      <div>
-      <h3><%= category.name %></h3>
-      </div>
-  <% end %>
-<% else %>
-  <p>Aucune catégorie disponible.</p>
-<% end %>
 
 
 
 <%# formulaire pour le temps dispo fait OK%>
-<div>
-  <%= simple_form_for :journey, method: :post, url: journey_path(:id) do |f| %>
-    <%= f.input :start_time, selected: (f.object || Time.current + 1.hour), as: :time %>
-    <%= f.input :end_time, selected: (f.object || (Time.current + 4.hours).change(min: 0, sec: 0).ceil(1.hour)), as: :time %>
-    <%= f.button :submit, "Valider" %>
-  <% end %>
-</div>

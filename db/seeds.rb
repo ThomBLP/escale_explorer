@@ -8,9 +8,19 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 [Review, Place, Visit, Journey, User].each { |model| model.destroy_all }
+Category.destroy_all
 
-10.times do
-  Category.create!(name: Faker::GreekPhilosophers.name)
+categories = [
+  { name: 'Monuments' },
+  { name: 'Cinéma' },
+  { name: 'Balade' },
+  { name: 'Sport et loisirs' },
+  { name: 'Restauration' },
+  { name: 'Art' }
+]
+
+categories.each do |category|
+  Category.create!(category)
 end
 
 puts "catégories creées."

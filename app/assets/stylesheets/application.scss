@@ -10,5 +10,32 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+@import "pages/buttons";
 
+h3 {
+  margin: 0;
+  color: #000;
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 28px; /* 175% */
+}
+h2 {
+  color: var(--gray-700, #344054);
+  font-family: 'Inter', sans-serif;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 28px; /* 116.667% */
+}
 
+h1 {
+  color: #344054;
+  font-family: 'Inter', sans-serif;
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 44px; /* 122.222% */
+  letter-spacing: -0.72px;
+}
