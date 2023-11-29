@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_11_29_125632) do
+ActiveRecord::Schema[7.1].define(version: 2023_11_29_160354) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -31,20 +31,21 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_29_125632) do
 
   create_table "places", force: :cascade do |t|
     t.string "name"
-    t.string "description"
     t.string "address"
     t.integer "visit_duration"
-    t.string "long"
-    t.string "lat"
     t.bigint "category_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "shortdescription"
     t.string "longdescription"
-    t.string "contact"
     t.string "opening"
     t.string "tarif"
     t.string "illustration"
+    t.string "tel"
+    t.string "mail"
+    t.string "website"
+    t.float "long"
+    t.float "lat"
     t.index ["category_id"], name: "index_places_on_category_id"
   end
 
