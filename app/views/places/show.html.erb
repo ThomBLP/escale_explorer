@@ -1,56 +1,49 @@
 
 
 <div class="container">
-    <div class="mt-3">
-      <%= link_to "Retour", :back %>
-    </div>
-    <div class="image-details">
-    <%= image_tag @place.illustration, class: 'image_places_show' %>
-    </div>
-    <div>
-      <h1 class='title_principal_show'><%= @place.name %></h1>
-    </div>
-
-      <div class="stylecategory">
-        <p class="description"><span class="emoji">🕐</span><%= @place.visit_duration %>min</p>
-        <p class="description"><span class="emoji">🏃‍♀️</span><%= @place.travel_duration %>min</p>
-      </div>
-    <div>
-
-      <div class="details-title-and-description">
-        <h3 class="title_secondaire"></h3>
-        <p><%= @place.shortdescription %></p>
-      </div>
-
-      <div>
-        <p>Horaires: <%= @place.opening %></p>
-        <p>Commentaires: 4/5</p>
-      </div>
-
-      <% unless @journey.places.include?(@place) %>
-        <%= link_to "Ajouter", journey_visits_path(@journey), class: "button salmon-button my-3" %>
-      <% end %>
-
-      <%= link_to @place.website, class: "", target: "_blank" do %>
-        🌐 Site internet
-      <% end %>
-
-      <%= link_to @place.mail, class: "", target: "_blank" do %>
-        📞 Contact
-      <% end %>
-    </div>
+  <div class="mt-3">
+    <%= link_to "Retour", :back %>
   </div>
+
+  <div class="image-details">
+  <%= image_tag @place.illustration, class: 'image_places_show' %>
+  </div>
+
+  <div>
+    <h1 class='title_principal_show'><%= @place.name %></h1>
+  </div>
+
+  <div class="stylecategory">
+    <p class="description"><span class="emoji">🕐</span><%= @place.visit_duration %>min</p>
+    <p class="description"><span class="emoji">🏃‍♀️</span><%= @place.travel_duration %>min</p>
+  </div>
+
+  <div class="details-title-and-description">
+    <h3 class="title_secondaire"></h3>
+    <p><%= @place.shortdescription %></p>
+  </div>
+
+  <div>
+    <p>Horaires: <%= @place.opening %></p>
+    <p>Commentaires: 4/5</p>
+  </div>
+
+  <% unless @journey.places.include?(@place) %>
+    <%= link_to "Ajouter", journey_visits_path(@journey), class: "button salmon-button my-3" %>
+  <% end %>
+
+  <%= link_to @place.website, class: "", target: "_blank" do %>
+    🌐 Site internet
+  <% end %>
+
+  <%= link_to @place.mail, class: "", target: "_blank" do %>
+    📞 Contact
+  <% end %>
+
+  <% @place.reviews.each do |review| %>
+    <div class="my-3">
+      <p><%= review.user.nickname %>&nbsp;&nbsp;(<%= review.rating %> ⭐)</p>
+      <%= review.comment %>
+    </div>
+  <% end %>
 </div>
-
-<% @place.reviews.each do |review| %>
-<br>
-<%= review.user.nickname %>
-<br>
-<%= review.comment %>
-<br>
-<%= review.rating %>
-<br>
-
-
-<% end %>
-<br>

@@ -37,8 +37,18 @@ h1 {
   font-size: 36px;
   font-style: normal;
   font-weight: 700;
-  line-height: 44px; /* 122.222% */
   letter-spacing: -0.72px;
+}
+
+p {
+  color: #344054;
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: -0.72px;
+  margin: 0;
+
 }
 
 body {
@@ -48,4 +58,3 @@ body {
 a {
   text-decoration: none;
 }
-
