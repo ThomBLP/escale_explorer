@@ -1,12 +1,14 @@
 <% @places.each do |place| %>
   <div class="card_places">
-  <a href="https://ibb.co/hgMFwZk"><img src="https://i.ibb.co/hgMFwZk/lyon.jpg" alt="lyon" border="0" class="image_places"></a>
+    <p class="image_places"><% if place.illustration.present? %>
+    <%= image_tag place.illustration %>
+    <% end %></p>
     <h3 class='title_principal'><%= place.name %></h3>
-      <div class="stylecategory">
-        <h3 class="title_secondaire emoji"><%= Category::EMOJI_CATEGORIES[place.category.name] %></h3>
-        <h3> <%= display_name(place.category.name) %> </h3>
-      </div>
-    <p class="description">Temps d'activité : <%= place.visit_duration %>mn</p>
+    <div class="stylecategory">
+    <h3><%= place.category.name %></h3>
+    <p class="description">temps d'activité : <%= place.visit_duration %>mn</p>
+    </div>
+
     <% if @latitude && @longitude %>
       <p class="description">Temps de trajet : <%= (GeolocService.new.get_duration([@latitude, @longitude], [place.lat, place.long], 'walking')).round(0) %>mn</p>
     <% end %>

@@ -13,10 +13,11 @@ body {
   background-color: #EEF4FF;
 }
 
-.stylecategory {
+  .stylecategory {
+  margin: 1px;
   flex-basis: 47%;
-  height: 60px;
-  border-radius: 16px;
+  height: 40px;
+  border-radius: 12px;
   padding-left: 12px;
   background-color: white;
   display: flex;
