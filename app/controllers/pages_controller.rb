@@ -3,5 +3,7 @@ class PagesController < ApplicationController
 
   def home
     @categories = Category.all
+    # @ip = request.remote_ip
+    # @city = GeolocService.localize_me
   end
 end

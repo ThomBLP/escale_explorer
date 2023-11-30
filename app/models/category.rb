@@ -4,11 +4,12 @@ class Category < ApplicationRecord
   validates :name, presence: true
 
   EMOJI_CATEGORIES = {
-    'musees' => '🏛️',
-    'restaurants' => '🍔',
     'spectacles' => '🎬',
+    'patrimoine' => '🏛️',
+    'restaurants' => '🍔',
     'loisirs' => '⚽',
     'bars' => '🚶',
-    'patrimoine' => '🎨'
+    'musees' => '🎨'
+
   }
 end
