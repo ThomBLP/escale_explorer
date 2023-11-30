@@ -66,6 +66,11 @@ CSV.foreach(filepath, headers: :first_row, col_sep: ";") do |row|
   puts "Lieu #{place.name} créé"
 end
 
+journey = Journey.create!(start_time: DateTime.current, user: User.first)
+Visit.create!(journey: journey, place: Place.first)
+Visit.create!(journey: journey, place: Place.second)
+Visit.create!(journey: journey, place: Place.third)
+
 User.create!({nickname: "Vincent", email: "toto+1@free.fr", password: "azerty"})
 User.create!({nickname: "Thomas", email: "toto+2@free.fr", password: "azerty"})
 User.create!({nickname: "Carine", email: "toto+3@free.fr", password: "azerty"})

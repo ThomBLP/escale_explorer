@@ -1,47 +1,40 @@
 
-<h1>Récap de mon parcours</h1>
 
-<div class="card-all-total-time">
-  <div class="card-total-time">
-    <h2>Temps total</h2>
+<div class="journey-container">
+  <h1>Récap de mon parcours</h1>
+
+  <div class="card-all-total-time">
+    <div class="card-total-time">
+      <h2>Temps total</h2>
+      <span class="emoji">🏃‍♀️</span> 60 min
+      <span class="emoji">🏛️</span> <%= @total_places_duration %> min
+    </div>
   </div>
+
+  <% @places.each do |place| %>
+    <div class="journey-step">
+      <div class="journey-dot"></div>
+      <%= image_tag "curl", class: 'line-curl' %>
+      <div class="emoji-time-journey">
+        <div class="emoji-journey">
+          🏃‍♀️
+        </div>
+        <span>15 min</span>
+      </div>
+
+      <div class="card-journey">
+        <div class="card-journey-details">
+          <img src="https://i.ibb.co/b2561r7/Capture-d-cran-20230124-110316.png" alt="Capture-d-cran-20230124-110316" width="242" height="92" style="border-radius: 8px; background: linear-gradient(0deg, rgba(0, 0, 0, 0.20) 0%, rgba(0, 0, 0, 0.20) 100% lightgray 0px -85.639px / 100% 197.283% no-repeat";>
+          <h3><%= place.name %></h3>
+          <h3>(<%= place.visit_duration %> min)</h3>
+          <%= link_to "Détails de l'activité", place_path(:id), class: "button salmon-button details-place-button" %>
+          <h3 class="button delete-button"><%= link_to "Supprimer", root_path %></h3>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+  <%= link_to "Valider", root_path, class: "button salmon-button validate-button" %>
 </div>
 
-<div class="emoji-time-journey">
-  <%= image_tag "emoji_courreur", class: "emoji-journey" %>
-  <p>15 min</p>
-</div>
-
-<div class="card-journey">
-  <div class="card-journey-details">
-    <img src="https://i.ibb.co/b2561r7/Capture-d-cran-20230124-110316.png" alt="Capture-d-cran-20230124-110316" width="242" height="92" style="border-radius: 8px; background: linear-gradient(0deg, rgba(0, 0, 0, 0.20) 0%, rgba(0, 0, 0, 0.20) 100% lightgray 0px -85.639px / 100% 197.283% no-repeat";>
-    <h3>Amphithéatre Gallo-Romain</h3>
-    <h3>10h05-10h40 (35 min)</h3>
-    <%= link_to "Détails de l'activité", place_path(:id), class: "button salmon-button details-place-button" %>
-    <h3 class="button delete-button"><%= link_to "Supprimer", root_path %></h3>
-  </div>
-</div>
-
-<%= link_to "Valider", root_path, class: "button salmon-button validate-button" %>
-
-<%= image_tag "tata", class: "image-chemin-design" %>
-
-
-
-<!-- app/views/your_controller/show_directions.html.erb -->
-
-<div>
-
-<div>
-<% simple_form_for :place, url: places_path, method: :get do |f| %>
-  <% f.input :name, input_html: { placeholder: "Nom du lieu" } %>
-  <% f.button :submit, "OK" %>
-<% end %>
-</div>
-
-<%# <h1>Drivin directions with trafic</h1>
-<% @directions.each do |step| %>
-  <%# <p><%= step %>
-<%# <% end %>
-<%# </div> %>
 
