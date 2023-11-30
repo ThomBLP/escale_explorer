@@ -1,18 +1,26 @@
 // Specific CSS for your home-page
+
 * {
   box-sizing: border-box;
 }
 
+.container {
+  width: 95%;
+}
+
+body {
+  font-size: 14px;
+  background-color: #EEF4FF;
+}
+
 .stylecategory {
-  width: 180px;
-  height: 61.43px;
+  flex-basis: 47%;
+  height: 60px;
   border-radius: 16px;
-  padding: 8px;
-  padding-right: 24px;
+  padding-left: 12px;
   background-color: white;
   display: flex;
   align-items: center;
-  justify-content: center;
 }
 
 .categories {
@@ -22,9 +30,41 @@
   gap: 1rem;
 }
 
-.image-chemin-design {
-  position: fixed;
-  top: 200px;
-  left: 20px;
+
+.layout_home {
+  display: inline-flex;
+  padding: 16px 24px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 16px;
+  background: #FFF;
+  box-shadow: 0px 4px 20px 0px rgba(219, 231, 253, 0.80);
+}
+
+.question {
+  margin-bottom: 33px;
+}
+
+.emoji {
+  font-size: 24px;
+  background-color: #EEEEEE;
+  border-radius: 8px;
+  margin-right: 16px;
+}
+
+.titre_principal_home {
+  margin-top: 28px;
+  margin-bottom: 22px;
+  text-wrap: nowrap;
+}
+
+.titre_secondaire_home {
+  margin-bottom: 40px;
+}
+
+.image_sam {
   z-index: -1;
+  position: fixed;
+  bottom: 80px;
+  left:0px;
 }

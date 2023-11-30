@@ -1,3 +1,4 @@
+
 <h1>Récap de mon parcours</h1>
 
 <div class="card-all-total-time">
@@ -18,16 +19,24 @@
 
 <%= link_to "Valider", root_path, class: "button salmon-button validate-button" %>
 
-
-
-
-
 <%= image_tag "tata", class: "image-chemin-design" %>
 
-<%# <%= link_to "lien vers new session user", new_user_session_path %>
-<%# <br> %>
-<%# <%= link_to "lien vers index des lieux", places_path %>
-<%# <br> %>
-<%# <%= link_to "lien vers détail d'un lieu", place_path(:id) %>
-<%# <br> %>
-<%# <%= link_to "lien vers home", root_path %>
+
+
+<!-- app/views/your_controller/show_directions.html.erb -->
+
+<div>
+
+<div>
+<%= simple_form_for :place, url: places_path, method: :get do |f| %>
+  <%= f.input :name, input_html: { placeholder: "Nom du lieu" } %>
+  <%= f.button :submit, "OK" %>
+<% end %>
+</div>
+
+<h1>Drivin directions with trafic</h1>
+<% @directions.each do |step| %>
+  <p><%= step %></p>
+<% end %>
+</div>
+
