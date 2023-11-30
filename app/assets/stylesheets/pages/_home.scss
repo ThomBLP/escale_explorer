@@ -1,15 +1,18 @@
 // Specific CSS for your home-page
-.container {
-  width: 95%;
-}
 
 * {
   box-sizing: border-box;
 }
+
+.container {
+  width: 95%;
+}
+
 body {
   font-size: 14px;
   background-color: #EEF4FF;
 }
+
 .stylecategory {
   flex-basis: 47%;
   height: 60px;
@@ -26,6 +29,7 @@ body {
   justify-content: center;
   gap: 1rem;
 }
+
 
 .layout_home {
   display: inline-flex;

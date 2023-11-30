@@ -1,4 +1,4 @@
-<%# lien pour se diriger pendant le dev, a sup à la fin %>
+
 <div class="container">
   <h1 class="titre_principal_home">Bienvenue à Lyon ☀️</h1>
 
@@ -30,11 +30,9 @@
     </div>
   </div>
   <div>
-    <button class="orange-button">C'est parti</button>
+    <p class="button salmon-button"><%= link_to "lien vers parcours", journey_path(:id) %>
+  </p>
   </div>
   <%= image_tag "sam_design", class: "image_sam" %>
 </div>
 
-
-
-<%# formulaire pour le temps dispo fait OK%>
