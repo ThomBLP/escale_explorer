@@ -1,7 +1,44 @@
-<%= link_to "lien vers new session user", new_user_session_path %>
+<div>
+  <button onclick="places_path">Retour</button>
+</div>
+
+<div>
+  <h1>Escale Explorer</h1>
+</div>
+
+<div class="image-details">
+  <img src="https://i.ibb.co/b2561r7/Capture-d-cran-20230124-110316.png" alt="Capture-d-cran-20230124-110316" style="border-radius: 12px; border: 1px solid var(--gris, #8A8989); background: url(<path-to-image>), lightgray 50% / cover no-repeat, #FFF; box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);">
+</div>
+
+<div>
+  <div class="details-title-and-description">
+    <h2>Amphithéâtre Gallo-Romain</h2>
+    <p>L'Amphithéâtre des Brosses, d'une capacité de 170 places, est équipé pour l'accueil de spectacles ou autres type dévénements. La salle bénéficie dun équipement son et lumière.</p>
+  </div>
+
+  <div>
+    <div>
+      <p>Trajet: 35 min</p>
+      <p>Visite: 1h30</p>
+    </div>
+    <div>
+      <p>Horaires: lundi-vendredi 9h-20h</p>
+      <p>Commentaires: 4/5</p>
+    </div>
+  </div>
+
+  <a href="https://www.lyon.fr/lieu/antiquite/amphitheatre-romain-des-trois-gaules">
+    <button>Site</button>
+  </a>
+
+  <button>Contact</button>
+
+</div>
+
+<% link_to "lien vers new session user", new_user_session_path %>
 <br>
-<%= link_to "lien vers index des lieux", places_path %>
+<% link_to "lien vers index des lieux", places_path %>
 <br>
-<%= link_to "lien vers home", root_path %>
+<% link_to "lien vers home", root_path %>
 <br>
-<%= link_to "lien vers parcours", journey_path %>
+<% link_to "lien vers parcours", journey_path %>
