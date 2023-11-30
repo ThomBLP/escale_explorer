@@ -13,10 +13,9 @@ class GeolocService
       mode
     )
 
-    binding.break
-
     seconds = response.first.dig("routes", 0, "duration")
     return if seconds.nil?
+    
     seconds / 60
   end
 
