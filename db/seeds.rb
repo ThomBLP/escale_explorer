@@ -10,7 +10,7 @@
 
 require "csv"
 
-[Review, Place, Visit, Journey, User].each { |model| model.destroy_all }
+[Place, Journey, Visit, Review, User].each { |model| model.destroy_all }
 Category.destroy_all
 
 Category.create!({name: "spectacles"})
