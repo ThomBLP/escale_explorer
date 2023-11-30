@@ -3,10 +3,9 @@ Rails.application.routes.draw do
   get 'reviews/show'
   devise_for :users
   root "pages#home"
-  resources :places, only: [:show]
-  
+
   resources :journeys, only: [:create, :update, :show] do
-    resources :places, only: [:index]
+    resources :places, only: [:index, :show]
     resources :visits, only: [:create, :destroy] do
       resources :reviews, only: [:create]
     end

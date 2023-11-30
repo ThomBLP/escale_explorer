@@ -1,23 +1,31 @@
 
 .button {
   display: flex;
-  padding: 15px 0px 17px 0px;
+  padding: 8px;
   justify-content: center;
   align-items: center;
   border-radius: 12px;
   text-decoration: none;
-  font-size: 28px;
+  font-size: 18px;
   font-family: 'Inter', sans-serif;
   font-style: normal;
   font-weight: 600;
   color: white;
-  position: fixed;
-  bottom: 50px;
-  width: 90%;
+  width: 100%;
 }
 
 .salmon-button {
   background: #FAAF79;
+}
+
+.journey-button {
+  position: fixed;
+  bottom: 16px;
+  padding: 12px;
+  font-size: 24px;
+  background-color: white;
+  color:#FAAF79;
+  width: 90%;
 }
 
 .details-place-button {
