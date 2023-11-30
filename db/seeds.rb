@@ -91,57 +91,57 @@ puts "Utilisateurs créés."
 place_eglise = Place.find_by(name: "Eglise de lImmaculée Conception")
 journey1 = Journey.create!(start_time: 8.days.ago, user: User.find_by(nickname: "Malik"))
 visit1 = Visit.create!(journey: journey1, place: place_eglise)
-Review.create!(visit: visit1, comment: "Super", rating: 5)
+Review.create!(visit: visit1, comment: "'Une expérience exceptionnelle!'", rating: 5)
 
 
-journey2 = Journey.create!(start_time: 8.days.ago, user: User.find_by(nickname: "Johanna"))
+journey2 = Journey.create!(start_time: 2.days.ago, user: User.find_by(nickname: "Johanna"))
 visit2 = Visit.create!(journey: journey2, place: place_eglise)
-Review.create!(visit: visit2, comment: "Super", rating: 5)
+Review.create!(visit: visit2, comment: "'Visite mémorable!'", rating: 4)
 
-journey3 = Journey.create!(start_time: 8.days.ago, user: User.find_by(nickname: "Paul"))
+journey3 = Journey.create!(start_time: 15.days.ago, user: User.find_by(nickname: "Paul"))
 visit3 = Visit.create!(journey: journey3, place: place_eglise)
-Review.create!(visit: visit3, comment: "Super", rating: 5)
+Review.create!(visit: visit3, comment: "'Un trésor caché!'", rating: 5)
 
 
-journey4 = Journey.create!(start_time: 8.days.ago, user: User.find_by(nickname: "Aurore"))
+journey4 = Journey.create!(start_time: 7.days.ago, user: User.find_by(nickname: "Aurore"))
 visit4 = Visit.create!(journey: journey4, place: place_eglise)
-Review.create!(visit: visit4, comment: "Super", rating: 5)
+Review.create!(visit: visit4, comment: "'L'architecture est à couper le souffle!'", rating: 5)
 
 
 croisieurope = Place.find_by(name: "CroisiEurope Week-ends")
-journey5 = Journey.create!(start_time: 8.days.ago, user: User.find_by(nickname: "Jérome"))
+journey5 = Journey.create!(start_time: 3.days.ago, user: User.find_by(nickname: "Jérome"))
 visit5 = Visit.create!(journey: journey5, place: croisieurope)
-Review.create!(visit: visit5, comment: "Super", rating: 5)
+Review.create!(visit: visit5, comment: "'Cadre pittoresque et ambiance charmante!'", rating: 4)
 
 
-journey6 = Journey.create!(start_time: 8.days.ago, user: User.find_by(nickname: "Juliette"))
+journey6 = Journey.create!(start_time: 11.days.ago, user: User.find_by(nickname: "Juliette"))
 visit6 = Visit.create!(journey: journey6, place: croisieurope)
-Review.create!(visit: visit6, comment: "Super", rating: 5)
+Review.create!(visit: visit6, comment: "'Super!'", rating: 5)
 
-journey7 = Journey.create!(start_time: 8.days.ago, user: User.find_by(nickname: "Abdel"))
+journey7 = Journey.create!(start_time: 1.days.ago, user: User.find_by(nickname: "Abdel"))
 visit7 = Visit.create!(journey: journey7, place: croisieurope)
-Review.create!(visit: visit7, comment: "Super", rating: 5)
+Review.create!(visit: visit7, comment: "'Un lieu chargé d'énergie positive.'", rating: 5)
 
 
-journey8 = Journey.create!(start_time: 8.days.ago, user: User.find_by(nickname: "Elodie"))
+journey8 = Journey.create!(start_time: 9.days.ago, user: User.find_by(nickname: "Elodie"))
 visit8 = Visit.create!(journey: journey8, place: croisieurope)
-Review.create!(visit: visit8, comment: "Super", rating: 5)
+Review.create!(visit: visit8, comment: "'Un site touristique à la hauteur de sa réputation!'", rating: 5)
 
 pignol_emile_zola = Place.find_by(name: "Pignol Emile Zola")
-journey9 = Journey.create!(start_time: 8.days.ago, user: User.find_by(nickname: "Lucas"))
+journey9 = Journey.create!(start_time: 6.days.ago, user: User.find_by(nickname: "Lucas"))
 visit9 = Visit.create!(journey: journey9, place: pignol_emile_zola)
-Review.create!(visit: visit9, comment: "Super", rating: 5)
+Review.create!(visit: visit9, comment: "'Expérience culinaire exceptionnelle!'", rating: 5)
 
 
 journey10 = Journey.create!(start_time: 8.days.ago, user: User.find_by(nickname: "Eric"))
 visit10 = Visit.create!(journey: journey10, place: pignol_emile_zola)
-Review.create!(visit: visit10, comment: "Super", rating: 5)
+Review.create!(visit: visit10, comment: "'Je n'ai pas aimé.'", rating: 2)
 
-journey11 = Journey.create!(start_time: 8.days.ago, user: User.find_by(nickname: "Jeanne"))
+journey11 = Journey.create!(start_time: 13.days.ago, user: User.find_by(nickname: "Jeanne"))
 visit11 = Visit.create!(journey: journey11, place: pignol_emile_zola)
-Review.create!(visit: visit11, comment: "Super", rating: 5)
+Review.create!(visit: visit11, comment: "'Une explosion de saveurs dans chaque bouchée!'", rating: 5)
 
 
-journey12 = Journey.create!(start_time: 8.days.ago, user: User.find_by(nickname: "Patrick"))
+journey12 = Journey.create!(start_time: 3.days.ago, user: User.find_by(nickname: "Patrick"))
 visit12 = Visit.create!(journey: journey12, place: pignol_emile_zola)
-Review.create!(visit: visit12, comment: "Super", rating: 5)
+Review.create!(visit: visit12, comment: "'Un menu varié et des recommandations du chef qui valent le détour.'", rating: 5)

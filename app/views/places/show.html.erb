@@ -1,10 +1,18 @@
 <%= @place.name %>
+<br>
+------------
 <% @place.reviews.each do |review| %>
+<br>
 <%= review.user.nickname %>
+<br>
 <%= review.comment %>
+<br>
 <%= review.rating %>
+<br>
+------------
 
 <% end %>
+<br>
 
 
 <%= link_to "lien vers new session user", new_user_session_path %>
