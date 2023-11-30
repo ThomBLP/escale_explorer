@@ -1,3 +1,8 @@
+<div data-controller="places">
+  <div data-places-target="list">
+  </div>
+</div>
+
 <%= link_to "lien vers new session user", new_user_session_path %>
 <br>
 <%= link_to "lien vers home", root_path %>
@@ -5,14 +10,3 @@
 <%= link_to "lien vers détail d'un lieu", place_path(:id) %>
 <br>
 <%= link_to "lien vers parcours", journey_path(:id) %>
-
-
-<% @places.each do |place| %>
-  <div>
-    <h3><%= place.name %></h3>
-    <h3><%= place.category %></h3>
-    <p><%= place.short_description %></p>
-    <p><%= place.illustration %></p>
-    <p><%= place.visit_duration %></p>
-  </div>
-<% end %>

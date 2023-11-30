@@ -6,10 +6,16 @@ class PlacesController < ApplicationController
                 Place.all
               end
 
-    @places_durations = @places.map do |place|
-      {
-        place.id => MapboxServices.new.get_duration([45.76948487018482, 4.834866446452691], [place.lat, place.long])
-      }
+    @places = @places.first(10)
+
+    if params[:latitude] && params[:longitude]
+      @latitude  = params[:latitude]
+      @longitude = params[:longitude]
+    end
+
+    respond_to do |format|
+      format.html
+      format.text { render partial: "places/list", locals: { places: @places }, formats: [:html] }
     end
   end
 
