@@ -1,16 +1,14 @@
 <% @places.each do |place| %>
-  <div class="card_places">
-    <p class="image_places"><% if place.illustration.present? %>
-    <%= image_tag place.illustration %>
-    <% end %></p>
-    <h3 class='title_principal'><%= place.name %></h3>
-    <div class="stylecategory">
-    <h3><%= place.category.name %></h3>
-    <p class="description">temps d'activité : <%= place.visit_duration %>mn</p>
-    </div>
-
-    <% if @latitude && @longitude %>
-      <p class="description">Temps de trajet : <%= (GeolocService.new.get_duration([@latitude, @longitude], [place.lat, place.long], 'walking')).round(0) %>mn</p>
+  <div class="card_place">
+    <%= link_to place_path(place), class: "card_place" do %>
+      <% if place.illustration.present? %>
+        <%= image_tag place.illustration, class: 'image_places' %>
+      <% end %>
+      <h2 class='title_principal_list'><%= place.name %> - <%= place.category.name %> </h2>
+        <p class="description">🎨<%= place.visit_duration %>min</p>
+        <p class="description">🚶<%= (GeolocService.new.get_duration([@latitude, @longitude], [place.lat, place.long], 'walking')).round(0) %>min</p>
+      <% if @latitude && @longitude %>
+      <% end %>
     <% end %>
   </div>
 <% end %>

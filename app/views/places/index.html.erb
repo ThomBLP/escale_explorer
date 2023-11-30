@@ -11,7 +11,9 @@
 </div>
 
 
-<%= link_to "lien vers new session user", new_user_session_path %>
+<%= link_to new_user_session_path do %>
+<p>"lien vers new session user"</p>
+<% end %>
 <br>
 <%= link_to "lien vers home", root_path %>
 <br>
@@ -20,4 +22,3 @@
 <%= link_to "lien vers parcours", journey_path(:id) %>
 
 </div>
-
