@@ -7,6 +7,11 @@
   </div>
 </div>
 
+<div class="emoji-time-journey">
+  <%= image_tag "emoji_courreur", class: "emoji-journey" %>
+  <p>15 min</p>
+</div>
+
 <div class="card-journey">
   <div class="card-journey-details">
     <img src="https://i.ibb.co/b2561r7/Capture-d-cran-20230124-110316.png" alt="Capture-d-cran-20230124-110316" width="242" height="92" style="border-radius: 8px; background: linear-gradient(0deg, rgba(0, 0, 0, 0.20) 0%, rgba(0, 0, 0, 0.20) 100% lightgray 0px -85.639px / 100% 197.283% no-repeat";>
@@ -28,15 +33,15 @@
 <div>
 
 <div>
-<%= simple_form_for :place, url: places_path, method: :get do |f| %>
-  <%= f.input :name, input_html: { placeholder: "Nom du lieu" } %>
-  <%= f.button :submit, "OK" %>
+<% simple_form_for :place, url: places_path, method: :get do |f| %>
+  <% f.input :name, input_html: { placeholder: "Nom du lieu" } %>
+  <% f.button :submit, "OK" %>
 <% end %>
 </div>
 
-<h1>Drivin directions with trafic</h1>
+<%# <h1>Drivin directions with trafic</h1>
 <% @directions.each do |step| %>
-  <p><%= step %></p>
-<% end %>
-</div>
+  <%# <p><%= step %>
+<%# <% end %>
+<%# </div> %>
 
