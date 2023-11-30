@@ -82,3 +82,23 @@ User.create!({nickname: "Johanna", email: "toto+10@free.fr", password: "azerty"}
 User.create!({nickname: "Paul", email: "toto+11@free.fr", password: "azerty"})
 User.create!({nickname: "Eric", email: "toto+12@free.fr", password: "azerty"})
 puts "Utilisateurs créés."
+
+
+place_eglise = Place.find_by(name: "Eglise de lImmaculée Conception")
+journey1 = Journey.create!(start_time: 8.days.ago, user: User.find_by(nickname: "Vincent"))
+visit1 = Visit.create!(journey: journey1, place: place_eglise)
+Review.create!(visit: visit1, comment: "Super", rating: 5)
+
+
+journey2 = Journey.create!(start_time: 8.days.ago, user: User.find_by(nickname: "Johanna"))
+visit2 = Visit.create!(journey: journey2, place: place_eglise)
+Review.create!(visit: visit2, comment: "Super", rating: 5)
+
+journey3 = Journey.create!(start_time: 8.days.ago, user: User.find_by(nickname: "Paul"))
+visit3 = Visit.create!(journey: journey3, place: place_eglise)
+Review.create!(visit: visit3, comment: "Super", rating: 5)
+
+
+journey4 = Journey.create!(start_time: 8.days.ago, user: User.find_by(nickname: "Thomas"))
+visit4 = Visit.create!(journey: journey4, place: place_eglise)
+Review.create!(visit: visit4, comment: "Super", rating: 5)
