@@ -1,0 +1,51 @@
+
+.button {
+  display: flex;
+  padding: 15px 0px 17px 0px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 12px;
+  text-decoration: none;
+  font-size: 28px;
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  color: white;
+  position: fixed;
+  bottom: 50px;
+  width: 90%;
+}
+
+.salmon-button {
+  background: #FAAF79;
+}
+
+.details-place-button {
+  display: flex;
+  padding: 12px 24px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  align-self: stretch;
+  border-radius: 8px;
+  text-decoration: none;
+}
+
+.delete-button {
+  display: flex;
+  padding: 12px 24px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  align-self: stretch;
+  border-radius: 8px;
+  border: 1px solid #E54646;
+}
+
+.validate-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 75%;
+  margin: auto;
+}

@@ -1,4 +1,4 @@
-<%# lien pour se diriger pendant le dev, a sup à la fin %>
+
 <div class="container">
   <h1 class="titre_principal_home">Bienvenue à <%= @city %></h1>
 
@@ -33,7 +33,7 @@
       <% @categories.each do |category| %>
           <div class="stylecategory">
             <div class="emoji"><%= Category::EMOJI_CATEGORIES[category.name] %></div>
-            <h3><%= category.name %></h3>
+            <h3><%= display_name(category.name) %></h3>
           </div>
       <% end %>
     <% else %>
@@ -41,12 +41,8 @@
     <% end %>
     </div>
   </div>
-  <div>
-    <button class="orange-button">C'est parti</button>
+  <div class="buton_home">
+    <h3 class="button salmon-button"><%= link_to "C'est parti!", places_path() %> </h3>
   </div>
-  <%= image_tag "sam_design", class: "image_sam" %>
+  <%= svg_tag "sam_design", class: "image_sam" %>
 </div>
-
-
-
-<%# formulaire pour le temps dispo fait OK%>

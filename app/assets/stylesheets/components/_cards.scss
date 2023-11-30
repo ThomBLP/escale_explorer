@@ -1,0 +1,33 @@
+.card-total-time {
+  width: 340px;
+  height: 61.43px;
+  display: flex;
+  padding: 8px 24px;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 8px;
+  background: #F5F8FF;
+}
+
+.card-all-total-time {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+
+.card-journey-details {
+  display: inline-flex;
+  padding: 12px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  border-radius: 16px;
+  background: #F5F8FF;
+}
+
+.card-journey {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+

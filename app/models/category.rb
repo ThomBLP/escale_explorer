@@ -10,5 +10,6 @@ class Category < ApplicationRecord
     'loisirs' => '⚽',
     'bars' => '🚶',
     'musees' => '🎨'
+
   }
 end

@@ -11,6 +11,7 @@
 require "csv"
 
 [Review, Place, Visit, Journey, User].each { |model| model.destroy_all }
+Category.destroy_all
 
 Category.create!({name: "spectacles"})
 Category.create!({name: "patrimoine"})
@@ -41,6 +42,8 @@ CSV.foreach(filepath, headers: :first_row, col_sep: ";") do |row|
   rescue JSON::ParserError => e
     parsed_illustration = nil
   end
+
+  p row['category_slug']
 
   category = Category.find_by(name: row['category_slug'])
 
