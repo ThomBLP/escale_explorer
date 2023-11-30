@@ -21,7 +21,7 @@
       <% @categories.each do |category| %>
           <div class="stylecategory">
             <div class="emoji"><%= Category::EMOJI_CATEGORIES[category.name] %></div>
-            <h3><%= category.name %></h3>
+            <h3><%= display_name(category.name) %></h3>
           </div>
       <% end %>
     <% else %>
@@ -29,10 +29,8 @@
     <% end %>
     </div>
   </div>
-  <div>
-    <p class="button salmon-button"><%= link_to "lien vers parcours", journey_path(:id) %>
-  </p>
+  <div class="buton_home">
+    <h3 class="button salmon-button"><%= link_to "C'est parti!", places_path() %> </h3>
   </div>
   <%= image_tag "sam_design", class: "image_sam" %>
 </div>
-
