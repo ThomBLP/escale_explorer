@@ -81,11 +81,15 @@ User.create!({nickname: "Juliette", email: "toto+9@free.fr", password: "azerty"}
 User.create!({nickname: "Johanna", email: "toto+10@free.fr", password: "azerty"})
 User.create!({nickname: "Paul", email: "toto+11@free.fr", password: "azerty"})
 User.create!({nickname: "Eric", email: "toto+12@free.fr", password: "azerty"})
+User.create!({nickname: "Malik", email: "toto+13@free.fr", password: "azerty"})
+User.create!({nickname: "Aurore", email: "toto+14@free.fr", password: "azerty"})
+User.create!({nickname: "Jeanne", email: "toto+15@free.fr", password: "azerty"})
+User.create!({nickname: "Patrick", email: "toto+16@free.fr", password: "azerty"})
 puts "Utilisateurs créés."
 
 
 place_eglise = Place.find_by(name: "Eglise de lImmaculée Conception")
-journey1 = Journey.create!(start_time: 8.days.ago, user: User.find_by(nickname: "Vincent"))
+journey1 = Journey.create!(start_time: 8.days.ago, user: User.find_by(nickname: "Malik"))
 visit1 = Visit.create!(journey: journey1, place: place_eglise)
 Review.create!(visit: visit1, comment: "Super", rating: 5)
 
@@ -99,6 +103,45 @@ visit3 = Visit.create!(journey: journey3, place: place_eglise)
 Review.create!(visit: visit3, comment: "Super", rating: 5)
 
 
-journey4 = Journey.create!(start_time: 8.days.ago, user: User.find_by(nickname: "Thomas"))
+journey4 = Journey.create!(start_time: 8.days.ago, user: User.find_by(nickname: "Aurore"))
 visit4 = Visit.create!(journey: journey4, place: place_eglise)
 Review.create!(visit: visit4, comment: "Super", rating: 5)
+
+
+croisieurope = Place.find_by(name: "CroisiEurope Week-ends")
+journey5 = Journey.create!(start_time: 8.days.ago, user: User.find_by(nickname: "Jérome"))
+visit5 = Visit.create!(journey: journey5, place: croisieurope)
+Review.create!(visit: visit5, comment: "Super", rating: 5)
+
+
+journey6 = Journey.create!(start_time: 8.days.ago, user: User.find_by(nickname: "Juliette"))
+visit6 = Visit.create!(journey: journey6, place: croisieurope)
+Review.create!(visit: visit6, comment: "Super", rating: 5)
+
+journey7 = Journey.create!(start_time: 8.days.ago, user: User.find_by(nickname: "Abdel"))
+visit7 = Visit.create!(journey: journey7, place: croisieurope)
+Review.create!(visit: visit7, comment: "Super", rating: 5)
+
+
+journey8 = Journey.create!(start_time: 8.days.ago, user: User.find_by(nickname: "Elodie"))
+visit8 = Visit.create!(journey: journey8, place: croisieurope)
+Review.create!(visit: visit8, comment: "Super", rating: 5)
+
+pignol_emile_zola = Place.find_by(name: "Pignol Emile Zola")
+journey9 = Journey.create!(start_time: 8.days.ago, user: User.find_by(nickname: "Lucas"))
+visit9 = Visit.create!(journey: journey9, place: pignol_emile_zola)
+Review.create!(visit: visit9, comment: "Super", rating: 5)
+
+
+journey10 = Journey.create!(start_time: 8.days.ago, user: User.find_by(nickname: "Eric"))
+visit10 = Visit.create!(journey: journey10, place: pignol_emile_zola)
+Review.create!(visit: visit10, comment: "Super", rating: 5)
+
+journey11 = Journey.create!(start_time: 8.days.ago, user: User.find_by(nickname: "Jeanne"))
+visit11 = Visit.create!(journey: journey11, place: pignol_emile_zola)
+Review.create!(visit: visit11, comment: "Super", rating: 5)
+
+
+journey12 = Journey.create!(start_time: 8.days.ago, user: User.find_by(nickname: "Patrick"))
+visit12 = Visit.create!(journey: journey12, place: pignol_emile_zola)
+Review.create!(visit: visit12, comment: "Super", rating: 5)
