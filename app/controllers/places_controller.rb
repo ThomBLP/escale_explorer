@@ -1,9 +1,9 @@
 class PlacesController < ApplicationController
   def index
     @places = if params[:place] && params[:place][:name].present?
-                Place.where("name LIKE ?", "%#{params[:place][:name]}%")
+                Place.where("name LIKE ?", "%#{params[:place][:name]}%").first(5)
               else
-                Place.all
+                Place.first(5)
               end
 
     @places_durations = @places.map do |place|
