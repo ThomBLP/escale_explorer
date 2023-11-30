@@ -1,12 +1,7 @@
 class PlacesController < ApplicationController
   def index
-    @places = if params[:place] && params[:place][:name].present?
-                Place.where("name LIKE ?", "%#{params[:place][:name]}%").first(5)
-              else
-                Place.first(5)
-              end
-
-    @places = @places.first(10)
+    @duration = params[:duration_hours].to_i * 60 + params[:duration_minutes].to_i
+    @places = Place.where(category_id: params[:category_ids]).where("visit_duration < ?", @duration).first(5)
 
     if params[:latitude] && params[:longitude]
       @latitude  = params[:latitude]

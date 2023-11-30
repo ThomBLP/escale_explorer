@@ -1,48 +1,31 @@
 
 <div class="container">
-  <h1 class="titre_principal_home">Bienvenue à <%= @city %></h1>
+  <h1 class="titre_principal_home">Bienvenue à Lyon<%= @city %></h1>
+
 
 
   <div class="question">
-    <h2>Jusqu’a quelle heure es-tu disponible ?</h2>
+    <h2>Jusqu’à quelle heure es-tu disponible ?</h2>
     <div class="text-center">
       <span class="layout_home">
-        <%= simple_form_for :journey, method: :post, url: journey_path(:id) do |f| %>
-    <%# <%= f.input :start_time, selected: (f.object || Time.current + 1.hour), as: :time %>
-    <%= f.input :end_time, selected: (f.object || (Time.current + 4.hours).change(min: 0, sec: 0).ceil(1.hour)), as: :time %>
-    <%# <%= f.button :submit, "Valider" %>
-  <% end %>
+        <%= form_with url: places_path, method: :get do |f| %>
+          <%= f.number_field :duration_hours %>
+          <%= f.number_field :duration_minutes %>
+          <h2 class="titre_secondaire_home">Que souhaites-tu faire pendant ce temps?</h2>
+          <% @categories.each do |category| %>
+          <label for="<%= category.name %>"><%= category.name %></label>
+            <input name="category_ids[]" type="checkbox" value="<%= category.id %>" id="<%= category.name %>" />
+            <% end %>
+          <%= f.submit "C'est parti!"%>
+        <% end %>
       </span>
     </div>
   </div>
 
 
-  <%# <h2>
-    <%= @city %>
-    <%# <%= @ip%>
-  <%# </h2>  %>
-
-
-
-
   <%# affichage des catégories fait OK %>
-  <div class="question">
-    <h2 class="titre_secondaire_home">Que souhaites-tu faire pendant ce temps?</h2>
-    <div class="categories">
-    <% if @categories.present? %>
-      <% @categories.each do |category| %>
-          <div class="stylecategory">
-            <div class="emoji"><%= Category::EMOJI_CATEGORIES[category.name] %></div>
-            <h3><%= display_name(category.name) %></h3>
-          </div>
-      <% end %>
-    <% else %>
-      <p>Aucune catégorie disponible.</p>
-    <% end %>
-    </div>
-  </div>
-  <div class="buton_home">
+  <%# <div class="buton_home">
     <h3 class="button salmon-button"><%= link_to "C'est parti!", places_path() %> </h3>
-  </div>
+  <%# </div> %>
   <%= svg_tag "sam_design", class: "image_sam" %>
 </div>
