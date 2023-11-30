@@ -11,6 +11,7 @@
 require "csv"
 
 [Review, Place, Visit, Journey, User].each { |model| model.destroy_all }
+Category.destroy_all
 
 Category.create!({name: "spectacles"})
 Category.create!({name: "patrimoine"})
@@ -42,14 +43,16 @@ CSV.foreach(filepath, headers: :first_row, col_sep: ";") do |row|
     parsed_illustration = nil
   end
 
+  p row['category_slug']
+
   category = Category.find_by(name: row['category_slug'])
 
   attributes = {
     name: row[0],
     address: address,
     visit_duration: row['visit_duration'],
-    long: row['long'],
-    lat: row['lat'],
+    long: row['long'].gsub(',', '.').to_f,
+    lat: row['lat'].gsub(',', '.').to_f,
     category: category,
     shortdescription: row['shortdescription'],
     longdescription: row['longdescription'],
@@ -70,4 +73,12 @@ User.create!({nickname: "Vincent", email: "toto+1@free.fr", password: "azerty"})
 User.create!({nickname: "Thomas", email: "toto+2@free.fr", password: "azerty"})
 User.create!({nickname: "Carine", email: "toto+3@free.fr", password: "azerty"})
 User.create!({nickname: "Corentin", email: "toto+4@free.fr", password: "azerty"})
+User.create!({nickname: "Lucas", email: "toto+5@free.fr", password: "azerty"})
+User.create!({nickname: "Elodie", email: "toto+6@free.fr", password: "azerty"})
+User.create!({nickname: "Abdel", email: "toto+7@free.fr", password: "azerty"})
+User.create!({nickname: "Jérome", email: "toto+8@free.fr", password: "azerty"})
+User.create!({nickname: "Juliette", email: "toto+9@free.fr", password: "azerty"})
+User.create!({nickname: "Johanna", email: "toto+10@free.fr", password: "azerty"})
+User.create!({nickname: "Paul", email: "toto+11@free.fr", password: "azerty"})
+User.create!({nickname: "Eric", email: "toto+12@free.fr", password: "azerty"})
 puts "Utilisateurs créés."

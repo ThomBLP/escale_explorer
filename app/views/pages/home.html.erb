@@ -1,38 +1,31 @@
 
 <div class="container">
-  <h1 class="titre_principal_home">Bienvenue à Lyon ☀️</h1>
+  <h1 class="titre_principal_home">Bienvenue à Lyon<%= @city %></h1>
+
 
 
   <div class="question">
-    <h2>Jusqu’a quelle heure es-tu disponible ?</h2>
+    <h2>Jusqu’à quelle heure es-tu disponible ?</h2>
     <div class="text-center">
       <span class="layout_home">
-        12:00
+        <%= form_with url: places_path, method: :get do |f| %>
+          <%= f.number_field :duration_hours %>
+          <%= f.number_field :duration_minutes %>
+          <h2 class="titre_secondaire_home">Que souhaites-tu faire pendant ce temps?</h2>
+          <% @categories.each do |category| %>
+          <label for="<%= category.name %>"><%= category.name %></label>
+            <input name="category_ids[]" type="checkbox" value="<%= category.id %>" id="<%= category.name %>" />
+            <% end %>
+          <%= f.submit "C'est parti!"%>
+        <% end %>
       </span>
     </div>
   </div>
 
 
   <%# affichage des catégories fait OK %>
-  <div class="question">
-    <h2 class="titre_secondaire_home">Que souhaites-tu faire pendant ce temps?</h2>
-    <div class="categories">
-    <% if @categories.present? %>
-      <% @categories.each do |category| %>
-          <div class="stylecategory">
-            <div class="emoji"><%= Category::EMOJI_CATEGORIES[category.name] %></div>
-            <h3><%= category.name %></h3>
-          </div>
-      <% end %>
-    <% else %>
-      <p>Aucune catégorie disponible.</p>
-    <% end %>
-    </div>
-  </div>
-  <div>
-    <p class="button salmon-button"><%= link_to "lien vers parcours", journey_path(:id) %>
-  </p>
-  </div>
-  <%= image_tag "sam_design", class: "image_sam" %>
+  <%# <div class="buton_home">
+    <h3 class="button salmon-button"><%= link_to "C'est parti!", places_path() %> </h3>
+  <%# </div> %>
+  <%= svg_tag "sam_design", class: "image_sam" %>
 </div>
-
