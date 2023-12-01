@@ -88,60 +88,66 @@ User.create!({nickname: "Patrick", email: "toto+16@free.fr", password: "azerty"}
 puts "Utilisateurs créés."
 
 
-temple_de_la_lanterne = Place.find_by(name: "Temple de la Lanterne")
+
+
+#reviews du jardin guylaine
+jardin_guylaine = Place.find_by(name: "Jardin Guylaine Gouzou-Testud")
 journey1 = Journey.create!(start_time: 8.days.ago, user: User.find_by(nickname: "Malik"))
-visit1 = Visit.create!(journey: journey1, place: temple_de_la_lanterne)
+visit1 = Visit.create!(journey: journey1, place: jardin_guylaine)
 Review.create!(visit: visit1, comment: "'Une expérience exceptionnelle!'", rating: 5)
 
 
 journey2 = Journey.create!(start_time: 2.days.ago, user: User.find_by(nickname: "Johanna"))
-visit2 = Visit.create!(journey: journey2, place: temple_de_la_lanterne)
+visit2 = Visit.create!(journey: journey2, place: jardin_guylaine)
 Review.create!(visit: visit2, comment: "'Visite mémorable!'", rating: 4)
 
 journey3 = Journey.create!(start_time: 15.days.ago, user: User.find_by(nickname: "Paul"))
-visit3 = Visit.create!(journey: journey3, place: temple_de_la_lanterne)
+visit3 = Visit.create!(journey: journey3, place: jardin_guylaine)
 Review.create!(visit: visit3, comment: "'Un trésor caché!'", rating: 5)
 
 
 journey4 = Journey.create!(start_time: 7.days.ago, user: User.find_by(nickname: "Aurore"))
-visit4 = Visit.create!(journey: journey4, place: temple_de_la_lanterne)
+visit4 = Visit.create!(journey: journey4, place: jardin_guylaine)
 Review.create!(visit: visit4, comment: "'L'architecture est à couper le souffle!'", rating: 5)
 
 
-au_bout_du_monde = Place.find_by(name: "Au Bout du Monde")
+#reviews du musée de l'imprimerie
+musee_imprimerie = Place.find_by(name: "Musée de lImprimerie et de la communication graphique")
 journey5 = Journey.create!(start_time: 3.days.ago, user: User.find_by(nickname: "Jérome"))
-visit5 = Visit.create!(journey: journey5, place: au_bout_du_monde)
+visit5 = Visit.create!(journey: journey5, place: musee_imprimerie)
 Review.create!(visit: visit5, comment: "'Cadre pittoresque et ambiance charmante!'", rating: 4)
 
 
 journey6 = Journey.create!(start_time: 11.days.ago, user: User.find_by(nickname: "Juliette"))
-visit6 = Visit.create!(journey: journey6, place: au_bout_du_monde)
+visit6 = Visit.create!(journey: journey6, place: musee_imprimerie)
 Review.create!(visit: visit6, comment: "'Super!'", rating: 5)
 
 journey7 = Journey.create!(start_time: 1.days.ago, user: User.find_by(nickname: "Abdel"))
-visit7 = Visit.create!(journey: journey7, place: au_bout_du_monde)
+visit7 = Visit.create!(journey: journey7, place: musee_imprimerie)
 Review.create!(visit: visit7, comment: "'Un lieu chargé d'énergie positive.'", rating: 5)
 
 
 journey8 = Journey.create!(start_time: 9.days.ago, user: User.find_by(nickname: "Elodie"))
-visit8 = Visit.create!(journey: journey8, place: au_bout_du_monde)
+visit8 = Visit.create!(journey: journey8, place: musee_imprimerie)
 Review.create!(visit: visit8, comment: "'Un site touristique à la hauteur de sa réputation!'", rating: 5)
 
-bar_le_melhor = Place.find_by(name: "Bar le Melhor")
+
+#reviews du bistrot des Voraces
+bistrot_des_voraces = Place.find_by(name: "Bistrot des Voraces")
 journey9 = Journey.create!(start_time: 6.days.ago, user: User.find_by(nickname: "Lucas"))
-visit9 = Visit.create!(journey: journey9, place: bar_le_melhor)
+visit9 = Visit.create!(journey: journey9, place: bistrot_des_voraces)
 Review.create!(visit: visit9, comment: "'Expérience culinaire exceptionnelle!'", rating: 5)
 
 
 journey10 = Journey.create!(start_time: 8.days.ago, user: User.find_by(nickname: "Eric"))
-visit10 = Visit.create!(journey: journey10, place: bar_le_melhor)
+visit10 = Visit.create!(journey: journey10, place: bistrot_des_voraces)
 Review.create!(visit: visit10, comment: "'Je n'ai pas aimé.'", rating: 2)
 
 journey11 = Journey.create!(start_time: 13.days.ago, user: User.find_by(nickname: "Jeanne"))
-visit11 = Visit.create!(journey: journey11, place: bar_le_melhor)
+visit11 = Visit.create!(journey: journey11, place: bistrot_des_voraces)
 Review.create!(visit: visit11, comment: "'Une explosion de saveurs dans chaque bouchée!'", rating: 5)
 
 
 journey12 = Journey.create!(start_time: 3.days.ago, user: User.find_by(nickname: "Patrick"))
-visit12 = Visit.create!(journey: journey12, place: bar_le_melhor)
+visit12 = Visit.create!(journey: journey12, place: bistrot_des_voraces)
 Review.create!(visit: visit12, comment: "'Un menu varié et des recommandations du chef qui valent le détour.'", rating: 5)
