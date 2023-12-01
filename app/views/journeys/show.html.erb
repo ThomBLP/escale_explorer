@@ -14,8 +14,8 @@
 
 <div class="card-journey">
   <div class="card-journey-details">
-    <img src="https://i.ibb.co/b2561r7/Capture-d-cran-20230124-110316.png" alt="Capture-d-cran-20230124-110316" width="242" height="92" style="border-radius: 8px; background: linear-gradient(0deg, rgba(0, 0, 0, 0.20) 0%, rgba(0, 0, 0, 0.20) 100% lightgray 0px -85.639px / 100% 197.283% no-repeat";>
-    <h3>Amphithéatre Gallo-Romain</h3>
+    <%= image_tag place.illustration %>
+    <h3><%= place.name %></h3>
     <h3>10h05-10h40 (35 min)</h3>
     <%= link_to "Détails de l'activité", place_path(:id), class: "button salmon-button details-place-button" %>
     <h3 class="button delete-button"><%= link_to "Supprimer", root_path %></h3>
@@ -45,4 +45,3 @@
   <%# <p><%= step %>
 <%# <% end %>
 <%# </div> %>
-
