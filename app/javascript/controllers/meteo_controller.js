@@ -11,7 +11,7 @@ export default class extends Controller {
     .then(data => {
       var iconurl = "http://openweathermap.org/img/w/" + (data.weather[0].icon) + ".png"
       this.iconTarget.src = iconurl;
-      this.temperatureTarget.textContent = data.main.temp + '°C';
+      this.temperatureTarget.textContent = Math.round(data.main.temp) + '°C';
       var description = (data.weather[0].description);
       this.descriptionTarget.textContent = description;
 
