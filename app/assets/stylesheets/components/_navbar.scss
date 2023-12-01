@@ -1,6 +1,8 @@
 .navbar-lewagon {
   justify-content: space-between;
   background: white;
+  width: 100%;
+  height: 120px;
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -9,4 +11,14 @@
 
 .navbar-lewagon .navbar-brand img {
   width: 40px;
+}
+.meteo-sup{
+  align-items: center;
+}
+.meteo {
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 80%;
+  gap: 8px;
 }
