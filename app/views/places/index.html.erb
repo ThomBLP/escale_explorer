@@ -1,24 +1,25 @@
 <div class="container">
 
-<%= simple_form_for :place, url: places_path, method: :get do |f| %>
-  <%= f.input :name, input_html: { placeholder: "Nom du lieu" } %>
-  <%= f.button :submit, "OK" %>
-<% end %>
+  <%= simple_form_for :place, url: places_path, method: :get do |f| %>
+    <%= f.input :name, input_html: { placeholder: "Nom du lieu" } %>
+    <%= f.button :submit, "OK" %>
+  <% end %>
 
-<div data-controller="places">
-  <div data-places-target="list">
+  <div data-controller="places">
+    <div data-places-target="list">
+    </div>
   </div>
-</div>
 
 
-<%= link_to new_user_session_path do %>
-<p>"lien vers new session user"</p>
-<% end %>
-<br>
-<%= link_to "lien vers home", root_path %>
-<br>
-<%= link_to "lien vers détail d'un lieu", place_path(:id) %>
-<br>
-<%= link_to "lien vers parcours", journey_path(:id) %>
+  <%= link_to new_user_session_path do %>
+  <p>"lien vers new session user"</p>
+  <% end %>
+  <br>
+  <%= link_to "lien vers home", root_path %>
+  <br>
+  <%= link_to "lien vers détail d'un lieu", place_path(:id) %>
+  <br>
+  <%= link_to "lien vers parcours", journey_path(:id) %>
+
 
 </div>
