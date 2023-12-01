@@ -9,6 +9,9 @@ class JourneysController < ApplicationController
   end
 
   def show
+    @journey = Journey.find(params[:id])
+    @places  = @journey.places
+    @total_places_duration = @places.sum(:visit_duration)
   end
 
   def localize
