@@ -29,6 +29,7 @@
         <div>
           <p>Horaires: <%= @place.opening %></p>
           <p>Commentaires: 4/5</p>
+
           <% unless @journey.places.include?(@place) %>
             <%= button_to "Ajouter", journey_visits_path(@journey) %>
           <% end %>
