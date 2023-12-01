@@ -1,8 +1,8 @@
 class PlacesController < ApplicationController
   def index
-    @duration = params[:duration_hours].to_i * 60 + params[:duration_minutes].to_i
-    @places = Place.where(category_id: params[:category_ids]).where("visit_duration < ?", @duration).first(5)
-
+    @journey = Journey.find(params[:journey_id])
+    @rest_time = @journey.duration - @journey.places.sum(:visit_duration)
+    @places = Place.where.not(id: @journey.place_ids).where(category_id: params[:category_ids]).where("visit_duration <= ?", @rest_time).first(2)
     if params[:latitude] && params[:longitude]
       @latitude  = params[:latitude]
       @longitude = params[:longitude]
@@ -15,6 +15,7 @@ class PlacesController < ApplicationController
   end
 
   def show
-    @place = Place.find(params[:id])
+    @place= Place.find(params[:id])
+    @categories = Category.all
   end
 end
