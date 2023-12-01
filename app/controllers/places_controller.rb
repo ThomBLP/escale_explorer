@@ -1,15 +1,16 @@
 class PlacesController < ApplicationController
   def index
-    @places = if params[:place] && params[:place][:name].present?
-                Place.where("name LIKE ?", "%#{params[:place][:name]}%")
-              else
-                Place.all
-              end
+    @duration = params[:duration_hours].to_i * 60 + params[:duration_minutes].to_i
+    @places = Place.where(category_id: params[:category_ids]).where("visit_duration < ?", @duration).first(5)
 
-    @places_durations = @places.map do |place|
-      {
-        place.id => MapboxServices.new.get_duration([45.76948487018482, 4.834866446452691], [place.lat, place.long])
-      }
+    if params[:latitude] && params[:longitude]
+      @latitude  = params[:latitude]
+      @longitude = params[:longitude]
+    end
+
+    respond_to do |format|
+      format.html
+      format.text { render partial: "places/list", locals: { places: @places }, formats: [:html] }
     end
   end
 

@@ -1,0 +1,15 @@
+<% @places.each do |place| %>
+  <div>
+    <h3><%= place.name %></h3>
+    <h3><%= place.category.name %></h3>
+    <p><%= place.shortdescription %></p>
+    <p><%= place.illustration %></p>
+    <% if place.illustration.present? %>
+    <%= image_tag place.illustration %>
+    <% end %>
+    <p>temps d'activité : <%= place.visit_duration %>mn</p>
+    <% if @latitude && @longitude %>
+      <p>temps de trajet : <%= (GeolocService.new.get_duration([@latitude, @longitude], [place.lat, place.long], 'walking')).round(0) %>mn</p>
+    <% end %>
+  </div>
+<% end %>

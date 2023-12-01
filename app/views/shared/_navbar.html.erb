@@ -1,8 +1,17 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
-  <div class="container-fluid">
+  <div class="container-fluid" data-controller="meteo">
     <%= link_to "#", class: "navbar-brand" do %>
-      <%= image_tag "https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/logo.png" %>
+      <i class="fab fa-wpexplorer" style="font-size: 60px"></i>
+      <H2>Escale Explorer</H2>
+      <h3>découvrez la ville en un clin d'œil</h3>
     <% end %>
+
+        <%# Météo %>
+
+    <img src="" data-meteo-target="icon" class="avatar-bordered" style="color: black;">
+    <div data-meteo-target="temperature" class="avatar-bordered " style="color: black;"></div>
+    <p data-meteo-target="description"></p>
+    <%# fin météo %>
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -35,4 +44,6 @@
       </ul>
     </div>
   </div>
+
+
 </div>

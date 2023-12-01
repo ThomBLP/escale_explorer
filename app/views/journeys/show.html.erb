@@ -1,5 +1,3 @@
-
-
 <div class="journey-container">
   <h1>Récap de mon parcours</h1>
 
@@ -16,8 +14,10 @@
       <div class="journey-dot"></div>
       <%= image_tag "curl", class: 'line-curl' %>
       <div class="emoji-time-journey">
-        <div class="emoji-journey">
-          🏃‍♀️
+        <div class="emoji-image-container">
+          <div class="emoji-journey">
+            🏃‍♀️
+          </div>
         </div>
         <span>15 min</span>
       </div>
@@ -27,7 +27,7 @@
           <img src="https://i.ibb.co/b2561r7/Capture-d-cran-20230124-110316.png" alt="Capture-d-cran-20230124-110316" width="242" style="border-radius: 8px; background: linear-gradient(0deg, rgba(0, 0, 0, 0.20) 0%, rgba(0, 0, 0, 0.20) 100% lightgray 0px -85.639px / 100% 197.283% no-repeat";>
           <h3><%= place.name %></h3>
           <h3>(<%= place.visit_duration %> min)</h3>
-          <%= link_to "Détails de l'activité", place_path(place), class: "button salmon-button details-place-button" %>
+          <%= link_to "Détails de l'activité", place_path(place), class: "salmon-button details-place-button" %>
           <div class="d-flex justify-content-center w-100">
             <%= link_to "Supprimer", root_path, class: "delete-button" %>
           </div>
@@ -36,7 +36,13 @@
     </div>
   <% end %>
 
-  <%= link_to "Valider", root_path, class: "button salmon-button validate-button" %>
 </div>
+
+<%# <h1>Drivin directions with trafic</h1> %>
+<%# <% @directions.each do |step| %>
+
+  <%# <p><%= step %>
+<%# <% end %>
+<%# </div> %>
 
 
