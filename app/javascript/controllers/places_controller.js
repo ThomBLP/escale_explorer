@@ -9,6 +9,8 @@ export default class extends Controller {
       (position);
       const latitude  = position.coords.latitude;
       const longitude = position.coords.longitude;
+      console.log(latitude);
+      console.log(longitude);
 
       const url = new URL(window.location.href);
       url.searchParams.set('latitude', latitude);
