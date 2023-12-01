@@ -1,0 +1,42 @@
+.journey-container {
+  width: 80%;
+  margin: 0 auto;
+  padding-left: 16px;
+  background-color: white;
+}
+
+.journey-step {
+  border-left: 1px solid #344054;
+  padding-left: 16px;
+  display: grid;
+  position: relative;
+
+  .line-curl {
+    position: absolute;
+    left: -35px;
+    align-self: center;
+  }
+
+  .journey-dot {
+    background-color: #344054;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    left: -6px;
+  }
+
+  .emoji-time-journey {
+    display: flex;
+    align-items: center;
+    margin: 32px 0;
+    height: 40px;
+    width: 100%;
+    gap: 8px;
+      .emoji-journey {
+        font-size: 24px;
+      }
+  }
+
+}

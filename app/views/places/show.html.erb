@@ -1,3 +1,4 @@
+
 <div>
   <button onclick="journey_places_path">Retour</button>
 </div>
@@ -41,3 +42,27 @@
       <% end %>
     </div>
   </div>
+
+  <a href="https://www.lyon.fr/lieu/antiquite/amphitheatre-romain-des-trois-gaules">
+    <button>Site</button>
+  </a>
+
+  <button>Contact</button>
+
+</div>
+
+<%= @place.name %>
+<br>
+
+<% @place.reviews.each do |review| %>
+<br>
+<%= review.user.nickname %>
+<br>
+<%= review.comment %>
+<br>
+<%= review.rating %>
+<br>
+
+
+<% end %>
+<br>
