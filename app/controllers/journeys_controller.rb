@@ -9,6 +9,9 @@ class JourneysController < ApplicationController
   end
 
   def show
+    @journey = Journey.find(params[:id])
+    @places = @journey.places
+    @categories = Category.all
   end
 
   def localize
