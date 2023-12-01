@@ -1,44 +1,40 @@
 <div>
-  <button onclick="places_path">Retour</button>
+    <%= link_to 'Retour', 'javascript:history.back()', class: 'btn' %>
 </div>
-
-<div>
-  <h1>Escale Explorer</h1>
-</div>
-
-<div class="image-details">
-  <img src="https://i.ibb.co/b2561r7/Capture-d-cran-20230124-110316.png" alt="Capture-d-cran-20230124-110316" style="border-radius: 12px; border: 1px solid var(--gris, #8A8989); background: url(<path-to-image>), lightgray 50% / cover no-repeat, #FFF; box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);">
-</div>
-
-<div>
-  <div class="details-title-and-description">
-    <h2>Amphithéâtre Gallo-Romain</h2>
-    <p>L'Amphithéâtre des Brosses, d'une capacité de 170 places, est équipé pour l'accueil de spectacles ou autres type dévénements. La salle bénéficie dun équipement son et lumière.</p>
-  </div>
-
-  <div>
-    <div>
-      <p>Trajet: 35 min</p>
-      <p>Visite: 1h30</p>
+<div class="container">
+    <div class="image-details">
+    <%= image_tag @place.illustration, class: 'image_places_show' %>
     </div>
     <div>
-      <p>Horaires: lundi-vendredi 9h-20h</p>
-      <p>Commentaires: 4/5</p>
+      <h1 class='title_principal_show'><%= @place.name %></h1>
+    </div>
+
+      <div class="stylecategory">
+        <%= @place.visit_duration %>min
+      </div>
+    <div>
+      <div class="details-title-and-description">
+        <h3 class="title_secondaire"></h3>
+        <p><%= @place.shortdescription %></p>
+      </div>
+
+      <div>
+        <div>
+          <p>Trajet: 35 min</p>
+          <p>Visite: <%= @place.visit_duration %> min</p>
+        </div>
+        <div>
+          <p>Horaires: <%= @place.opening %></p>
+          <p>Commentaires: 4/5</p>
+        </div>
+      </div>
+
+      <%= link_to @place.website, class: "salmon-button", target: "_blank" do %>
+        🌐 Site internet
+      <% end %>
+
+      <%= link_to @place.mail, class: "salmon-button", target: "_blank" do %>
+        📞 Contact
+      <% end %>
     </div>
   </div>
-
-  <a href="https://www.lyon.fr/lieu/antiquite/amphitheatre-romain-des-trois-gaules">
-    <button>Site</button>
-  </a>
-
-  <button>Contact</button>
-
-</div>
-
-<% link_to "lien vers new session user", new_user_session_path %>
-<br>
-<% link_to "lien vers index des lieux", places_path %>
-<br>
-<% link_to "lien vers home", root_path %>
-<br>
-<% link_to "lien vers parcours", journey_path %>
