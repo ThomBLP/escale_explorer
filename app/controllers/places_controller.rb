@@ -15,6 +15,7 @@ class PlacesController < ApplicationController
   end
 
   def show
+    @journey = Journey.find(params[:journey_id])
     @place= Place.find(params[:id])
     @categories = Category.all
   end

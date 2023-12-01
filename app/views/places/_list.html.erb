@@ -1,6 +1,6 @@
 <% @places.each do |place| %>
   <div class="card_place">
-    <%= link_to place_path(place), class: "card_place" do %>
+    <%= link_to journey_place_path(@journey, place), class: "card_place" do %>
     <% if place.illustration.present? %>
       <%= image_tag place.illustration, class: 'image_places' %>
     <% end %>
