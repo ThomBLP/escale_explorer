@@ -1,31 +1,15 @@
 
-<div class="journey-container">
+<div class="journey-container mt-4">
   <h1>Récap de mon parcours</h1>
 
   <div class="card-all-total-time">
     <div class="card-total-time">
       <h2>Temps total</h2>
-      <span class="emoji">🏃‍♀️</span> 60 min
-      <span class="emoji">🏛️</span> <%= @total_places_duration %> min
+      <span class="emoji">🏃‍♀️</span>60 min
+      <span class="emoji">🕐</span><%= @total_places_duration %> min
     </div>
-
-
-<h1>Récap de mon parcours</h1>
-
-<div class="card-all-total-time">
-  <div class="card-total-time">
-    <h2>Temps total</h2>
   </div>
-</div>
 
-<div class="emoji-time-journey">
-  <%= image_tag "emoji_courreur", class: "emoji-journey" %>
-  <p>15 min</p>
-</div>
-
-
-
-  </div>
 
   <% @places.each_with_index do |place, index| %>
     <div class="journey-step">
@@ -48,7 +32,7 @@
         <div class="card-journey-details">
           <%= image_tag place.illustration, class: "image_journey" %>
           <h3><%= place.name %></h3>
-          <h3>(<%= place.visit_duration %> min)</h3>
+          <div><span class="emoji">🕐</span><%= place.visit_duration %> min</div>
           <%= link_to "Détails de l'activité", journey_place_path(@journey, place), class: "salmon-button details-place-button" %>
           <div class="d-flex justify-content-center w-100">
             <%= link_to "Supprimer", root_path, class: "delete-button" %>
