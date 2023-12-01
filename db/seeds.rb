@@ -22,7 +22,7 @@ Category.create!({name: "musees"})
 puts "categories créées."
 
 
-filepath = "db/seed3.csv"
+filepath = "db/seed284.csv"
 CSV.foreach(filepath, headers: :first_row, col_sep: ";") do |row|
   begin
     parsed_address = JSON.parse(row['address'].gsub("'", '"'))
