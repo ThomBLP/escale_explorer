@@ -1,5 +1,5 @@
 <div>
-  <button onclick="places_path">Retour</button>
+  <button onclick="journey_places_path">Retour</button>
 </div>
 
 <div>
@@ -24,6 +24,7 @@
     <div>
       <p>Horaires: lundi-vendredi 9h-20h</p>
       <p>Commentaires: 4/5</p>
+        <%= button_to "Ajouter", journey_visits_path(@journey) %>
     </div>
   </div>
 
@@ -37,7 +38,7 @@
 
 <% link_to "lien vers new session user", new_user_session_path %>
 <br>
-<% link_to "lien vers index des lieux", places_path %>
+<%# link_to "lien vers index des lieux", journey_places_path %>
 <br>
 <% link_to "lien vers home", root_path %>
 <br>
