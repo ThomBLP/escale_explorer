@@ -4,15 +4,18 @@ import { Controller } from "@hotwired/stimulus"
 export default class extends Controller {
   static targets = [ "list" ]
   connect() {
-    console.log("connext");
+    ("connext");
     navigator.geolocation.getCurrentPosition((position) => {
+      (position);
       const latitude  = position.coords.latitude;
       const longitude = position.coords.longitude;
 
       const url = new URL(window.location.href);
       url.searchParams.set('latitude', latitude);
       url.searchParams.set('longitude', longitude);
-      console.log(url.href);
+      (url.href);
+      ("latitude", latitude);
+      ("longitude", longitude);
 
       fetch(url.href,
         {
@@ -20,7 +23,7 @@ export default class extends Controller {
         })
       .then(response => response.text())
       .then((data) => {
-        console.log("data", data);
+        ("data", data);
         this.listTarget.outerHTML = data
       })
     })

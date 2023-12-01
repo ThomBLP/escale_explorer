@@ -1,13 +1,20 @@
 Rails.application.routes.draw do
+  get 'reviews/index'
+  get 'reviews/show'
   devise_for :users
   root "pages#home"
-  resources :places, only: [:index, :show]
+  resources :places, only: [:show]
+  
   resources :journeys, only: [:create, :update, :show] do
+    resources :places, only: [:index]
     resources :visits, only: [:create, :destroy] do
       resources :reviews, only: [:create]
     end
   end
 
+  resources :visits, only: [] do
+    resources :reviews, only: [:create]
+  end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.

@@ -8,7 +8,7 @@
     <h2>Jusqu’à quelle heure es-tu disponible ?</h2>
     <div class="text-center">
       <span class="layout_home">
-        <%= form_with url: places_path, method: :get do |f| %>
+        <%= form_with url: journeys_path, method: :post do |f| %>
           <%= f.number_field :duration_hours %>
           <%= f.number_field :duration_minutes %>
           <h2 class="titre_secondaire_home">Que souhaites-tu faire pendant ce temps?</h2>
