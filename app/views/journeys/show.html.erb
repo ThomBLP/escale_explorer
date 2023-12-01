@@ -49,7 +49,7 @@
           <%= image_tag place.illustration, class: "image_journey" %>
           <h3><%= place.name %></h3>
           <h3>(<%= place.visit_duration %> min)</h3>
-          <%= link_to "Détails de l'activité", place_path(place), class: "salmon-button details-place-button" %>
+          <%= link_to "Détails de l'activité", journey_place_path(@journey, place), class: "salmon-button details-place-button" %>
           <div class="d-flex justify-content-center w-100">
             <%= link_to "Supprimer", root_path, class: "delete-button" %>
           </div>
