@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container places-margin-bottom">
   <div class="my-3">
     <%= simple_form_for :place, url: journey_places_path(@journey), method: :get do |f| %>
       <%= f.input :name, input_html: { placeholder: "Nom du lieu" }, label: false %>
@@ -11,5 +11,5 @@
     </div>
   </div>
 
-  <%= link_to "Valider", journey_path(@journey), class: "button salmon-button journey-button" %>
+  <%= link_to "Voir mon parcours", journey_path(@journey), class: "button salmon-button journey-button" %>
 </div>
