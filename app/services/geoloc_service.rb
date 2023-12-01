@@ -1,7 +1,7 @@
 # app/services/mapbox_service.rb
 class GeolocService
   def initialize
-    Mapbox.access_token = ENV['MAPBOX_ACCESS_TOKEN']
+    Mapbox.access_token = ENV.fetch('MAPBOX_ACCESS_TOKEN')
   end
 
   def get_duration(origin, destination, mode = "driving-traffic")
@@ -20,7 +20,7 @@ class GeolocService
   end
 
   def localize_city
-    result = Geocoder.search().first
+    result = Geocoder.search.first
     @city = result.city || result.first.address_components.first["long_name"]
   end
 end

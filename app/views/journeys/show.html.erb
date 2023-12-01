@@ -23,21 +23,11 @@
   <p>15 min</p>
 </div>
 
-<div class="card-journey">
-  <div class="card-journey-details">
-    <%= image_tag place.illustration %>
-    <h3><%= place.name %></h3>
-    <h3>10h05-10h40 (35 min)</h3>
-    <%= link_to "Détails de l'activité", place_path(:id), class: "button salmon-button details-place-button" %>
-    <h3 class="button delete-button"><%= link_to "Supprimer", root_path %></h3>
-  </div>
-</div>
-
 
 
   </div>
 
-  <% @places.each do |place| %>
+  <% @places.each_with_index do |place, index| %>
     <div class="journey-step">
       <div class="journey-dot"></div>
       <%= image_tag "curl", class: 'line-curl' %>
@@ -47,12 +37,16 @@
             🏃‍♀️
           </div>
         </div>
-        <span>15 min</span>
+        <% if place == @places.first || place == @places.last %>
+          <span><%= GeolocService.new.get_duration([45.76950039018254, 4.834805615523664], [place.lat, place.long], 'walking').round(0) %>min</span>
+        <% else %>
+          <span><%= GeolocService.new.get_duration([@places[index - 1].lat, @places[index - 1].long], [place.lat, place.long], 'walking').round(0) %>min</span>
+        <% end %>
       </div>
 
       <div class="card-journey">
         <div class="card-journey-details">
-          <img src="https://i.ibb.co/b2561r7/Capture-d-cran-20230124-110316.png" alt="Capture-d-cran-20230124-110316" width="242" style="border-radius: 8px; background: linear-gradient(0deg, rgba(0, 0, 0, 0.20) 0%, rgba(0, 0, 0, 0.20) 100% lightgray 0px -85.639px / 100% 197.283% no-repeat";>
+          <%= image_tag place.illustration, class: "image_journey" %>
           <h3><%= place.name %></h3>
           <h3>(<%= place.visit_duration %> min)</h3>
           <%= link_to "Détails de l'activité", place_path(place), class: "salmon-button details-place-button" %>
