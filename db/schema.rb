@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_12_02_135901) do
+ActiveRecord::Schema[7.1].define(version: 2023_12_02_195453) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -25,6 +25,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_02_135901) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "duration"
+    t.text "weather_icon"
     t.index ["user_id"], name: "index_journeys_on_user_id"
   end
 
@@ -45,7 +46,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_02_135901) do
     t.string "website"
     t.float "long"
     t.float "lat"
-    t.string "weather_activity"
+    t.json "weather_icons"
     t.index ["category_id"], name: "index_places_on_category_id"
   end
 

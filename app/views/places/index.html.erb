@@ -1,13 +1,11 @@
 <div class="container places-margin-bottom">
   <div class="my-3">
-    <%# <%= simple_form_for :place, url: journey_place_path(@journey, params[:place_id]), method: :get do |f| %>
-      <%# <%= f.input :name, input_html: { placeholder: "Nom du lieu" }, label: false %>
-      <%# Champ caché pour l'ID %>
-       <%# <%= form.hidden_field :id %>
+    <%= form_tag(journey_places_path(@journey), method: :get) do %>
+    <%= text_field_tag :name, params[:name] %>
+    <%= submit_tag "Rechercher" %>
+    <% end %>
 
-      <%# <%= f.button :submit, "OK" %>
 
-    <%# <% end %>
     <p>Votre parcours est prévu pour <%= @journey.places.sum(:visit_duration) %> mn</p>
     <p>Il vous reste <%= @rest_time %> mn disponibles</p>
 

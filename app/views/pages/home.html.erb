@@ -1,19 +1,21 @@
 
 <div class="container">
   <h1 class="titre_principal_home">Bienvenue à Lyon<%= @city %></h1>
-
-  <div class="question">
+  <div class="question" data-controller="meteo">
     <h2>Quelle est ta disponibilité ?</h2>
     <div class="text-center">
       <span class="layout_home">
         <%= form_with url: journeys_path, method: :post do |f| %>
           <%= f.number_field :duration_hours %>
           <%= f.number_field :duration_minutes %>
+          <%= f.hidden_field :weather_icon, data: { meteo_target: "weatherIcon", action: "meteo#connect" } %>
           <h2 class="titre_secondaire_home">Que souhaites-tu faire pendant ce temps?</h2>
           <% @categories.each do |category| %>
-          <label for="<%= category.name %>"><%= category.name %></label>
-            <input name="category_ids[]" type="checkbox" value="<%= category.id %>" id="<%= category.name %>" />
-            <% end %>
+            <div>
+              <label for="<%= category.name %>"><%= category.name %></label>
+              <input name="category_ids[]" type="checkbox" style="display: none;" value="<%= category.id %>" id="<%= category.name %>" />
+            </div>
+          <% end %>
           <%= f.submit "C'est parti!"%>
         <% end %>
       </span>
@@ -27,3 +29,14 @@
   <%# </div> %>
   <%= svg_tag "sam_design", class: "image_sam" %>
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', (event) => {
+  document.querySelectorAll('label').forEach((label) => {
+    label.addEventListener('click', (event) => {
+      event.target.style.fontweight = 'bold';
+      event.target.style.backgroundColor = '#FFB6C1';
+    });
+  });
+});
+</script>
