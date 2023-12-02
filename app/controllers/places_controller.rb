@@ -18,5 +18,11 @@ class PlacesController < ApplicationController
     @journey = Journey.find(params[:journey_id])
     @place= Place.find(params[:id])
     @categories = Category.all
+
+    # if @place
+    #   redirect_to journey_place_path(@journey, category_ids: params[:category_ids])
+    # else
+    #   flash[:alert] = "Aucun lieu trouvé"
+    # end
   end
 end

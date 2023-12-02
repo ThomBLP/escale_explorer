@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_12_01_102240) do
+ActiveRecord::Schema[7.1].define(version: 2023_12_02_135901) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -45,6 +45,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_01_102240) do
     t.string "website"
     t.float "long"
     t.float "lat"
+    t.string "weather_activity"
     t.index ["category_id"], name: "index_places_on_category_id"
   end
 

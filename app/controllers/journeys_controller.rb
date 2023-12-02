@@ -4,7 +4,7 @@ class JourneysController < ApplicationController
     @journey = Journey.new(duration: @duration)
     @journey.user = current_user
     @journey.save
-
+    
     redirect_to journey_places_path(@journey, category_ids: params[:category_ids])
   end
 

@@ -2,10 +2,8 @@
 <div class="container">
   <h1 class="titre_principal_home">Bienvenue à Lyon<%= @city %></h1>
 
-
-
   <div class="question">
-    <h2>Jusqu’à quelle heure es-tu disponible ?</h2>
+    <h2>Quelle est ta disponibilité ?</h2>
     <div class="text-center">
       <span class="layout_home">
         <%= form_with url: journeys_path, method: :post do |f| %>
