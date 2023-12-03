@@ -4,17 +4,15 @@
     <%= text_field_tag :name, params[:name] %>
     <%= submit_tag "Rechercher" %>
     <% end %>
-
-
-    <p>Votre parcours est prévu pour <%= @journey.places.sum(:visit_duration) %> mn</p>
-    <p>Il vous reste <%= @rest_time %> mn disponibles</p>
-
+    <p>Le parcours prévoit <%= @journey.places.sum(:visit_duration)/60 %>h <%=@journey.places.sum(:visit_duration) % 60%> mn</p>
+    <p>Il reste <%= @rest_time / 60 %> h <%= @rest_time % 60 %> mn de temps disponible</p>
   </div>
 
   <div data-controller="places">
     <div data-places-target="list">
     </div>
   </div>
-
-  <%= link_to "Voir mon parcours", journey_path(@journey), class: "button salmon-button journey-button" %>
+<div class="button salmon-button journey-button">
+  <%= link_to "Voir mon parcours", journey_path(@journey)%>
+</div>
 </div>

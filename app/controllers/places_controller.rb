@@ -9,9 +9,9 @@ class PlacesController < ApplicationController
     .where("visit_duration <= ?", @rest_time)
     .first(10)
 
-    if params[:latitude] && params[:longitude]
-      @latitude  = params[:latitude]
-      @longitude = params[:longitude]
+    if params[:lat] && params[:long]
+      @latitude  = params[:lat]
+      @longitude = params[:long]
     end
 
     respond_to do |format|
@@ -25,4 +25,18 @@ class PlacesController < ApplicationController
     @place= Place.find(params[:id])
     @categories = Category.all
   end
+
+  def nearby_restaurants
+    @place = Place.find(params[:id])
+    lat = @place.lat.to_f
+    long = @place.long.to_f
+    @nearby_restaurants = Place.joins(:category).near([lat, long], 0.2, units: :km).where(categories: { name: 'restaurants' })
+  end
+
+    def nearby_bars
+      @place = Place.find(params[:id])
+      lat = @place.lat.to_f
+      long = @place.long.to_f
+      @nearby_bars = Place.joins(:category).near([lat, long], 0.2, units: :km).where(categories: { name: 'bars' })
+    end
 end

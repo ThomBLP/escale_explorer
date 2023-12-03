@@ -38,11 +38,13 @@
   border-radius: 18px;
   width: 100%;
   height: 150px;
+  object-fit: cover;
 }
 
 .image_places_show {
   padding-top: 8px;
   border-radius: 18px;
   width: 100%;
-  height: 100%;
+  height: 300px;
+  object-fit: cover;
 }
