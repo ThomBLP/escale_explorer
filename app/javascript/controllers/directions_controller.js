@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="directions"
 export default class extends Controller {
-  static targets = [ "journeyDirection" ]
+  static targets = [ "journeyDirection", "map" ]
   static values = {
     coordinates: Array
   }
@@ -15,7 +15,7 @@ export default class extends Controller {
 
         mapboxgl.accessToken = 'pk.eyJ1IjoidnNjaG1pdHQiLCJhIjoiY2xwamdyd3RzMGI1dTJpcW9mMmp5MTZ4dCJ9.lrohzerGwUtMg0fiQmKs4Q';
         const map = new mapboxgl.Map({
-          container: 'map',
+          container: this.mapTarget,
           style: 'mapbox://styles/mapbox/streets-v12',
           center: [longitude, latitude],
           zoom: 14
