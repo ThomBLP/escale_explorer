@@ -15,6 +15,26 @@
   border: none;
 }
 
+.button_home {
+  display: flex;
+  position: fixed;
+  bottom: 50px;
+  padding: 8px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 12px;
+  text-decoration: none;
+  font-size: 18px;
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  color: white;
+  width: calc(90% - var(--bs-gutter-x) * .5);
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
 .salmon-button {
   background: #FAAF79;
 }
