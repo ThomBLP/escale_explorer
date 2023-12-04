@@ -11,13 +11,15 @@ class PlacesController < ApplicationController
                        .where.not("weather_icons::text LIKE ?", "%#{params[:weather_icon]}%")
                        .where("visit_duration <= ?", @rest_time)
     end
-
     @places = @places.first(10)
 
     if params[:lat] && params[:long]
       @latitude  = params[:lat]
       @longitude = params[:long]
     end
+
+    @categories = Category.all
+    @filtered_categories = Category.where(id: params[:category_ids])
 
     respond_to do |format|
       format.html
