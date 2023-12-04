@@ -43,3 +43,16 @@
 .places-margin-bottom {
   margin-bottom: 120px;
 }
+
+.input-search-card {
+  width: 100%;
+  border-radius: 8px 0 0 8px;
+}
+
+.form-search-card {
+  display: flex;
+}
+
+.form-search-card * {
+  border: none;
+}

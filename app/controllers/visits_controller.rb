@@ -6,6 +6,6 @@ class VisitsController < ApplicationController
 
     @visit.save
 
-    redirect_to journey_places_path(@visit.journey, category_ids: params[:category_ids])
+    redirect_to journey_places_path(@visit.journey, category_ids: params[:category_ids], weather_icon: params[:weather_icon])
   end
 end
