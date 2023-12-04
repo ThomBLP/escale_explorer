@@ -22,7 +22,7 @@ class PlacesController < ApplicationController
 
   def show
     @journey = Journey.find(params[:journey_id])
-    @place= Place.find(params[:id])
+    @place = Place.find(params[:id])
     @categories = Category.all
   end
 
@@ -33,10 +33,10 @@ class PlacesController < ApplicationController
     @nearby_restaurants = Place.joins(:category).near([lat, long], 0.2, units: :km).where(categories: { name: 'restaurants' })
   end
 
-    def nearby_bars
-      @place = Place.find(params[:id])
-      lat = @place.lat.to_f
-      long = @place.long.to_f
-      @nearby_bars = Place.joins(:category).near([lat, long], 0.2, units: :km).where(categories: { name: 'bars' })
-    end
+  def nearby_bars
+    @place = Place.find(params[:id])
+    lat = @place.lat.to_f
+    long = @place.long.to_f
+    @nearby_bars = Place.joins(:category).near([lat, long], 0.2, units: :km).where(categories: { name: 'bars' })
+  end
 end
