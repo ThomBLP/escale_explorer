@@ -28,10 +28,28 @@
         <% end %>
       </div>
 
+      <% visit = place.visits.find_by(journey_id: @journey.id) %>
+
       <div class="card-journey">
         <div class="card-journey-details">
           <%= image_tag place.illustration, class: "image_journey" %>
           <h3><%= place.name %></h3>
+          <% if visit.review.present? %>
+            <div class="d-flex">
+              <% Review::AUTHORIZED_RATINGS.each do |number| %>
+                <i class="fa<%= (number > visit.review.rating) ? 'r' : 's' %> fa-star"></i>
+              <% end %>
+            </div>
+          <% else %>
+            <div class="review">
+              <% Review::AUTHORIZED_RATINGS.each do |rating| %>
+                <%= link_to journey_visit_reviews_path(@journey, visit, review: { rating: rating }), data: { turbo_method: :post } do %>
+                  <i class="far fa-star"></i>
+                <% end %>
+              <% end %>
+              <small>Noter</small>
+            </div>
+          <% end %>
           <div><span class="emoji">🕐</span><%= place.visit_duration %> min</div>
           <%= link_to "Détails de l'activité", journey_place_path(@journey, place), class: "salmon-button details-place-button" %>
           <div class="d-flex justify-content-center w-100">
@@ -42,7 +60,6 @@
     </div>
   <% end %>
 <div data-controller="directions" data-directions-coordinates-value="<%= @coords %>">
-  <div id="map"></div>
 </div>
 
 </div>

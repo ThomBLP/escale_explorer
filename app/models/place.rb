@@ -17,6 +17,11 @@ class Place < ApplicationRecord
     GeolocService.new.get_duration([45.76950039018254, 4.834805615523664], [lat, long], 'walking').round(0)
   end
 
+  def review_ratings_average
+    reviews.pluck(:rating)
+    # ...
+  end
+
   # def self_find_by_name(name)
   #   find_by(name: name)
   # end
