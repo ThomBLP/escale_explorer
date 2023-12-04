@@ -12,6 +12,8 @@ class PlacesController < ApplicationController
                        .where("visit_duration <= ?", @rest_time)
     end
 
+    @category_ids = @places.pluck(:category_id).uniq
+    p @category_ids
     @places = @places.first(10)
 
     if params[:lat] && params[:long]
@@ -20,6 +22,7 @@ class PlacesController < ApplicationController
     end
 
     @categories = Category.all
+
 
     respond_to do |format|
       format.html

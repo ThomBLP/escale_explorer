@@ -13,3 +13,9 @@
   padding-left: 4px;
   padding-right: 4px;
 }
+
+.category_home {
+  &.active {
+    background-color: red;
+  }
+}

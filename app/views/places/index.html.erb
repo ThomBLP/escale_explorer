@@ -23,7 +23,15 @@
   <div class="navbar_emoji checkboxes-label">
 
   <% @categories.each do |category| %>
-    <div class="category_home"> <%= category.emoji %> </div>
+    <% if @category_ids.include?(category.id) %>
+      <%= link_to request.params.merge(category_ids: @category_ids.filter { |c| c != category.id }), class: "category_home active" do %>
+        <%= category.emoji %>
+      <% end %>
+    <% else %>
+      <%= link_to request.params.merge(category_ids: @category_ids.push(category.id)), class: "category_home" do %>
+        <%= category.emoji %>
+      <% end %>
+    <% end %>
   <% end %>
   </div>
 
