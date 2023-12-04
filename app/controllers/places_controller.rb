@@ -19,6 +19,8 @@ class PlacesController < ApplicationController
       @longitude = params[:long]
     end
 
+    @categories = Category.all
+
     respond_to do |format|
       format.html
       format.text { render partial: "places/list", locals: { places: @places }, formats: [:html] }
