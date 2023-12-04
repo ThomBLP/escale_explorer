@@ -22,7 +22,7 @@ Category.create!({name: "musees"})
 puts "categories créées."
 
 
-filepath = "db/seed284_last.csv"
+filepath = "db/seed284.csv"
 CSV.foreach(filepath, headers: :first_row, col_sep: ";") do |row|
   begin
     parsed_address = JSON.parse(row['address'].gsub("'", '"'))
@@ -157,4 +157,3 @@ Review.create!(visit: visit11, comment: "'Une explosion de saveurs dans chaque b
 journey12 = Journey.create!(user: User.find_by(nickname: "Patrick"))
 visit12 = Visit.create!(journey: journey12, place: bistrot_des_voraces)
 Review.create!(visit: visit12, comment: "'Un menu varié et des recommandations du chef qui valent le détour.'", rating: 5)
-
