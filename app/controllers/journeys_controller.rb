@@ -21,6 +21,7 @@ class JourneysController < ApplicationController
       @categories = Category.all
       @total_places_duration = @places.sum(:visit_duration)
       @weather_icon = params[:weather_icon]
+      @coords = @places.pluck(:long, :lat)
     end
 
     def localize
@@ -32,5 +33,4 @@ class JourneysController < ApplicationController
   def journey_params
     params.require(:journey).permit(:weather_icon, category_ids: [])
   end
-
 end
