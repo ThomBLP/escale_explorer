@@ -1,48 +1,10 @@
 
-<div class="journey-container mt-4">
-  <h1>Récap de mon parcours</h1>
-
-  <div class="card-all-total-time">
-    <div class="card-total-time">
-      <h2>Temps total</h2>
-      <span class="emoji">🏃‍♀️</span>60 min
-      <span class="emoji">🕐</span><%= @total_places_duration %> min
-    </div>
+  <div class="overlay" data-controller="overlay" data-action="click->overlay#open">
+    <div class="overlay_bar"></div>
+    <i class="overlay_mark fa-solid fa-xmark" data-action="click->overlay#close"></i>
+    <%=render "recap_overlay"%>
   </div>
 
-
-  <% @places.each_with_index do |place, index| %>
-    <div class="journey-step">
-      <div class="journey-dot"></div>
-      <%= svg_tag "curl", class: 'line-curl' %>
-      <div class="emoji-time-journey">
-        <div class="emoji-image-container">
-          <div class="emoji-journey">
-            🏃‍♀️
-          </div>
-        </div>
-        <% if place == @places.first || place == @places.last %>
-          <span><%= GeolocService.new.get_duration([45.76950039018254, 4.834805615523664], [place.lat, place.long], 'walking').round(0) %>min</span>
-        <% else %>
-          <span><%= GeolocService.new.get_duration([@places[index - 1].lat, @places[index - 1].long], [place.lat, place.long], 'walking').round(0) %>min</span>
-        <% end %>
-      </div>
-
-      <div class="card-journey">
-        <div class="card-journey-details">
-          <%= image_tag place.illustration, class: "image_journey" %>
-          <h3><%= place.name %></h3>
-          <div><span class="emoji">🕐</span><%= place.visit_duration %> min</div>
-          <%= link_to "Détails de l'activité", journey_place_path(@journey, place), class: "salmon-button details-place-button" %>
-          <div class="d-flex justify-content-center w-100">
-            <%= link_to "Supprimer", root_path, class: "delete-button" %>
-          </div>
-        </div>
-      </div>
-    </div>
-  <% end %>
 <div data-controller="directions" data-directions-coordinates-value="<%= @coords %>">
-  <div id="map"></div>
-</div>
-
+  <div data-directions-target="map" class="map-journey"></div>
 </div>
