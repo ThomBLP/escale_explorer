@@ -1,9 +1,23 @@
 <div class="container places-margin-bottom">
   <div class="my-3">
-    <%= simple_form_for :place, url: journey_places_path(@journey), method: :get do |f| %>
-      <%= f.input :name, input_html: { placeholder: "Nom du lieu" }, label: false %>
-      <%= f.button :submit, "OK" %>
+    <div class="row justify-content-center">
+      <div id="places">
+        <% if @places.none? %>
+          <em>Désolé, l'endroit que vous recherchez n'existe pas.</em>
+        <% end %>
+      </div>
+    </div>
+
+  <div>
+    <%= form_tag(journey_places_path(@journey), class: "form-search-card", method: :get) do %>
+      <%= text_field_tag :keyword, params[:keyword], class: "input-search-card" %>
+      <%= hidden_field_tag :weather_icon, params[:weather_icon] %>
+      <%= submit_tag "Rechercher", class: "search-button" %>
     <% end %>
+  </div>
+
+    <p>Le parcours prévoit <%= @journey.places.sum(:visit_duration)/60 %>h <%=@journey.places.sum(:visit_duration) % 60%> mn</p>
+    <p>Il reste <%= @rest_time / 60 %> h <%= @rest_time % 60 %> mn de temps disponible</p>
   </div>
 
   <div data-controller="places">
@@ -11,5 +25,6 @@
     </div>
   </div>
 
-  <%= link_to "Voir mon parcours", journey_path(@journey), class: "button salmon-button journey-button" %>
+    <%= link_to "Voir mon parcours", journey_path(@journey), class: "button salmon-button journey-button" %>
+
 </div>

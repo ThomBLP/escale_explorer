@@ -5,6 +5,11 @@ Rails.application.routes.draw do
   devise_for :users
   root "pages#home"
 
+  resources :places do
+    get 'nearby_restaurants', to: 'places#nearby_restaurants', on: :member
+    get 'nearby_bars', to: 'places#nearby_bars', on: :member
+  end
+
   resources :journeys, only: [:create, :update, :show] do
     resources :places, only: [:index, :show]
     resources :visits, only: [:create, :destroy] do
@@ -12,9 +17,6 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :visits, only: [] do
-    resources :reviews, only: [:create]
-  end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.

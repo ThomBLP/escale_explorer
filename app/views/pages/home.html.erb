@@ -1,23 +1,23 @@
 
-<div class="container">
-  <h1 class="titre_principal_home">Bienvenue à Lyon<%= @city %></h1>
-
-
-
-  <div class="question">
-    <h2>Jusqu’à quelle heure es-tu disponible ?</h2>
-    <div class="text-center">
-      <span class="layout_home">
+<div class="container" data-controller="geoloc">
+  <h1 class="titre_principal_home" id="geocity"></h1>
+  <div class="question" data-controller="meteo">
+    <h2>Quelle est ta disponibilité ?</h2>
+    <div>
+      <span>
         <%= form_with url: journeys_path, method: :post do |f| %>
-          <%= f.number_field :duration_hours %>
-          <%= f.number_field :duration_minutes %>
+          <%= f.time_field :duration_hours, placeholder: "Combien d'heures?", class: 'time-input', step: 900 %>
+          <%= f.hidden_field :weather_icon, data: { meteo_target: "weatherIcon", action: "meteo#connect" } %>
           <h2 class="titre_secondaire_home">Que souhaites-tu faire pendant ce temps?</h2>
+          <div class="categories">
           <% @categories.each do |category| %>
-          <label for="<%= category.name %>"><%= category.name %></label>
-            <input name="category_ids[]" type="checkbox" value="<%= category.id %>" id="<%= category.name %>" />
-            <% end %>
-          <%= f.submit "C'est parti!"%>
+            <input class='checkboxes-input' name="category_ids[]" type="checkbox" style="" value="<%= category.id %>" id="<%= category.name %>" />
+            <label class="checkboxes-label stylecategory" for="<%= category.name %>"><span class="emoji"><%= category.emoji %></span> <%= category.display_name %></label>
+          <% end %>
+          </div>
+          <%= f.submit "C'est parti!", class: "button_home salmon-button "%>
         <% end %>
+
       </span>
     </div>
   </div>
@@ -29,3 +29,36 @@
   <%# </div> %>
   <%= svg_tag "sam_design", class: "image_sam" %>
 </div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var timeInput = document.querySelector('.time-input');
+
+    // Écouter le changement dans le champ de saisie
+    timeInput.addEventListener('change', function() {
+      adjustTimeInputStep();
+    });
+
+    // Fonction pour ajuster le pas des minutes
+    function adjustTimeInputStep() {
+      var currentTime = timeInput.value.split(':');
+      var currentMinutes = parseInt(currentTime[1], 10);
+
+      // Arrondir les minutes au multiple de 15 le plus proche
+      var adjustedMinutes = Math.round(currentMinutes / 15) * 15;
+
+      // Si les minutes sont égales à 60, ajuster à 0 et incrémenter les heures
+      if (adjustedMinutes === 60) {
+        adjustedMinutes = 0;
+        var currentHours = parseInt(currentTime[0], 10);
+        var adjustedHours = (currentHours + 1) % 24;
+        timeInput.value = (adjustedHours < 10 ? '0' : '') + adjustedHours + ':00';
+      } else {
+        // Mettre à jour le champ de saisie avec les minutes ajustées
+        timeInput.value = currentTime[0] + ':' + (adjustedMinutes < 10 ? '0' : '') + adjustedMinutes;
+      }
+    }
+
+
+  });
+</script>
