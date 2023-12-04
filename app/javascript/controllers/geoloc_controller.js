@@ -6,8 +6,8 @@ export default class extends Controller {
   connect() {
     if ("geolocation" in navigator) {
       navigator.geolocation.getCurrentPosition(function(position) {
-        var userPositionElement = document.getElementById('user-position');
-        userPositionElement.textContent = position.coords.latitude + ", "+ position.coords.longitude;
+        // var userPositionElement = document.getElementById('user-position');
+        // userPositionElement.textContent = position.coords.latitude + ", "+ position.coords.longitude;
       });
     } else {
       console.log("La géolocalisation n'est pas disponible sur ce navigateur");
