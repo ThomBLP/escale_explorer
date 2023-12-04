@@ -4,7 +4,7 @@ import { Controller } from "@hotwired/stimulus"
 export default class extends Controller {
   static targets = [ "list" ]
   connect() {
-    ("connext");
+    ("connect");
     navigator.geolocation.getCurrentPosition((position) => {
       (position);
       const latitude  = position.coords.latitude;

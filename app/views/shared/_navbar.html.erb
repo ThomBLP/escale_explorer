@@ -1,14 +1,14 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
   <div class="container-fluid" data-controller="meteo">
-  <div class="d-flex">
-    <%= link_to "#", class: "navbar-brand" do %>
-      <i class="fab fa-wpexplorer" style="font-size: 40px"></i>
-    <div class>
-      <H3>Escale Explorer</H3>
-      <p>découvrez la ville en un clin d'œil</p>
+    <div class="d-flex" data-controller="geoloc">
+      <%= link_to "#", class: "navbar-brand" do %>
+        <i class="fab fa-wpexplorer" style="font-size: 40px"></i>
+        <% end %>
+      <div class>
+        <H3>Escale Explorer</H3>
+        <p>découvre la ville en un clin d'œil</p>
+      </div>
     </div>
-  </div>
-    <% end %>
 
     <div class="meteo-sup">
       <div class="meteo">
@@ -16,35 +16,36 @@
         <div data-meteo-target="temperature" style="color: black;"></div>
       </div>
       <p data-meteo-target="description"></p>
+      <p data-meteo-target="weatherIcon"></p>
     </div>
-
+<%#
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto">
         <% if user_signed_in? %>
-          <li class="nav-item active">
-            <%= link_to "Home", "#", class: "nav-link" %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "Messages", "#", class: "nav-link" %>
-          </li>
+          <%# <li class="nav-item active"> %>
+            <%# <%= link_to "Home", "#", class: "nav-link" %>
+          <%# </li> %>
+          <%# <li class="nav-item"> %>
+            <%# <%= link_to "Messages", "#", class: "nav-link" %>
+          <%# </li>
           <li class="nav-item dropdown">
           <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar", alt: "dropdown menu" %>
-          </a>
+          <%# </a>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
               <%= link_to "Action", "#", class: "dropdown-item" %>
-              <%= link_to "Another action", "#", class: "dropdown-item" %>
-              <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
-            </div>
-          </li>
-        <% else %>
-          <li class="nav-item">
+              <%# <%= link_to "Another action", "#", class: "dropdown-item" %>
+              <%# <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
+            <%# </div>
+          </li> %>
+        <%# <% else %>
+          <%# <li class="nav-item">
             <%= link_to "Login", new_user_session_path, class: "nav-link" %>
-          </li>
-        <% end %>
-      </ul>
-    </div>
+          <%# </li> %>
+        <%# <% end %>
+      <%# </ul>
+    </div> %>
   </div>
 
 
