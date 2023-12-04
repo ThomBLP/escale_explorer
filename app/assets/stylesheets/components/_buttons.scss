@@ -4,7 +4,7 @@
   padding: 8px;
   justify-content: center;
   align-items: center;
-  border-radius: 12px;
+  border-radius: 8px;
   text-decoration: none;
   font-size: 18px;
   font-family: 'Inter', sans-serif;
@@ -12,6 +12,27 @@
   font-weight: 600;
   color: white;
   width: 100%;
+  border: none;
+}
+
+.button_home {
+  display: flex;
+  position: fixed;
+  bottom: 50px;
+  padding: 8px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 12px;
+  text-decoration: none;
+  font-size: 18px;
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  color: white;
+  width: calc(90% - var(--bs-gutter-x) * .5);
+  left: 0;
+  right: 0;
+  margin: auto;
 }
 
 .salmon-button {
@@ -22,10 +43,11 @@
   position: fixed;
   bottom: 16px;
   padding: 12px;
-  font-size: 24px;
+  font-size: 20px;
   background-color: white;
   color:#FAAF79;
-  width: 90%;
+  width: 100%;
+
 }
 
 .details-place-button {

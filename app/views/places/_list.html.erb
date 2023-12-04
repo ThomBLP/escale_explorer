@@ -5,9 +5,12 @@
       <%= image_tag place.illustration, class: 'image_places' %>
     <% end %>
     <% end %>
-    <h2 class='title_principal_list'><%= place.name %> - <%= place.category.name %> </h2>
+    <h3 class='title_principal_list'><%= place.name %> - <%= place.category.name %> </h3>
+    <div class="emoji_card">
     <p class="description"><span class="emoji">🕐</span><%= place.visit_duration %>min</p>
     <p class="description"><span class="emoji">🏃‍♀️</span><%= place.travel_duration %>min</p>
+
     <%= button_to "Ajouter", journey_visits_path(@journey, place_id: place, category_ids: params[:category_ids], weather_icon: params[:weather_icon]), class: "button salmon-button mt-3" %>
+
   </div>
 <% end %>

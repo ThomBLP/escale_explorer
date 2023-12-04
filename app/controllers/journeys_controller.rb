@@ -4,7 +4,9 @@ class JourneysController < ApplicationController
 
 
     def create
-      @duration = (params[:duration_hours].to_i * 60) + params[:duration_minutes].to_i
+      hours = params[:duration_hours].split(":").first
+      minutes = params[:duration_hours].split(":").last
+      @duration = (hours.to_i * 60) + minutes.to_i
       @weather_icon = params[:weather_icons]
       @journey = Journey.new(duration: @duration)
       @journey.user = current_user
@@ -19,6 +21,7 @@ class JourneysController < ApplicationController
       @categories = Category.all
       @total_places_duration = @places.sum(:visit_duration)
       @weather_icon = params[:weather_icon]
+      @coords = @places.pluck(:long, :lat)
     end
 
     def localize
@@ -30,5 +33,4 @@ class JourneysController < ApplicationController
   def journey_params
     params.require(:journey).permit(:weather_icon, category_ids: [])
   end
-
 end
