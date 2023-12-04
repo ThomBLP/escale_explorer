@@ -48,9 +48,13 @@ body {
 
 .emoji {
   font-size: 24px;
-  background-color: #EEEEEE;
   border-radius: 8px;
   margin-right: 16px;
+}
+
+.emoji_overlay {
+  color: #415e8d;
+  font-size: 18px;
 }
 
 .titre_principal_home {

@@ -7,9 +7,9 @@ class PlacesController < ApplicationController
     if params[:keyword].present?
       @places = @places.where('name ILIKE ?', "%#{params[:keyword]}%")
     elsif params[:category_ids]
-      @places.where(category_id: params[:category_ids])
-             .where.not("weather_icons::text LIKE ?", "%#{params[:weather_icon]}%")
-             .where("visit_duration <= ?", @rest_time)
+      @places = @places.where(category_id: params[:category_ids])
+                       .where.not("weather_icons::text LIKE ?", "%#{params[:weather_icon]}%")
+                       .where("visit_duration <= ?", @rest_time)
     end
 
     @places = @places.first(10)
