@@ -1,0 +1,27 @@
+<div>
+  <% nearby_places.each do |nearby_place| %>
+    <p><%= nearby_place.name %> <%= nearby_place.tel %>
+    <%= nearby_place.website %></p>
+  <% end %>
+</div>
+
+<div id="map"></div>
+
+<script>
+mapboxgl.accessToken = ENV['MAPBOX_ACCESS_TOKEN'];
+const monument = [<%=place.long%>, <%=place.lat %>];
+
+const map = new mapboxgl.Map({
+container: 'map',
+style: 'mapbox://styles/mapbox/streets-v12',
+center: monument,
+zoom: 15
+});
+
+ <% nearby_places.each do |place| %>
+  var marker = new mapboxgl.Marker()
+    .setLngLat([<%=place.long%>, <%=place.lat%>])
+    .setPopup(new mapboxgl.Popup().setHTML('<h3>' + '<%=place.name%>' + '</h3>'))
+    .addTo(map);
+<% end %>
+</script>
