@@ -20,7 +20,7 @@
     <p>Il reste <%= @rest_time / 60 %> h <%= @rest_time % 60 %> mn de temps disponible</p>
   </div>
 
-
+ 
   <div class="navbar_emoji">
   <% @categories.each do |category| %>
    <%= category_link(category, params[:category_ids]) %>
