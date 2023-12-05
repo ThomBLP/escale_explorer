@@ -1,15 +1,8 @@
-
-<div class="journey-container mt-4">
-  <h1>Récap de mon parcours</h1>
-
-  <div class="card-all-total-time">
-    <div class="card-total-time">
-      <h2>Temps total</h2>
-      <span class="emoji">🏃‍♀️</span>60 min
-      <span class="emoji">🕐</span><%= @total_places_duration %> min
-    </div>
+  <div class="overlay" data-controller="overlay" data-action="click->overlay#open">
+    <div class="overlay_bar"></div>
+    <i class="overlay_mark fa-solid fa-xmark" data-action="click->overlay#close"></i>
+    <%=render "recap_overlay"%>
   </div>
-
 
   <% @places.each_with_index do |place, index| %>
     <div class="journey-step">
@@ -62,4 +55,6 @@
 <div data-controller="directions" data-directions-coordinates-value="<%= @coords %>">
 </div>
 
+<div data-controller="directions" data-directions-coordinates-value="<%= @coords %>">
+  <div data-directions-target="map" class="map-journey"></div>
 </div>

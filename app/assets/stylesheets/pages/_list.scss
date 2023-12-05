@@ -1,0 +1,21 @@
+.navbar_emoji {
+  overflow: hidden;
+  float: left;
+  display: flex;
+  font-size: 30px;
+  width: 100%;
+  padding-bottom: 24px;
+  border-radius: 8px;
+}
+
+.navbar_emoji * {
+  flex-grow: 1;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+.category_home {
+  &.active {
+    background-color: red;
+  }
+}
