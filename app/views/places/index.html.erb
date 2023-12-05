@@ -20,20 +20,13 @@
     <p>Il reste <%= @rest_time / 60 %> h <%= @rest_time % 60 %> mn de temps disponible</p>
   </div>
 
-  <div class="navbar_emoji checkboxes-label">
-
+ 
+  <div class="navbar_emoji">
   <% @categories.each do |category| %>
-    <% if @category_ids.include?(category.id) %>
-      <%= link_to request.params.merge(category_ids: @category_ids.filter { |c| c != category.id }), class: "category_home active" do %>
-        <%= category.emoji %>
-      <% end %>
-    <% else %>
-      <%= link_to request.params.merge(category_ids: @category_ids.push(category.id)), class: "category_home" do %>
-        <%= category.emoji %>
-      <% end %>
-    <% end %>
+   <%= category_link(category, params[:category_ids]) %>
   <% end %>
-  </div>
+</div>
+
 
   <div data-controller="places">
     <div data-places-target="list">
@@ -44,17 +37,3 @@
   <script src = "index.js"></script>
 </div>
 
-<script>
-  function filterCategory(category) {
-    // Afficher seulement la catégorie correspondante
-    var categories = document.querySelectorAll('.category_home');
-    categories.forEach(function(cat) {
-      cat.style.display = 'none';
-    });
-
-    var selectedCategory = document.querySelector('.category_home[data-category="' + category + '"]');
-    if (selectedCategory) {
-      selectedCategory.style.display = 'block';
-    }
-  }
-</script>
