@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="directions"
 export default class extends Controller {
-  static targets = [ "journeyDirection", "map" ]
+  static targets = [ "journeyDirection", "map", "time" ]
   static values = {
     coordinates: Array
   }
@@ -20,14 +20,16 @@ export default class extends Controller {
           center: [longitude, latitude],
           zoom: 14
         });
-
+        const travelMode = this.journeyDirectionTarget.dataset.travelMode;
         const coordinates = this.coordinatesValue;
         coordinates.unshift([longitude, latitude]);
 
-        fetch(`https://api.mapbox.com/directions/v5/mapbox/walking/${coordinates.join(';')}?access_token=${mapboxgl.accessToken}&geometries=geojson`)
+
+        fetch(`https://api.mapbox.com/directions/v5/mapbox/${(travelMode)}/${coordinates.join(';')}?access_token=${mapboxgl.accessToken}&geometries=geojson`)
           .then(response => response.json())
           .then(data => {
             const route = data.routes[0];
+            const time = route.duration;
             const geometry = route.geometry.coordinates;
             const geojson = {
               type: 'Feature',

@@ -1,17 +1,21 @@
 class PlacesController < ApplicationController
   def index
-    @journey = Journey.find(params[:journey_id])
+    @journey   = Journey.find(params[:journey_id])
     @rest_time = @journey.duration - @journey.places.sum(:visit_duration)
-    @places = Place.where.not(id: @journey.place_ids)
+    @places    = Place.where.not(id: @journey.place_ids)
+
+    p "************* PARAMS *************"
+    p params
+    p @journey
 
     if params[:keyword].present?
       @places = @places.where('name ILIKE ?', "%#{params[:keyword]}%")
     elsif params[:category_ids]
       @places = @places.where(category_id: params[:category_ids])
-                       .where.not("weather_icons::text LIKE ?", "%#{params[:weather_icon]}%")
+                      #  .where.not("weather_icons::text LIKE ?", "%#{@journey.weather_icon}%")
                        .where("visit_duration <= ?", @rest_time)
     end
-    @places = @places.first(10)
+    @places = @places.first(20)
 
     if params[:lat] && params[:long]
       @latitude  = params[:lat]
@@ -19,7 +23,7 @@ class PlacesController < ApplicationController
     end
 
     @categories = Category.all
-    @filtered_categories = Category.where(id: params[:category_ids])
+
 
     respond_to do |format|
       format.html

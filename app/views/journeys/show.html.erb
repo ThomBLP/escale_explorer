@@ -1,9 +1,59 @@
-
   <div class="overlay" data-controller="overlay" data-action="click->overlay#open">
     <div class="overlay_bar"></div>
     <i class="overlay_mark fa-solid fa-xmark" data-action="click->overlay#close"></i>
     <%=render "recap_overlay"%>
   </div>
+
+  <% @places.each_with_index do |place, index| %>
+    <div class="journey-step">
+      <div class="journey-dot"></div>
+      <%= svg_tag "curl", class: 'line-curl' %>
+      <div class="emoji-time-journey">
+        <div class="emoji-image-container">
+          <div class="emoji-journey">
+            🏃‍♀️
+          </div>
+        </div>
+        <% if place == @places.first || place == @places.last %>
+          <span><%= GeolocService.new.get_duration([45.76950039018254, 4.834805615523664], [place.lat, place.long], 'walking').round(0) %>min</span>
+        <% else %>
+          <span><%= GeolocService.new.get_duration([@places[index - 1].lat, @places[index - 1].long], [place.lat, place.long], 'walking').round(0) %>min</span>
+        <% end %>
+      </div>
+
+      <% visit = place.visits.find_by(journey_id: @journey.id) %>
+
+      <div class="card-journey">
+        <div class="card-journey-details">
+          <%= image_tag place.illustration, class: "image_journey" %>
+          <h3><%= place.name %> - <%= place.category.name %></h3>
+          <% if visit.review.present? %>
+            <div class="d-flex">
+              <% Review::AUTHORIZED_RATINGS.each do |number| %>
+                <i class="fa<%= (number > visit.review.rating) ? 'r' : 's' %> fa-star"></i>
+              <% end %>
+            </div>
+          <% else %>
+            <div class="review">
+              <% Review::AUTHORIZED_RATINGS.each do |rating| %>
+                <%= link_to journey_visit_reviews_path(@journey, visit, review: { rating: rating }), data: { turbo_method: :post } do %>
+                  <i class="far fa-star"></i>
+                <% end %>
+              <% end %>
+              <small>Ta note</small>
+            </div>
+          <% end %>
+          <div><span class="emoji">🕐</span><%= place.visit_duration %> min</div>
+          <%= link_to "Détails de l'activité", journey_place_path(@journey, place), class: "salmon-button details-place-button" %>
+          <div class="d-flex justify-content-center w-100">
+            <%= link_to "Supprimer", root_path, class: "delete-button" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+<div data-controller="directions" data-directions-coordinates-value="<%= @coords %>">
+</div>
 
 <div data-controller="directions" data-directions-coordinates-value="<%= @coords %>">
   <div data-directions-target="map" class="map-journey"></div>

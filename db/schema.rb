@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_12_02_195453) do
+ActiveRecord::Schema[7.1].define(version: 2023_12_04_165951) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -26,6 +26,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_02_195453) do
     t.datetime "updated_at", null: false
     t.integer "duration"
     t.text "weather_icon"
+    t.string "travel_mode"
     t.index ["user_id"], name: "index_journeys_on_user_id"
   end
 
