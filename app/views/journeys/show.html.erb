@@ -33,7 +33,7 @@
       <div class="card-journey">
         <div class="card-journey-details">
           <%= image_tag place.illustration, class: "image_journey" %>
-          <h3><%= place.name %></h3>
+          <h3><%= place.name %> - <%= place.category.name %></h3>
           <% if visit.review.present? %>
             <div class="d-flex">
               <% Review::AUTHORIZED_RATINGS.each do |number| %>
@@ -47,7 +47,7 @@
                   <i class="far fa-star"></i>
                 <% end %>
               <% end %>
-              <small>Noter</small>
+              <small>Ta note</small>
             </div>
           <% end %>
           <div><span class="emoji">🕐</span><%= place.visit_duration %> min</div>
