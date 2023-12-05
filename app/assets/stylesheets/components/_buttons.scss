@@ -86,3 +86,30 @@
   font-weight: bold;
   border-radius: 0 8px 8px 0;
 }
+
+.back-button {
+  background: #FAAF79;
+  padding: 4px 8px;
+  color: white;
+  font-weight: bold;
+  border-radius: 4px;
+}
+
+.action-button {
+  border: solid 1px #FAAF79;
+  padding: 8px 16px;
+  color: #e28a4b;
+  font-weight: bold;
+  border-radius: 8px;
+  display: inline-block;
+  margin-right: 0.75rem;
+}
+
+.phone-button {
+  background: rgb(132, 132, 177);
+  padding: 4px 8px;
+  color: white;
+  font-weight: bold;
+  border-radius: 4px;
+  display: inline-block;
+}
