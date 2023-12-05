@@ -3,14 +3,20 @@ class Journey < ApplicationRecord
   has_many :visits, dependent: :destroy
   has_many :places, through: :visits
 
-  TRAVEL_MODES = {
+  TRAVEL_MODES = ['driving', 'walking', 'cycling']
+
+  TRAVEL_MODES_EMOJI = {
     'driving' => '🚗',
     'walking' => '🚶',
     'cycling' => '🚴'
   }
 
   def travel_emoji
-    TRAVEL_MODES[travel_mode]
+    TRAVEL_MODES_EMOJI[travel_mode]
+  end
+
+  def self.travel_emoji(travel_mode)
+    TRAVEL_MODES_EMOJI[travel_mode]
   end
 
   def total_travel
