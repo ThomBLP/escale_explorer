@@ -9,9 +9,17 @@
 }
 
 .card-all-total-time {
+  font-size: 16px;
   display: flex;
   justify-content: center;
   margin: 24px 0;
+
+  &_overlay {
+    display: flex;
+    justify-content: space-evenly;
+    font-weight: 600;
+
+  }
 }
 
 .card-journey-details {

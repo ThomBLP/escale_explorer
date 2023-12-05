@@ -1,0 +1,13 @@
+<h1>Checkcard#index</h1>
+
+
+<% @places.each do |place| %>
+  <div class="card_place">
+    <% if place.illustration.present? %>
+      <%= image_tag place.illustration, class: 'image_places' %>
+    <% end %>
+    <h2 class='title_principal_list'><%= place.name %> - <%= place.category.name %> </h2>
+    <p class="description"><span class="emoji">🕐</span><%= place.visit_duration %>min</p>
+    <p class="description"><span class="emoji">🏃‍♀️</span><%= place.travel_duration %>min</p>
+  </div>
+<% end %>

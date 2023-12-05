@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'checkcard/index'
   get 'reviews/index'
   get 'reviews/show'
   devise_for :users
