@@ -15,15 +15,22 @@ module ApplicationHelper
   end
 
   def category_link(category, category_ids)
-    if category_ids.include?(category.id.to_s)
+    category_ids = Array(category_ids)
+    if category_ids.present? && category_ids.include?(category.id.to_s)
+
       new_params = category_ids.reject { |c| c == category.id.to_s }
     else
       new_params = (category_ids + [category.id]).flatten
     end
 
-    link_to(request.params.merge(category_ids: new_params), class: "category_home #{'active' if category_ids.include?(category.id.to_s)}") do
+    link_to(request.params.merge(category_ids: new_params.presence), class: "category_home #{'active' if category_ids.present? && category_ids.include?(category.id.to_s)}") do
       category.emoji
     end
   end
 
+  def display_time(time)
+    hours = "#{time / 60}h"
+    minutes = "#{time % 60}mn"
+    time % 60 != 0 ? "#{hours} et #{minutes}" : hours
+  end
 end
