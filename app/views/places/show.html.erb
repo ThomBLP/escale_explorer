@@ -17,8 +17,8 @@
   <div class="stylecategory">
     <p class="description"><span class="emoji">🕐</span><%= @place.visit_duration %>min</p>
     <p class="description"><span class="emoji"><%= @journey.travel_emoji %></span><%= @place.travel_time(@journey) %>min</p>
-    <%= link_to '🍽', nearby_restaurants_place_path(@place), style: "font-size: 30px;" %>
-    <%= link_to '🍷', nearby_bars_place_path(@place), style: "font-size: 30px;" %>
+    <%= link_to '🍽', nearby_restaurants_journey_place_path(@journey, @place , category_ids: params[:category_ids]), style: "font-size: 30px;" %>
+    <%= link_to '🍷', nearby_bars_journey_place_path(@journey, @place, category_ids: params[:category_ids]), style: "font-size: 30px;" %>
   </div>
 
   <div class="details-title-and-description">

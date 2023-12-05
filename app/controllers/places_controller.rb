@@ -38,6 +38,8 @@ class PlacesController < ApplicationController
   end
 
   def nearby_restaurants
+    @journey = Journey.find(params[:journey_id])
+
     @place = Place.find(params[:id])
     lat = @place.lat.to_f
     long = @place.long.to_f
@@ -59,6 +61,7 @@ class PlacesController < ApplicationController
   end
 
   def nearby_bars
+    @journey = Journey.find(params[:journey_id])
     @place = Place.find(params[:id])
     lat = @place.lat.to_f
     long = @place.long.to_f

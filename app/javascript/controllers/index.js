@@ -12,3 +12,7 @@ let body = document.querySelector("body");
 toogle.addEventListener("click", function() {
   body.classList.toggle("open");
 });
+
+let deleteSearch = document.querySelector(".deleteSearch")
+
+deleteSearch.addEventListener()
