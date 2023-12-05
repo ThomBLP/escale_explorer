@@ -26,4 +26,9 @@ module ApplicationHelper
     end
   end
 
+  def display_time(time)
+    hours = "#{time / 60}h"
+    minutes = "#{time % 60}mn"
+    time % 60 != 0 ? "#{hours} et #{minutes}" : hours
+  end
 end
