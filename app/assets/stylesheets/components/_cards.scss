@@ -23,8 +23,8 @@
 }
 
 .card-journey-details {
+  width: 47%;
   display: inline-flex;
-  padding: 12px;
   flex-direction: column;
   align-items: flex-start;
   gap: 8px;
@@ -32,9 +32,25 @@
   background: #F5F8FF;
 }
 
+.card-journey-details-2 {
+  width: 50%;
+  display: inline-block;
+  padding: 12px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  border-radius: 8px;
+  background: #F5F8FF;
+}
 .card-journey {
   margin-bottom: 24px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
 }
+
+.card_
 
 .image-details {
   display: flex;
