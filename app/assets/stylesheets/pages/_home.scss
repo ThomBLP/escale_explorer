@@ -22,6 +22,8 @@ body {
   background-color: white;
   display: flex;
   align-items: center;
+  color: #415e8d;
+
 }
 
 .categories {
@@ -84,14 +86,17 @@ body {
 
 .checkboxes-input {
 display: none;
+color: #415e8d;
 }
 
 .checkboxes-input:checked + .checkboxes-label {
 transition: background-color 0.3s ease;
 background-color: #FAAF79;
+color: #415e8d;
 }
 
 .time-input {
   padding: 15px 30px; /* Ajustez le rembourrage selon vos besoins */
   font-size: 18px;
+  color: #415e8d;
 }

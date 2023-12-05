@@ -3,11 +3,11 @@ class JourneysController < ApplicationController
   require 'json'
 
   def create
-    hours = params[:duration_hours].split(":").first
-    minutes = params[:duration_hours].split(":").last
+    @journey  = Journey.new(journey_params)
+    hours     = params.dig(:journey, :duration_hours).split(":").first
+    minutes   = params.dig(:journey, :duration_hours).split(":").last
     @duration = (hours.to_i * 60) + minutes.to_i
-    @weather_icon = params[:weather_icons]
-    @journey = Journey.new(duration: @duration)
+    @journey.duration = @duration
     @journey.user = current_user
     @journey.save
 
@@ -20,6 +20,7 @@ class JourneysController < ApplicationController
     @categories = Category.all
     @total_places_duration = @places.sum(:visit_duration)
     @weather_icon = params[:weather_icon]
+    @travel_mode = params[:travel_mode]
     @coords = @places.pluck(:long, :lat)
   end
 
@@ -30,6 +31,6 @@ class JourneysController < ApplicationController
   private
 
   def journey_params
-    params.require(:journey).permit(:weather_icon, category_ids: [])
+    params.require(:journey).permit(:weather_icon, :travel_mode)
   end
 end
