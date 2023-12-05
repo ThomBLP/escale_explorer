@@ -95,8 +95,36 @@ background-color: #FAAF79;
 color: #415e8d;
 }
 
+.radio-input {
+  display: none;
+}
+
+.radio-input:checked + .radio-label {
+  background-color: #FAAF79;
+  color: #415e8d;
+}
+
+.radio-label {
+  padding: 1px 21px;
+  font-size: 34px;
+  color: #415e8d;
+  border-radius: 8px;
+}
+
 .time-input {
+  margin-top: 20px;
   padding: 15px 30px; /* Ajustez le rembourrage selon vos besoins */
   font-size: 18px;
   color: #415e8d;
 }
+
+.journey-params {
+  width: 156px;
+}
+#journey_travel_mode {
+  margin-left: 31px;
+  width: 156px;
+  text-align: center;
+  height: 61px;
+  font-size: medium;
+ }
