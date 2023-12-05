@@ -1,6 +1,9 @@
 <div class="container">
   <div class="mt-3">
-    <%= link_to "Retour", :back, class: "back-button" %>
+    <%= link_to "Retour", journey_places_path(@journey, category_ids: params[:category_ids]), class: "back-button" %>
+    <%# mauvais lien %>
+    <%# il faut récupérer les params %>
+    <%# même logique que c'est parti dans la home%>
   </div>
 
   <div class="image-details">
@@ -24,7 +27,7 @@
   </div>
 
   <div>
-    <p>Horaires: <%= @place.opening %></p>
+      <p>Horaires: <%= @place.opening %></p>
   </div>
 
   <% unless @journey.places.include?(@place) %>

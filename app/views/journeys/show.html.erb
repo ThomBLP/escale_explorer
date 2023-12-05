@@ -1,10 +1,10 @@
-  <div class="overlay" data-controller="overlay" data-action="click->overlay#open">
+<div class="overlay" data-controller="overlay" data-action="click->overlay#open">
     <div class="overlay_bar"></div>
     <i class="overlay_mark fa-solid fa-xmark" data-action="click->overlay#close"></i>
     <%=render "recap_overlay"%>
   </div>
 
 
-<div data-controller="directions" data-directions-coordinates-value="<%= @coords %>">
+<div data-controller="directions"  data-directions-travel-mode-value="<%= @journey.travel_mode %>" data-directions-coordinates-value="<%= @coords %>">
   <div data-directions-target="map" class="map-journey"></div>
 </div>

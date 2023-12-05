@@ -16,7 +16,7 @@
 
   &_overlay {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
     font-weight: 600;
 
   }
@@ -43,14 +43,14 @@
   background: #F5F8FF;
 }
 .card-journey {
+  display: flex;
+  width: 100%;
   margin-bottom: 24px;
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
 }
-
-.card_
 
 .image-details {
   display: flex;

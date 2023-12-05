@@ -17,6 +17,7 @@ module ApplicationHelper
   def category_link(category, category_ids)
     category_ids = Array(category_ids)
     if category_ids.present? && category_ids.include?(category.id.to_s)
+
       new_params = category_ids.reject { |c| c == category.id.to_s }
     else
       new_params = (category_ids + [category.id]).flatten

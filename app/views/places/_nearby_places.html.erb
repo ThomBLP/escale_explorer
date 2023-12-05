@@ -12,24 +12,7 @@
       <% end %>
   </div>
 
-  <div id="map"></div>
+  <div id="map" data-controller="map" data-map-markers-value="<%= @markers.to_json %>" data-map-monument-marker-value="<%= @monument_marker.to_json %>"></div>
 
-  <script>
-  mapboxgl.accessToken = 'pk.eyJ1IjoidnNjaG1pdHQiLCJhIjoiY2xwamdyd3RzMGI1dTJpcW9mMmp5MTZ4dCJ9.lrohzerGwUtMg0fiQmKs4Q';
-  const monument = [<%=place.long%>, <%=place.lat %>];
 
-  const map = new mapboxgl.Map({
-  container: 'map',
-  style: 'mapbox://styles/mapbox/streets-v12',
-  center: monument,
-  zoom: 15
-  });
-
-  <% nearby_places.each do |place| %>
-    var marker = new mapboxgl.Marker()
-      .setLngLat([<%=place.long%>, <%=place.lat%>])
-      .setPopup(new mapboxgl.Popup().setHTML('<h3>' + '<%=place.name%>' + '</h3>'))
-      .addTo(map);
-  <% end %>
-  </script>
 </div>
