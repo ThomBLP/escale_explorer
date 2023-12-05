@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'checkcard/index'
   get 'reviews/index'
   get 'reviews/show'
   devise_for :users
@@ -15,6 +16,7 @@ Rails.application.routes.draw do
       resources :reviews, only: [:create]
     end
   end
+  
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

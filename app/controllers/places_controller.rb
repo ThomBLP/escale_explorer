@@ -16,12 +16,16 @@ class PlacesController < ApplicationController
                        .where("visit_duration <= ?", @rest_time)
     end
 
+
     @places = @places.first(20)
 
     if params[:lat] && params[:long]
       @latitude  = params[:lat]
       @longitude = params[:long]
     end
+
+    @categories = Category.all
+
 
     respond_to do |format|
       format.html
