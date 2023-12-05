@@ -15,8 +15,6 @@ class PlacesController < ApplicationController
                       #  .where.not("weather_icons::text LIKE ?", "%#{@journey.weather_icon}%")
                        .where("visit_duration <= ?", @rest_time)
     end
-
-
     @places = @places.first(20)
 
     if params[:lat] && params[:long]
