@@ -5,10 +5,11 @@
     <h2>Quelle est ta disponibilité ?</h2>
     <div>
       <span>
-        <%= form_with url: journeys_path, method: :post do |f| %>
-          <%= f.time_field :duration_hours, placeholder: "Combien d'heures?", class: 'time-input', step: 900 %>
+        <%= form_with model: @journey do |f| %>
+          <%= f.time_field :duration_hours, class: 'time-input', step: 900 %>
           <%= f.hidden_field :weather_icon, data: { meteo_target: "weatherIcon", action: "meteo#connect" } %>
           <h2 class="titre_secondaire_home">Que souhaites-tu faire pendant ce temps?</h2>
+          <%= f.select :travel_mode, Journey::TRAVEL_MODES.invert, class: 'checkboxes-input'%>
           <div class="categories">
           <% @categories.each do |category| %>
             <input class='checkboxes-input' name="category_ids[]" type="checkbox" style="" value="<%= category.id %>" id="<%= category.name %>" />
@@ -17,7 +18,6 @@
           </div>
           <%= f.submit "C'est parti!", class: "button_home salmon-button "%>
         <% end %>
-
       </span>
     </div>
   </div>

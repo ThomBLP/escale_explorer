@@ -4,13 +4,13 @@ class GeolocService
     Mapbox.access_token = ENV.fetch('MAPBOX_ACCESS_TOKEN')
   end
 
-  def get_duration(origin, destination, mode = "driving-traffic")
+  def get_duration(origin, destination, travel_mode)
     response = Mapbox::Directions.directions(
       [
         { latitude: origin.first, longitude: origin.last },
         { latitude: destination.first, longitude: destination.last }
       ],
-      mode
+      travel_mode
     )
 
     seconds = response.first.dig("routes", 0, "duration")

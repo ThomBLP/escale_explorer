@@ -15,17 +15,18 @@ export default class extends Controller {
       const url = new URL(window.location.href);
       url.searchParams.set('latitude', latitude);
       url.searchParams.set('longitude', longitude);
-      (url.href);
+
       ("latitude", latitude);
       ("longitude", longitude);
 
       fetch(url.href,
         {
-          headers: {"Accept": "text/plain"}
+          headers: {"Accept": "text/plain"},
         })
       .then(response => response.text())
       .then((data) => {
         ("data", data);
+        console.log(data);
         this.listTarget.outerHTML = data
       })
     })

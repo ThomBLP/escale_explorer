@@ -15,7 +15,7 @@
 
   <div class="stylecategory">
     <p class="description"><span class="emoji">🕐</span><%= @place.visit_duration %>min</p>
-    <p class="description"><span class="emoji">🏃‍♀️</span><%= @place.travel_duration %>min</p>
+    <p class="description"><span class="emoji"><%= @journey.travel_emoji %></span><%= @place.travel_time(@journey) %>min</p>
     <%= link_to '🍽', nearby_restaurants_place_path(@place), style: "font-size: 30px;" %>
     <%= link_to '🍷', nearby_bars_place_path(@place), style: "font-size: 30px;" %>
   </div>
