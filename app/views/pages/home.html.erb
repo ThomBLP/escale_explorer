@@ -1,7 +1,7 @@
 <div class="container" data-controller="geoloc">
   <h1 class="titre_principal_home" id="geocity"></h1>
   <div class="question" data-controller="meteo">
-    <h2>Ton temps libre ?</h2>
+    <h2 class="mb-2">Ton temps libre ?</h2>
     <div>
       <span>
         <%= form_with model: @journey do |f| %>
@@ -9,15 +9,21 @@
             <%= f.time_field :duration_hours, value: Time.at(10800).utc, class: 'time-input journey-params', step: 900 %>
           </div>
           <%= f.hidden_field :weather_icon, data: { meteo_target: "weatherIcon", action: "meteo#connect" } %>
-          <h2 class="titre_secondaire_home">Que souhaites-tu faire ?</h2>
+          <h2 class="titre_secondaire_home mt-3 mb-3">Ton mode de déplacement ?</h2>
+          <div class="d-flex justify-content-between">
+            <% Journey::TRAVEL_MODES.each do |travel_mode| %>
+              <div>
+                <input class="radio-input" id="<%= travel_mode %>" type="radio" name="journey[travel_mode]" value="<%= travel_mode %>">
+                <label class="radio-label" for="<%= travel_mode %>"><%= Journey.travel_emoji(travel_mode) %></label>
+              </div>
+            <% end %>
+          </div>
+
+          <h2 class="titre_secondaire_home mt-3 mb-4">Que souhaites-tu faire ?</h2>
           <div class="categories">
           <% @categories.each do |category| %>
             <input class='checkboxes-input' name="category_ids[]" type="checkbox" style="" value="<%= category.id %>" id="<%= category.name %>" />
             <label class="checkboxes-label stylecategory" for="<%= category.name %>"><span class="emoji"><%= category.emoji %></span> <%= category.display_name %></label>
-          <% end %>
-          <% Journey::TRAVEL_MODES.each do |travel_mode| %>
-            <input class="radio-input" id="<%= travel_mode %>" type="radio" name="journey[travel_mode]" value="<%= travel_mode %>">
-            <label class="radio-label" for="<%= travel_mode %>"><%= Journey.travel_emoji(travel_mode) %></label>
           <% end %>
           <%= f.submit "C'est parti !", class: "button_home salmon-button "%>
 
