@@ -16,8 +16,14 @@
       <% end %>
     </div>
 
-    <p>Le parcours prévoit <%= display_time(@journey.total_duration) %></p>
+    <% total_duration_minutes = @journey.total_duration %>
+    <% if total_duration_minutes > 0 %>
+       <p>Le parcours prévoit <%= display_time(@journey.total_duration) %></p>
+    <% end %>
+    <% rest_time = (@journey.duration - @journey.total_duration) %>
+    <% if rest_time > 0 %>
     <p>Il reste <%= display_time(@journey.duration - @journey.total_duration) %> de temps disponible </p>
+    <% end %>
   </div>
 
 
