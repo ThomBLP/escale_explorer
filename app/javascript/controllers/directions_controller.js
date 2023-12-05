@@ -2,9 +2,10 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="directions"
 export default class extends Controller {
-  static targets = [ "journeyDirection", "map", "time" ]
+  static targets = [ "map" ]
   static values = {
-    coordinates: Array
+    coordinates: Array,
+    travelMode: String
   }
 
   connect() {
@@ -20,10 +21,21 @@ export default class extends Controller {
           center: [longitude, latitude],
           zoom: 14
         });
-        const travelMode = this.journeyDirectionTarget.dataset.travelMode;
+        const travelMode = this.travelModeValue;
         const coordinates = this.coordinatesValue;
         coordinates.unshift([longitude, latitude]);
 
+        coordinates.forEach(coord => {
+          new mapboxgl.Marker()
+            .setLngLat(coord)
+            .addTo(map);
+        });
+
+        const bounds = coordinates.reduce(function(bounds, coord) {
+          return bounds.extend(coord);
+        }, new mapboxgl.LngLatBounds(coordinates[0], coordinates[0]));
+
+        map.fitBounds(bounds, { padding: 50 });
 
         fetch(`https://api.mapbox.com/directions/v5/mapbox/${(travelMode)}/${coordinates.join(';')}?access_token=${mapboxgl.accessToken}&geometries=geojson`)
           .then(response => response.json())
@@ -40,8 +52,6 @@ export default class extends Controller {
               }
             };
 
-            console.log(geojson);
-
             map.addLayer({
               id: 'route',
               type: 'line',
@@ -51,15 +61,14 @@ export default class extends Controller {
               },
               layout: {
                 'line-join': 'round',
-                'line-cap': 'round'
+                'line-cap': 'round',
               },
               paint: {
                 'line-color': '#3887be',
                 'line-width': 5,
                 'line-opacity': 0.75
-              }
+              },
             });
-
           });
       });
     } else {

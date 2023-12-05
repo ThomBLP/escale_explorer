@@ -1,6 +1,7 @@
 .overlay {
   position: fixed;
   bottom: 0;
+  overflow: auto;
   border-radius: 16px 16px 0 0;
   left: 0;
   width: 100%;
