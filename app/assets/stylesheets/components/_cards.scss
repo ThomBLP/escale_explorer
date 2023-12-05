@@ -16,14 +16,15 @@
 
   &_overlay {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
     font-weight: 600;
 
   }
 }
 
 .card-journey-details {
-  display: inline-flex;
+  width: 45%;
+  display: flex;
   padding: 12px;
   flex-direction: column;
   align-items: flex-start;
@@ -33,8 +34,15 @@
 }
 
 .card-journey {
+  display: flex;
+  width: 100%;
   margin-bottom: 24px;
 }
+
+.card-journey-small {
+  width: 50%;
+}
+
 
 .image-details {
   display: flex;
