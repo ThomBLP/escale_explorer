@@ -1,52 +1,50 @@
 <div class="card-all-total-time_overlay" data-controller="directions">
   <h3>Mon parcours</h3>
   <div id="journey" data-travel-mode="<%= @journey.travel_mode %>"></div>
-  <span class="emoji_overlay">:une_heure:</span><h3><%= @total_places_duration %> min</h3>
-</div>
 
-<% @places.each_with_index do |place, index| %>
-  <div class="journey-step">
-    <div class="journey-dot"></div>
-    <%= svg_tag "curl", class: 'line-curl' %>
-    <div class="emoji-time-journey">
-      <div class="emoji-image-container">
-        <div class="emoji-journey">
-          :coureuse:
-        </div>
-      </div>
-      <% if place == @places.first || place == @places.last %>
-        <span><%= GeolocService.new.get_duration([45.76950039018254, 4.834805615523664], [place.lat, place.long], 'walking').round(0) %>min</span>
-      <% else %>
-        <span><%= GeolocService.new.get_duration([@places[index - 1].lat, @places[index - 1].long], [place.lat, place.long], 'walking').round(0) %>min</span>
-      <% end %>
-    </div>
-    <% visit = place.visits.find_by(journey_id: @journey.id) %>
-    <div class="card-journey">
-      <div class="card-journey-details">
-        <%= image_tag place.illustration, class: "image_journey" %>
-        <h3><%= place.name %> - <%= place.category.name %></h3>
-        <% if visit.review.present? %>
-          <div class="d-flex">
-            <% Review::AUTHORIZED_RATINGS.each do |number| %>
-              <i class="fa<%= (number > visit.review.rating) ? 'r' : 's' %> fa-star"></i>
-            <% end %>
+  <% @places.each_with_index do |place, index| %>
+    <div class="journey-step">
+      <div class="journey-dot"></div>
+      <%= svg_tag "curl", class: 'line-curl' %>
+      <div class="emoji-time-journey">
+        <div class="emoji-image-container">
+          <div class="emoji-journey">
+            🏃‍♀️
           </div>
+        <% if place == @places.first || place == @places.last %>
+          <span><%= GeolocService.new.get_duration([45.76950039018254, 4.834805615523664], [place.lat, place.long], 'walking').round(0) %>min</span>
         <% else %>
-          <div class="review">
-            <% Review::AUTHORIZED_RATINGS.each do |rating| %>
-              <%= link_to journey_visit_reviews_path(@journey, visit, review: { rating: rating }), data: { turbo_method: :post } do %>
-                <i class="far fa-star"></i>
-              <% end %>
-            <% end %>
-            <small>Ta note</small>
-          </div>
+          <span><%= GeolocService.new.get_duration([@places[index - 1].lat, @places[index - 1].long], [place.lat, place.long], 'walking').round(0) %>min</span>
         <% end %>
-        <div><span class="emoji">:une_heure:</span><%= place.visit_duration %> min</div>
-        <%= link_to "Détails de l'activité", journey_place_path(@journey, place), class: "salmon-button details-place-button" %>
-        <div class="d-flex justify-content-center w-100">
-          <%= link_to "Supprimer", root_path, class: "delete-button" %>
+      </div>
+      <% visit = place.visits.find_by(journey_id: @journey.id) %>
+      <div class="card-journey">
+        <div class="card-journey-details">
+            <%= link_to journey_place_path(@journey, place)  do %>
+            <%= image_tag place.illustration, class: "image_journey" %>
+            <% end %>
+            <% if visit.review.present? %>
+            <div class="d-flex">
+              <% Review::AUTHORIZED_RATINGS.each do |number| %>
+              <i class="fa<%= (number > visit.review.rating) ? 'r' : 's' %> fa-star"></i>
+              <% end %>
+            </div>
+            <% else %>
+              <div class="review">
+                <% Review::AUTHORIZED_RATINGS.each do |rating| %>
+                  <%= link_to journey_visit_reviews_path(@journey, visit, review: { rating: rating }), data: { turbo_method: :post } do %>
+                  <i class="far fa-star"></i>
+                  <% end %>
+                <% end %>
+                <small>Ta note</small>
+              </div>
+              <% end %>
+        </div>
+        <div class="card-journey-details-2">
+            <%= link_to "❌", root_path, class: "delete-button" %>
+            <h3><%= place.name %> - <%= place.category.name %></h3>
+            <div><span class="emoji">🕐</span><%= place.visit_duration %> min</div>
         </div>
       </div>
     </div>
-  </div>
-<% end %>
+  <% end %>
