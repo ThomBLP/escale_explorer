@@ -26,7 +26,6 @@
     <% end %>
   </div>
 
-
   <div class="navbar_emoji">
   <% @categories.each do |category| %>
    <%= category_link(category, params[:category_ids]) %>
@@ -42,3 +41,4 @@
   <%= link_to "Voir mon parcours", journey_path(@journey), class: "button salmon-button journey-button" %>
   <script src = "index.js"></script>
 </div>
+

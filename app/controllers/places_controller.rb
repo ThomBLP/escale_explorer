@@ -42,6 +42,20 @@ class PlacesController < ApplicationController
     lat = @place.lat.to_f
     long = @place.long.to_f
     @nearby_restaurants = Place.joins(:category).near([lat, long], 0.2, units: :km).where(categories: { name: 'restaurants' })
+
+    @markers = @nearby_restaurants.map do |place|
+      {
+        lng: place.long,
+        lat: place.lat,
+        name: place.name
+      }
+    end
+
+    @monument_marker = {
+      lng: @place.long,
+      lat: @place.lat
+    }
+
   end
 
   def nearby_bars
@@ -49,5 +63,18 @@ class PlacesController < ApplicationController
     lat = @place.lat.to_f
     long = @place.long.to_f
     @nearby_bars = Place.joins(:category).near([lat, long], 0.2, units: :km).where(categories: { name: 'bars' })
+
+    @markers = @nearby_bars.map do |place|
+      {
+        lng: place.long,
+        lat: place.lat,
+        name: place.name
+      }
+    end
+
+    @monument_marker = {
+      lng: @place.long,
+      lat: @place.lat
+    }
   end
 end
