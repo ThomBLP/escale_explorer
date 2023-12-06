@@ -39,4 +39,8 @@ module ApplicationHelper
     "#{hours} et #{minutes}"
     end
   end
+
+  def journey_params
+    request.parameters.except('controller', 'action')
+  end
 end
