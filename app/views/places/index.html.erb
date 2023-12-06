@@ -8,13 +8,13 @@
       </div>
     </div>
 
-    <div >
+    <div class= "search-section">
       <%= form_tag(journey_places_path(@journey), class: "form-search-card", method: :get) do %>
         <%= text_field_tag :keyword, params[:keyword], class: "input-search" %>
         <%= hidden_field_tag :weather_icon, params[:weather_icon] %>
         <%= submit_tag "🔎", class: "search-button" %>
       <% end %>
-    </div>l
+    </div>
 
     <% total_duration_minutes = @journey.total_duration %>
     <% if total_duration_minutes > 0 %>

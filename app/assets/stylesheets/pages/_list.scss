@@ -1,7 +1,16 @@
+.search-section {
+  width: 90%;
+  display: flex;
+  justify-content: center;
+  input {
+    border-radius: 8px;
 
+  }
+  }
 .input-search {
   border: none;
   height: 38px;
+  width: 240px;
 }
 
 .form-search-card * {

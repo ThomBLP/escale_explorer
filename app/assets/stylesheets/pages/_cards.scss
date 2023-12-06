@@ -17,12 +17,18 @@
     margin-bottom: 8px;
 
     .add_link {
+      top: 35px;
+      right: 15px;
+    }
+
+    .retour_link {
+      top: 15px;
+      left: 15px;
     }
     .card-place-add-button {
       position: absolute;
       z-index: 2;
-      top: 15px;
-      right: 15px;
+
       font-size: 25px;
       background-color:#FAAF79;
       color: white;
@@ -35,6 +41,33 @@
 
   }
 }
+.card_show {
+  .small_card_place {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0px 12px 8px 12px;
+    }
+  .stylecategory {
+    margin: 1px;
+    flex-basis: 47%;
+    height: 56px;
+    border-radius: 8px;
+    padding-left: 12px;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    color: #415e8d;
+    justify-content: space-between;
+  }
+
+}
+
+
+.card_show-small_card_place {
+  padding: 8px;
+}
+
 
 .small_card_place {
 display: flex;
@@ -55,7 +88,6 @@ padding: 0px 12px 8px 12px;
 }
 
 .title_principal_show {
-  padding-top: 16px;
   font-size: 24px;
 }
 
@@ -84,19 +116,17 @@ padding: 0px 12px 8px 12px;
 }
 
 .image_places_show {
-  padding-top: 8px;
-  border-radius: 8px;
   width: 100%;
   height: 300px;
   object-fit: cover;
 }
-
 
 .emoji_card {
   display: flex;
   align-items: center;
   justify-content: left;
 }
+
 @media screen { min-width: 400px;
   flex-direction: row;
 }
