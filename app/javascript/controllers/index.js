@@ -16,3 +16,4 @@ toogle.addEventListener("click", function() {
 let deleteSearch = document.querySelector(".deleteSearch")
 
 deleteSearch.addEventListener()
+

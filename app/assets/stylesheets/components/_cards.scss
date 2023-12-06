@@ -11,29 +11,52 @@
 .card-all-total-time {
   font-size: 16px;
   display: flex;
-  justify-content: center;
-  margin: 24px 0;
+  align-items: center;
+  justify-content: space-between;
+  margin: 30px;
 
   &_overlay {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
     font-weight: 600;
 
   }
 }
+.card-middel-total-time_overlay {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-weight: 600;
+}
 
 .card-journey-details {
+  width: 47%;
   display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  border-radius: 8px;
+
+}
+
+.card-journey-details-2 {
+  width: 50%;
+  display: inline-block;
   padding: 12px;
   flex-direction: column;
   align-items: flex-start;
   gap: 8px;
   border-radius: 8px;
-  background: #F5F8FF;
-}
 
+}
 .card-journey {
+  display: flex;
+  width: 100%;
   margin-bottom: 24px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
 }
 
 .image-details {

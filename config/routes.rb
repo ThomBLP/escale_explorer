@@ -2,7 +2,9 @@ Rails.application.routes.draw do
   get 'checkcard/index'
   get 'reviews/index'
   get 'reviews/show'
+
   devise_for :users
+
   root "pages#home"
 
   resources :journeys, only: [:create, :update, :show] do

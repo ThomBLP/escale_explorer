@@ -80,4 +80,5 @@ class PlacesController < ApplicationController
       lat: @place.lat
     }
   end
+
 end
