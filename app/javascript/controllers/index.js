@@ -9,6 +9,11 @@ eagerLoadControllersFrom("controllers", application)
 let toogle = document.querySelector(".toogle");
 let body = document.querySelector("body");
 
-// toogle.addEventListener("click", function() {
-//   body.classList.toggle("open");
-// });
+toogle.addEventListener("click", function() {
+  body.classList.toggle("open");
+});
+
+let deleteSearch = document.querySelector(".deleteSearch")
+
+deleteSearch.addEventListener()
+
