@@ -60,8 +60,8 @@ body {
 }
 
 .titre_principal_home {
-  margin-top: 28px;
-  margin-bottom: 22px;
+  margin-top: 18px;
+  margin-bottom: 18px;
   width: 100%;
 }
 
@@ -73,7 +73,7 @@ body {
 .image_sam {
   z-index: -1;
   position: fixed;
-  bottom: 36px;
+  bottom: 70px;
   left:0px;
 }
 
@@ -112,13 +112,13 @@ color: #415e8d;
 }
 
 .time-input {
-  margin-top: 20px;
+  margin-top: 12px;
   padding: 15px 30px; /* Ajustez le rembourrage selon vos besoins */
   font-size: 18px;
   color: #415e8d;
+  margin-bottom: 8px;
 }
 
 .journey-params {
   width: 156px;
 }
-
