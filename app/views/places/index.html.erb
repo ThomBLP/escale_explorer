@@ -8,13 +8,13 @@
       </div>
     </div>
 
-    <div>
+    <div >
       <%= form_tag(journey_places_path(@journey), class: "form-search-card", method: :get) do %>
-        <%= text_field_tag :keyword, params[:keyword], class: "input-search-card" %>
+        <%= text_field_tag :keyword, params[:keyword], class: "input-search" %>
         <%= hidden_field_tag :weather_icon, params[:weather_icon] %>
-        <%= submit_tag "Rechercher", class: "search-button" %>
+        <%= submit_tag "🔎", class: "search-button" %>
       <% end %>
-    </div>
+    </div>l
 
     <% total_duration_minutes = @journey.total_duration %>
     <% if total_duration_minutes > 0 %>
@@ -32,11 +32,15 @@
   <% end %>
   </div>
 
+  <%= render 'list' %>
 
+<%#
   <div data-controller="places">
     <div data-places-target="list">
     </div>
-  </div>
+  </div> %>
+
+
 
   <%= link_to "Voir mon parcours", journey_path(@journey), class: "button salmon-button journey-button" %>
   <script src = "index.js"></script>
