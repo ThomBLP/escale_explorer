@@ -24,20 +24,30 @@ export default class extends Controller {
         const travelMode = this.travelModeValue;
         const coordinates = this.coordinatesValue;
         coordinates.unshift([longitude, latitude]);
-
+// __________________replace______________________________
         coordinates.forEach(coord => {
           new mapboxgl.Marker()
             .setLngLat(coord)
             .addTo(map);
         });
+// __________________replace______________________________
+        // coordinates.forEach(coord => {
+        //   const popup = new mapboxgl.Popup({ offset: 25 })
+        //     .setText(`Nom du lieu : ${@place.name}`); // Remplacez `coord.name` par la propriété qui contient le nom du lieu
 
+        //   new mapboxgl.Marker()
+        //     .setLngLat(coord)
+        //     .setPopup(popup) // Associer le popup au marqueur
+        //     .addTo(map);
+        // });
+// __________________replace______________________________
         const bounds = coordinates.reduce(function(bounds, coord) {
           return bounds.extend(coord);
         }, new mapboxgl.LngLatBounds(coordinates[0], coordinates[0]));
 
         map.fitBounds(bounds, { padding: 50 });
 
-        fetch(`https://api.mapbox.com/directions/v5/mapbox/${(travelMode)}/${coordinates.join(';')}?access_token=${mapboxgl.accessToken}&geometries=geojson`)
+        fetch(`https://api.mapbox.com/directions/v5/mapbox/${(travelMode)}/${coordinates.join(';')}?annotations=duration&overview=full&access_token=${mapboxgl.accessToken}&geometries=geojson`)
           .then(response => response.json())
           .then(data => {
             const route = data.routes[0];
@@ -70,6 +80,12 @@ export default class extends Controller {
               },
             });
           });
+
+          // fetch(`https://api.mapbox.com/directions-matrix/v1/mapbox/${(travelMode)}/${coordinates.join(';')}?access_token=${mapboxgl.accessToken}`)
+          // .then(response => response.json())
+          // .then(data => {
+          //   const durations = data.duration[0];
+          //   };
       });
     } else {
       console.log("La géolocalisation n'est pas disponible sur ce navigateur");
