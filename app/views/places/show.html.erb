@@ -41,5 +41,12 @@
   <%= link_to @place.mail, class: "", target: "_blank" do %>
     📞 Contact
   <% end %>
-
+    <div>
+    <% if @place.reviews.any? %>
+      <% Review::AUTHORIZED_RATINGS.each do |number| %>
+        <i class="fa<%= (number > @place.reviews.sum(:rating) / @place.reviews.count) ? 'r' : 's' %> fa-star"></i>
+      <% end %>
+    <% end %>
+    </div>
+  </div>
 </div>
