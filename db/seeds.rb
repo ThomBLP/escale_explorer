@@ -10,8 +10,7 @@
 
 require "csv"
 
-[Place, Journey, Visit, Review, User].each { |model| model.destroy_all }
-Category.destroy_all
+[Place, Journey, Category, Visit, Review, User].each { |model| model.destroy_all }
 
 Category.create!({name: "spectacles"})
 Category.create!({name: "patrimoine"})
@@ -75,3 +74,13 @@ User.create!({nickname: "Vincent", email: "toto+1@free.fr", password: "azerty"})
 User.create!({nickname: "Thomas", email: "toto+2@free.fr", password: "azerty"})
 User.create!({nickname: "Carine", email: "toto+3@free.fr", password: "azerty"})
 User.create!({nickname: "Corentin", email: "toto+4@free.fr", password: "azerty"})
+
+Journey.create!({user: User.first, travel_mode: "walking", duration: 3600, weather_icon: "01d"})
+
+Place.all.each do |place|
+  2.times { Visit.create!(place: place, journey: Journey.first) }
+end
+
+Visit.all.each do |visit|
+  3.times { Review.create!(visit: visit, rating: rand(3..5)) }
+end
