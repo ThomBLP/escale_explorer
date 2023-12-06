@@ -42,10 +42,4 @@
     📞 Contact
   <% end %>
 
-  <% @place.reviews.each do |review| %>
-    <div class="my-3">
-      <p><%= review.user.nickname %>&nbsp;&nbsp;(<%= review.rating %> ⭐)</p>
-      <%= review.comment %>
-    </div>
-  <% end %>
 </div>
