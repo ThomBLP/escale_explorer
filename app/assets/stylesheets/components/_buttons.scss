@@ -42,13 +42,13 @@
 
 .journey-button {
   position: fixed;
-  bottom: 16px;
+  z-index: 999;
+  bottom: 12px;
   padding: 12px;
   font-size: 20px;
-  background-color: white;
-  color:#FAAF79;
-  width: 100%;
-
+  background-color: FAAF79;
+  color: #white;
+  width: 82%;
 }
 
 .details-place-button {
@@ -86,7 +86,8 @@
   background: #FAAF79;
   color: white;
   font-weight: bold;
-  border-radius: 0 8px 8px 0;
+  height: 38px;
+  width: 38px;
 }
 
 .back-button {

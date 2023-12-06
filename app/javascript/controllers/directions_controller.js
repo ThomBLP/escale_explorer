@@ -45,7 +45,7 @@ export default class extends Controller {
           return bounds.extend(coord);
         }, new mapboxgl.LngLatBounds(coordinates[0], coordinates[0]));
 
-        map.fitBounds(bounds, { padding: 50 });
+        map.fitBounds(bounds, { padding: 100 } );
 
         fetch(`https://api.mapbox.com/directions/v5/mapbox/${(travelMode)}/${coordinates.join(';')}?annotations=duration&overview=full&access_token=${mapboxgl.accessToken}&geometries=geojson`)
           .then(response => response.json())
