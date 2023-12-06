@@ -12,6 +12,7 @@ class ReviewsController < ApplicationController
       redirect_to journey_path(@journey), notice: "Review created successfully"
     else
       render "journeys/show"
+
     end
   end
 
