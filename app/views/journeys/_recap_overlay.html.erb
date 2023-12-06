@@ -39,12 +39,13 @@
             </div>
           <% else %>
             <div class="review">
+              <small>Ta note</small>
+              <br>
               <% Review::AUTHORIZED_RATINGS.each do |rating| %>
                 <%= link_to journey_visit_reviews_path(@journey, visit, review: { rating: rating }), data: { turbo_method: :post } do %>
                   <i class="far fa-star"></i>
                 <% end %>
               <% end %>
-              <small>Ta note</small>
             </div>
           <% end %>
           </div>
