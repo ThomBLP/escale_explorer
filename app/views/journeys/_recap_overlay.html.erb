@@ -20,9 +20,9 @@
           <span class="emoji"><%= @journey.travel_emoji %></span>          </div>
         </div>
         <% if place == @places.first || place == @places.last %>
-          <p><span><%= GeolocService.new.get_duration([45.76950039018254, 4.834805615523664], [place.lat, place.long], 'walking').round(0) %>min</span></p>
+          <p><span><%= GeolocService.new.get_duration([45.76950039018254, 4.834805615523664], [place.lat, place.long], @journey.travel_mode).round(0) %>min</span></p>
         <% else %>
-          <p><span><%= GeolocService.new.get_duration([@places[index - 1].lat, @places[index - 1].long], [place.lat, place.long], 'walking').round(0) %>min</span></p>
+          <p><span><%= GeolocService.new.get_duration([@places[index - 1].lat, @places[index - 1].long], [place.lat, place.long], @journey.travel_mode).round(0) %>min</span></p>
         <% end %>
       </div>
       <% visit = place.visits.find_by(journey_id: @journey.id) %>
