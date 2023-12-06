@@ -1,5 +1,9 @@
 
-
+.retour_link {
+  width: 40px;
+  height: 40px;
+  display: flex;
+}
 
 .card_place {
   display: flex;
@@ -25,10 +29,7 @@
       right: 15px;
     }
 
-    .retour_link {
-      top: 15px;
-      left: 15px;
-    }
+
     .card-place-add-button {
       position: absolute;
       z-index: 2;
