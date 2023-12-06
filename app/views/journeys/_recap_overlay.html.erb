@@ -28,7 +28,9 @@
       <% visit = place.visits.find_by(journey_id: @journey.id) %>
       <div class="card-journey">
         <div class="card-journey-details">
-          <%= image_tag place.illustration, class: "image_journey" %>
+            <%= link_to journey_place_path(@journey, place)  do %>
+            <%= image_tag place.illustration, class: "image_journey" %>
+            <% end %>
           <% if visit.review.present? %>
             <div class="d-flex">
               <% Review::AUTHORIZED_RATINGS.each do |number| %>
