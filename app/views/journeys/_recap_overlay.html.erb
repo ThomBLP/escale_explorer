@@ -52,7 +52,9 @@
           <% end %>
           </div>
                 <div class="card-journey-details-2">
-            <%= link_to "❌", journey_visit_path(@journey, visit, journey_params), data: { turbo_method: :delete }, class: "delete-button" %>
+
+            <%= link_to "🗑️", journey_visit_path(@journey, visit, journey_params), data: { turbo_method: :delete }, class: "delete-button" %>
+
             <p><%= place.name %></p>
             <div><span class="emoji">🕐</span><p><%= place.visit_duration %> min</p></div>
 </div>
