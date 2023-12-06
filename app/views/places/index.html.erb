@@ -18,7 +18,7 @@
 
     <% total_duration_minutes = @journey.total_duration %>
     <% if total_duration_minutes > 0 %>
-       <p>Le parcours prévoit <%= display_time(@journey.total_duration) %></p>
+      <p>Le parcours prévoit <%= display_time(@journey.total_duration) %></p>
     <% end %>
     <% rest_time = (@journey.duration - @journey.total_duration) %>
     <% if rest_time > 0 %>
@@ -42,6 +42,6 @@
 
 
 
-  <%= link_to "Voir mon parcours", journey_path(@journey), class: "button salmon-button journey-button" %>
+  <%= link_to "Voir mon parcours", journey_path(@journey, journey_params), class: "button salmon-button journey-button" %>
   <script src = "index.js"></script>
 </div>

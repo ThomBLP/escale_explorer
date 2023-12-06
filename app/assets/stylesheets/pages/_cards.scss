@@ -91,9 +91,14 @@ padding: 0px 12px 8px 12px;
   object-fit: cover;
 }
 
+
+.emoji_card {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+
 @media screen { min-width: 400px;
   flex-direction: row;
-
 }
 
 .show-notation {

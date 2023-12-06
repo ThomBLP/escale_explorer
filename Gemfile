@@ -59,6 +59,7 @@ gem "awesome_print"
 gem "json", "~> 2.5", ">= 2.5.1"
 # gem geocoder
 gem "geocoder"
+gem "pg_search"
 
 group :development, :test do
   gem "dotenv-rails"

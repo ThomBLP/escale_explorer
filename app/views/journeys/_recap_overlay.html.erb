@@ -28,9 +28,11 @@
       <% visit = place.visits.find_by(journey_id: @journey.id) %>
       <div class="card-journey">
         <div class="card-journey-details">
-            <%= link_to journey_place_path(@journey, place)  do %>
+
+          <%= link_to journey_place_path(@journey, place, category_ids: params[:category_ids], redirect_from_journey: true) do %>
             <%= image_tag place.illustration, class: "image_journey" %>
-            <% end %>
+          <% end %>
+
           <% if visit.review.present? %>
             <div class="d-flex">
               <% Review::AUTHORIZED_RATINGS.each do |number| %>
@@ -50,7 +52,7 @@
           <% end %>
           </div>
                 <div class="card-journey-details-2">
-            <%= link_to "❌", root_path, class: "delete-button" %>
+            <%= link_to "❌", journey_visit_path(@journey, visit, journey_params), data: { turbo_method: :delete }, class: "delete-button" %>
             <p><%= place.name %></p>
             <div><span class="emoji">🕐</span><p><%= place.visit_duration %> min</p></div>
 </div>
