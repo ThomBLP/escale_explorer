@@ -1,17 +1,17 @@
 <div class="container">
 
-<div class="card-all-total-time_overlay" data-controller="directions">
-  <div class="card-middel-total-time_overlay"><p>Ton parcours</p></div>
+  <div class="card-all-total-time_overlay" data-controller="directions">
+    <div class="card-middel-total-time_overlay"><p>Ton parcours</p></div>
 
-  <div id="journey" class="card-middel-total-time_overlay" data-travel-mode="<%= @journey.travel_mode %>">
-    <span class="emoji"><%= @journey.travel_emoji %></span>
-    <p><%= display_time(@journey.total_travel) %></p>
+    <div id="journey" class="card-middel-total-time_overlay" data-travel-mode="<%= @journey.travel_mode %>">
+      <span class="emoji"><%= @journey.travel_emoji %></span>
+      <p><%= display_time(@journey.total_travel) %></p>
+    </div>
+    <div class="card-middel-total-time_overlay">
+      <span class="emoji">🎡</span>
+      <p><%= display_time(@journey.total_activities) %></p>
+    </div>
   </div>
-  <div class="card-middel-total-time_overlay">
-    <span class="emoji">🎡</span>
-    <p><%= display_time(@journey.total_activities) %></p>
-  </div>
-</div>
 
   <% @places.each_with_index do |place, index| %>
     <div class="journey-step">
@@ -20,7 +20,8 @@
       <div class="emoji-time-journey">
         <div class="emoji-image-container">
           <div class="emoji-journey">
-          <span class="emoji"><%= @journey.travel_emoji %></span>          </div>
+            <span class="emoji"><%= @journey.travel_emoji %></span>
+           </div>
         </div>
         <% if place == @places.first %>
           <p><span><%= GeolocService.new.get_duration([45.76950039018254, 4.834805615523664], [place.lat, place.long], @journey.travel_mode).round(0) %>min</span></p>
@@ -29,7 +30,6 @@
         <% end %>
       </div>
       <% visit = place.visits.find_by(journey_id: @journey.id) %>
-<%# -----------card------------------ %>
       <div class="card_place">
         <%= link_to journey_place_path(@journey, place, category_ids: params[:category_ids], redirect_from_journey: true) do %>
           <div class="image-container">
@@ -39,11 +39,10 @@
         <div class="small_card_place">
           <h3><%= place.name %></h3>
           <div class="d-flex align-items-center">
-          <P class="emoji">🕐</span><p>
-          <%= place.visit_duration %> min</p>
+            <p class="emoji">🕐</p>
+            <p><%= place.visit_duration %> min</p>
           </div>
           <div class="small_card_bottom">
-          <%# review %>
             <% if visit.review.present? %>
               <div class="d-flex">
                 <% Review::AUTHORIZED_RATINGS.each do |number| %>
@@ -61,11 +60,9 @@
               </div>
             <% end %>
             <%= link_to "🗑️", journey_visit_path(@journey, visit, journey_params), data: { turbo_method: :delete }, class: "delete-button" %>
-
-            <p><%= place.name %></p>
-            <div><span class="emoji">🕐</span><p><%= place.visit_duration %> min</p></div>
         </div>
       </div>
+    </div>
     </div>
   <% end %>
 
@@ -80,4 +77,4 @@
         <p><span><%= GeolocService.new.get_duration([@places.last.lat, @places.last.long], [45.76950039018254, 4.834805615523664], @journey.travel_mode).round(0) %>min</span></p>
       </div>
   </div>
-
+</div>
