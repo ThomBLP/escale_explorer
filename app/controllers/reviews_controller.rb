@@ -9,7 +9,7 @@ class ReviewsController < ApplicationController
     @review       = Review.new(review_params)
     @review.visit = @visit
     if @review.save
-      redirect_to journey_path(@journey), notice: "Review created successfully"
+      redirect_to journey_path(@journey)
     else
       render "journeys/show"
 
