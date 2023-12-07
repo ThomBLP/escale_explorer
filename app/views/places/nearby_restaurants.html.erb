@@ -1,10 +1,10 @@
-<div class="container-nearby-restaurants">
-  <div class="mt-3 mb-3">
+<div class="container">
+  <div class="back-button-container">
     <%= link_to "Retour", :back, class: "back-button" %>
   </div>
 
   <div>
     <h3 class="title-nearby-places">Restaurants à proximité</h3>
-    <%= render 'nearby_places', place: @place, nearby_places: @nearby_restaurants %>
   </div>
 </div>
+    <%= render 'nearby_places', place: @place, nearby_places: @nearby_restaurants %>

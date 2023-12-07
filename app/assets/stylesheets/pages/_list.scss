@@ -41,7 +41,7 @@
   position: relative;
 }
 
-.active::after {
+.category_home.active::after {
   content: "";
   display: block;
   width: 50px; /* Ajustez la largeur de la ligne selon vos besoins */

@@ -1,7 +1,6 @@
 <div class="card-all-total-time_overlay" data-controller="directions">
-  <div class="card-middel-total-time_overlay">
-    <p>Ton parcours</p>
-  </div>
+  <div class="card-middel-total-time_overlay"><p>Ton parcours</p></div>
+
   <div id="journey" class="card-middel-total-time_overlay" data-travel-mode="<%= @journey.travel_mode %>">
     <span class="emoji"><%= @journey.travel_emoji %></span>
     <p><%= display_time(@journey.total_travel) %></p>
