@@ -19,7 +19,6 @@ class Place < ApplicationRecord
     else
       coordinates_origin = [45.76950039018254, 4.834805615523664]
     end
-    
     GeolocService.new.get_duration(coordinates_origin, [lat, long], journey.travel_mode).round(0)
   end
 
