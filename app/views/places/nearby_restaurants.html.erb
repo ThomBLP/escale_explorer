@@ -1,10 +1,14 @@
-<div class="container">
-  <div class="back-button-container">
-    <%= link_to "Retour", :back, class: "back-button" %>
-  </div>
+<div class="nearby_pages">
+  <div class="container">
+    <div class="back-button-container">
+      <%= link_to "Retour", :back, class: "back-button" %>
+    </div>
 
-  <div>
-    <h3 class="title-nearby-places">Restaurants à proximité</h3>
-    <%= render 'nearby_places', place: @place, nearby_places: @nearby_restaurants %>
+    <div>
+      <h3 class="title-nearby-places">Restaurants à proximité</h3>
+      <%= render 'nearby_places', place: @place, nearby_places: @nearby_restaurants %>
+    </div>
   </div>
+    <div id="map" data-controller="map" data-map-markers-value="<%= @markers.to_json %>" data-map-monument-marker-value="<%= @monument_marker.to_json %>">
+    </div>
 </div>
