@@ -1,7 +1,11 @@
 <div class="overlay" data-controller="overlay" data-action="click->overlay#open">
-    <div class="overlay_bar"></div>
-    <i class="overlay_mark fa-solid fa-xmark" data-action="click->overlay#close"></i>
-    <%=render "recap_overlay"%>
+  <div class="my-4">
+    <div class="overlay_bar mb-0" data-overlay-target="bar"></div>
+    <div class="d-flex justify-content-end pe-3">
+      <i class="overlay_mark fa-solid fa-xmark d-none" data-action="click->overlay#close" data-overlay-target="cross"></i>
+    </div>
+  </div>
+  <%=render "recap_overlay"%>
   </div>
 
 
