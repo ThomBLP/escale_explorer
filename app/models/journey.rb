@@ -20,7 +20,27 @@ class Journey < ApplicationRecord
   end
 
   def total_travel
-    self.places.sum { |p| p.travel_time(self) }
+    return 0 unless places.any?
+
+    Mapbox.access_token = ENV.fetch('MAPBOX_ACCESS_TOKEN')
+
+    start = { latitude: 45.76950039018254, longitude: 4.834805615523664 }
+    coordinates = places.map do |place|
+      { latitude: place.lat, longitude: place.long }
+    end
+
+    coordinates.unshift(start)
+    coordinates.push(start)
+
+    response = Mapbox::Directions.directions(
+      coordinates,
+      travel_mode
+    )
+
+    seconds = response.first.dig("routes", 0, "duration")
+    return if seconds.nil?
+
+    seconds.fdiv(60).round
   end
 
   def total_activities
