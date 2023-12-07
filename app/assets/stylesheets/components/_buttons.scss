@@ -89,14 +89,26 @@
   height: 38px;
   width: 38px;
 }
-
-.back-button {
-  background: #FAAF79;
-  padding: 4px 8px;
-  color: white;
-  font-weight: bold;
-  border-radius: 4px;
-  margin-left: 8px;
+.back-button-container {
+  display: flex;
+  width: 100%;
+  justify-content: left;
+  padding-top: 8px;
+  .back-button {
+    background: #FAAF79;
+    padding: 12px 24px;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    border-radius: 8px;
+    height: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    p {
+      font-size: 20px;
+    }
+  }
 }
 
 .action-button {
