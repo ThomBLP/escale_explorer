@@ -21,10 +21,10 @@
       <div class="d-flex justify-content-between">
         <h1 class='title_principal_show'><%= @place.name %></h1>
         <div class="d-flex">
-          <%= link_to "", class: "nearby icon-container white me-3", target: "_blank" do%>
+          <%= link_to @place.website, class: "nearby icon-container white me-3", target: "_blank" do%>
             <i class="fa-solid fa-globe"></i>
           <%end %>
-          <%= link_to "tel:#{@place.tel.delete(' ')}", class: "nearby icon-container white", target: "_blank" do%>
+          <%= link_to "", class: "nearby icon-container white", target: "_blank" do%>
             <i class="fa-solid fa-phone"></i>
           <%end %>
         </div>
