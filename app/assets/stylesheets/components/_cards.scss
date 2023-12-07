@@ -90,10 +90,12 @@
 
 
 .nearby-places-cards{
+  display:flex;
   padding-bottom: 1rem;
   height: 41vh;
   height: 37dvh;
   overflow: scroll;
+  justify-content: center;
 }
 
 .nearby-places-card {
@@ -117,4 +119,12 @@
 .title-nearby-places {
   font-weight: bold;
   margin-left: 8px;
+}
+
+.icon-container {
+  width: 40px;
+  height: 40px;
+  img {
+    width: 100%;
+  }
 }
