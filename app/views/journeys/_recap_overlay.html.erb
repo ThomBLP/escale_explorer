@@ -1,5 +1,7 @@
 <div class="card-all-total-time_overlay" data-controller="directions">
-  <div class="card-middel-total-time_overlay"><p>Mon parcours</p></div>
+  <div class="card-middel-total-time_overlay">
+    <p>Ton parcours</p>
+  </div>
   <div id="journey" class="card-middel-total-time_overlay" data-travel-mode="<%= @journey.travel_mode %>">
     <span class="emoji"><%= @journey.travel_emoji %></span>
     <p><%= display_time(@journey.total_travel) %></p>
@@ -28,10 +30,9 @@
       <% visit = place.visits.find_by(journey_id: @journey.id) %>
       <div class="card-journey">
         <div class="card-journey-details">
-
-          <%= link_to journey_place_path(@journey, place, category_ids: params[:category_ids], redirect_from_journey: true) do %>
-            <%= image_tag place.illustration, class: "image_journey" %>
-          <% end %>
+            <%= link_to journey_place_path(@journey, place, category_ids: params[:category_ids], redirect_from_journey: true) do %>
+              <%= image_tag place.illustration, class: "image_journey" %>
+            <% end %>
 
           <% if visit.review.present? %>
             <div class="d-flex">
