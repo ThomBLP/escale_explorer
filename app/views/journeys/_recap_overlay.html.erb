@@ -1,3 +1,5 @@
+<div class="container">
+
 <div class="card-all-total-time_overlay" data-controller="directions">
   <div class="card-middel-total-time_overlay"><p>Ton parcours</p></div>
 
@@ -20,44 +22,62 @@
           <div class="emoji-journey">
           <span class="emoji"><%= @journey.travel_emoji %></span>          </div>
         </div>
-        <% if place == @places.first || place == @places.last %>
+        <% if place == @places.first %>
           <p><span><%= GeolocService.new.get_duration([45.76950039018254, 4.834805615523664], [place.lat, place.long], @journey.travel_mode).round(0) %>min</span></p>
         <% else %>
           <p><span><%= GeolocService.new.get_duration([@places[index - 1].lat, @places[index - 1].long], [place.lat, place.long], @journey.travel_mode).round(0) %>min</span></p>
         <% end %>
       </div>
       <% visit = place.visits.find_by(journey_id: @journey.id) %>
-      <div class="card-journey">
-        <div class="card-journey-details">
-            <%= link_to journey_place_path(@journey, place, category_ids: params[:category_ids], redirect_from_journey: true) do %>
-              <%= image_tag place.illustration, class: "image_journey" %>
-            <% end %>
-
-          <% if visit.review.present? %>
-            <div class="d-flex">
-              <% Review::AUTHORIZED_RATINGS.each do |number| %>
-                <i class="fa<%= (number > visit.review.rating) ? 'r' : 's' %> fa-star"></i>
-              <% end %>
-            </div>
-          <% else %>
-            <div class="review">
-              <small>Ta note</small>
-              <br>
-              <% Review::AUTHORIZED_RATINGS.each do |rating| %>
-                <%= link_to journey_visit_reviews_path(@journey, visit, review: { rating: rating }), data: { turbo_method: :post } do %>
-                  <i class="far fa-star"></i>
-                <% end %>
-              <% end %>
-            </div>
-          <% end %>
+<%# -----------card------------------ %>
+      <div class="card_place">
+        <%= link_to journey_place_path(@journey, place, category_ids: params[:category_ids], redirect_from_journey: true) do %>
+          <div class="image-container">
+            <%= image_tag place.illustration, class: "" %>
           </div>
-                <div class="card-journey-details-2">
-
+        <% end %>
+        <div class="small_card_place">
+          <h3><%= place.name %></h3>
+          <div class="d-flex align-items-center">
+          <P class="emoji">🕐</span><p>
+          <%= place.visit_duration %> min</p>
+          </div>
+          <div class="small_card_bottom">
+          <%# review %>
+            <% if visit.review.present? %>
+              <div class="d-flex">
+                <% Review::AUTHORIZED_RATINGS.each do |number| %>
+                  <i class="fa<%= (number > visit.review.rating) ? 'r' : 's' %> fa-star"></i>
+                <% end %>
+              </div>
+            <% else %>
+              <div class="review">
+                <small>Ta note</small>
+                <% Review::AUTHORIZED_RATINGS.each do |rating| %>
+                  <%= link_to journey_visit_reviews_path(@journey, visit, review: { rating: rating }), data: { turbo_method: :post } do %>
+                    <i class="far fa-star"></i>
+                  <% end %>
+                <% end %>
+              </div>
+            <% end %>
             <%= link_to "🗑️", journey_visit_path(@journey, visit, journey_params), data: { turbo_method: :delete }, class: "delete-button" %>
 
             <p><%= place.name %></p>
             <div><span class="emoji">🕐</span><p><%= place.visit_duration %> min</p></div>
-</div>
+        </div>
       </div>
     </div>
   <% end %>
+
+  <div class="journey-step">
+      <div class="journey-dot"></div>
+      <div class="emoji-time-journey">
+        <div class="emoji-image-container">
+          <div class="emoji-journey">
+            <span class="emoji"><%= @journey.travel_emoji %></span>
+          </div>
+        </div>
+        <p><span><%= GeolocService.new.get_duration([@places.last.lat, @places.last.long], [45.76950039018254, 4.834805615523664], @journey.travel_mode).round(0) %>min</span></p>
+      </div>
+  </div>
+
