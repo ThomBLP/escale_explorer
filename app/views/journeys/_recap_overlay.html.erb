@@ -66,15 +66,17 @@
     </div>
   <% end %>
 
-  <div class="journey-step">
-      <div class="journey-dot"></div>
-      <div class="emoji-time-journey">
-        <div class="emoji-image-container">
-          <div class="emoji-journey">
-            <span class="emoji"><%= @journey.travel_emoji %></span>
+  <% if @journey.places.any? %>
+    <div class="journey-step">
+        <div class="journey-dot"></div>
+        <div class="emoji-time-journey">
+          <div class="emoji-image-container">
+            <div class="emoji-journey">
+              <span class="emoji"><%= @journey.travel_emoji %></span>
+            </div>
           </div>
+          <p><span><%= GeolocService.new.get_duration([@places.last.lat, @places.last.long], [45.76950039018254, 4.834805615523664], @journey.travel_mode).round(0) %>min</span></p>
         </div>
-        <p><span><%= GeolocService.new.get_duration([@places.last.lat, @places.last.long], [45.76950039018254, 4.834805615523664], @journey.travel_mode).round(0) %>min</span></p>
-      </div>
-  </div>
+    </div>
+  <% end %>
 </div>
