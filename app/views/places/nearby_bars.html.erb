@@ -3,7 +3,7 @@
     <%= link_to "Retour", :back, class: "back-button" %>
   </div>
 
-  <div>
+  <div class="container">
     <h3 class="title-nearby-places">Bars à proximité</h3>
     <%= render 'nearby_places', place: @place, nearby_places: @nearby_bars %>
   </div>
