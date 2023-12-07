@@ -13,8 +13,8 @@
           <div class="d-flex justify-content-between">
             <% Journey::TRAVEL_MODES.each do |travel_mode| %>
               <div>
-                <input class="radio-input" id="<%= travel_mode %>" type="radio" name="journey[travel_mode]" value="<%= travel_mode %>">
-                <label class="radio-label" for="<%= travel_mode %>"><%= Journey.travel_emoji(travel_mode) %></label>
+          <input class="radio-input" id="<%= travel_mode %>" type="radio" name="journey[travel_mode]" value="<%= travel_mode %>" <%= 'checked' if travel_mode == 'walking' %>>
+          <label class="radio-label" for="<%= travel_mode %>"><%= Journey.travel_emoji(travel_mode) %></label>
               </div>
             <% end %>
           </div>
@@ -75,4 +75,3 @@
 
   });
 </script>
-

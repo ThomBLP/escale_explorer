@@ -6,8 +6,8 @@ class Journey < ApplicationRecord
   TRAVEL_MODES = ['driving', 'walking', 'cycling']
 
   TRAVEL_MODES_EMOJI = {
-    'driving' => '🚗',
     'walking' => '🚶',
+    'driving' => '🚗',
     'cycling' => '🚴'
   }
 
