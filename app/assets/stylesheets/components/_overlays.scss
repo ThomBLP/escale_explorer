@@ -32,6 +32,9 @@
   .small_card_place {
     display: flex;
     flex-direction: column;
+    padding: 12px 12px 12px 0;
+    width: 100%;
+
   }
   .card_place {
     flex-direction: row;
@@ -48,8 +51,9 @@
       }
     }
     .small_card_bottom {
-    display: flex ;
-    justify-content: space-between;
+      display: flex ;
+      justify-content: space-between;
+      width: 100%;
     }
   }
 }
