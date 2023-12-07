@@ -1,5 +1,4 @@
 <div class="container-nearby-places">
-  <div class="nearby-places-cards">
     <% nearby_places.each do |nearby_place| %>
       <div class="nearby-places-card">
       <div  class="mt-1 mb-1">
@@ -29,7 +28,6 @@
 
       </div>
     <% end %>
-  </div>
   <div id="map" data-controller="map" data-map-markers-value="<%= @markers.to_json %>" data-map-monument-marker-value="<%= @monument_marker.to_json %>">
   </div>
 </div>
