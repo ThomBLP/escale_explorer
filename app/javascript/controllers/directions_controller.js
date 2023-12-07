@@ -24,6 +24,7 @@ export default class extends Controller {
         const travelMode = this.travelModeValue;
         const coordinates = this.coordinatesValue;
         coordinates.unshift([longitude, latitude]);
+        coordinates.push([longitude, latitude]);
 // __________________replace______________________________
         coordinates.forEach(coord => {
           new mapboxgl.Marker()
