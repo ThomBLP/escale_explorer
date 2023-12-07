@@ -79,6 +79,14 @@
   flex-direction: column;
   align-items: center;
 }
+.places-margin-top {
+  margin-bottom: 120px;
+  margin-top: 8px;
+  justify-content: unset;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
 
 .nearby-places-cards{
@@ -90,23 +98,20 @@
 
 .nearby-places-card {
   display: flex;
-  background-color: white;
-  justify-content: space-between;
-  align-items: center;
-  padding: 16px;
-  width: 95%;
-  margin: 1rem auto;
+  flex-direction: row;
+  width: 90%;
+  height: 80px;
   border-radius: 8px;
-  box-shadow: 0 0 20px #2021231c;
-  h5{
-    font-weight: 700;
-  }
+  margin: 20px 0;
+  background-color: #ffffff;
+  overflow: hidden;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+  justify-content: space-between;
 }
 
 .image-nearby-places {
   width: 100px;
   height: 80px;
-  border-radius: 8px;
 }
 
 .title-nearby-places {

@@ -1,13 +1,14 @@
-  <% if params[:redirect_from_journey] %>
-        <%= link_to journey_path(@journey, category_ids: params[:category_ids], weather_icon: params[:weather_icon]), class: "retour_link" do %>
-            <p>retour</p>
+
+<div class="container places-margin-top">
+<% if params[:redirect_from_journey] %>
+        <%= link_to journey_path(@journey, category_ids: params[:category_ids], weather_icon: params[:weather_icon]), class: "back-button" do %>
+            <p style="color: white">retour</p>
           <% end %>
       <% else %>
-        <%= link_to journey_places_path(@journey, category_ids: params[:category_ids]), class: "retour_link" do %>
-          <p>retour</p>
+        <%= link_to journey_places_path(@journey, category_ids: params[:category_ids]), class: "back-button" do %>
+          <p style="color: white">retour</p>
         <% end %>
       <% end %>
-<div class="container places-margin-bottom">
   <div class=card_place>
     <div class="image-container">
       <%= image_tag @place.illustration, class: 'image_places_show' %>
@@ -22,23 +23,21 @@
       <div>
         <h1 class='title_principal_show'><%= @place.name %></h1>
       </div>
-      <div class="card_show-stylecategory">
-      <div>
-        <p class="description"><span class="emoji">🕐</span><%= @place.visit_duration %>min</p>
-        <p class="description"><span class="emoji"><%= @journey.travel_emoji %></span><%= @place.travel_time(@journey) %>min</p>
-      </div>
-      <div>
-        <%= link_to '🍽', nearby_restaurants_journey_place_path(@journey, @place , category_ids: params[:category_ids]), style: "font-size: 30px;" %>
-        <%= link_to '🍷', nearby_bars_journey_place_path(@journey, @place, category_ids: params[:category_ids]), style: "font-size: 30px;" %>
-      </div>
-      </div>
-      <div>
+       <div>
         <% if @place.reviews.any? %>
           <% Review::AUTHORIZED_RATINGS.each do |number| %>
             <i class="fa<%= (number > @place.reviews.sum(:rating) / @place.reviews.count) ? 'r' : 's' %> fa-star"></i>
           <% end %>
         <% end %>
       </div>
+      <p>Horaires: <%= @place.opening %></p>
+      <div class="card_show-stylecategory">
+      <div>
+        <p class="description"><span class="emoji">🕐</span><%= @place.visit_duration %>min</p>
+        <p class="description"><span class="emoji"><%= @journey.travel_emoji %></span><%= @place.travel_time(@journey) %>min</p>
+      </div>
+      </div>
+
       <div>
         <%= link_to @place.website, class: "", target: "_blank" do %>
         🌐 Site internet
@@ -46,7 +45,10 @@
         <%= link_to @place.mail, class: "", target: "_blank" do %>
         📞 Contact
         <% end %>
-        <p>Horaires: <%= @place.opening %></p>
+      </div>
+      <div>
+        <%= link_to '🍽', nearby_restaurants_journey_place_path(@journey, @place , category_ids: params[:category_ids]), style: "font-size: 30px;" %>
+        <%= link_to '🍷', nearby_bars_journey_place_path(@journey, @place, category_ids: params[:category_ids]), style: "font-size: 30px;" %>
       </div>
     </div>
   </div>

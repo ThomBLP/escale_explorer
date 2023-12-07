@@ -1,12 +1,5 @@
 <div class="container places-margin-bottom">
   <div class="my-3">
-    <div class="row justify-content-center">
-      <div id="places">
-        <% if @places.none? %>
-          <em>Désolé, l'endroit que vous recherchez n'existe pas.</em>
-        <% end %>
-      </div>
-    </div>
 
     <div class= "search-section">
       <%= form_tag(journey_places_path(@journey), class: "form-search-card", method: :get) do %>
