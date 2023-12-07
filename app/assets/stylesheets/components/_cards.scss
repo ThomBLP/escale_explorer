@@ -133,13 +133,23 @@
   width: 40px;
   height: 40px;
   border-radius: 5px;
-  background-color: #faaf79;
   justify-content: center;
   align-content: center;
   display: flex;
-  color: white;
   font-size: 20px;
-  i{
-align-self: center;
-}
+
+  i {
+    align-self: center;
+  }
+
+  &.white {
+    background-color: white;
+    color: #faaf79;
+    border: 1px solid #faaf79;
+  }
+
+  &.orange {
+    background-color: #faaf79;
+    color: white;
+  }
 }
