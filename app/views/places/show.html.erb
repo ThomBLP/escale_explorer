@@ -20,10 +20,18 @@
     </div>
 
     <div class="card_show-small_card_place">
-      <div>
+      <div class="d-flex justify-content-between">
         <h1 class='title_principal_show'><%= @place.name %></h1>
+        <div class="d-flex">
+          <%= link_to "", class: "icon-container white me-3", target: "_blank" do%>
+            <i class="fa-solid fa-globe"></i>
+          <%end %>
+          <%= link_to "", class: "icon-container white", target: "_blank" do%>
+            <i class="fa-solid fa-phone"></i>
+          <%end %>
+        </div>
       </div>
-       <div>
+      <div>
         <% if @place.reviews.any? %>
           <% Review::AUTHORIZED_RATINGS.each do |number| %>
             <i class="fa<%= (number > @place.reviews.sum(:rating) / @place.reviews.count) ? 'r' : 's' %> fa-star"></i>
@@ -37,25 +45,15 @@
           <p class="description"><span class="emoji"><%= @journey.travel_emoji %></span><%= @place.travel_time(@journey) %>min</p>
         </div>
       </div>
-      <div class="icons-container">
-        <%= link_to "", class: "icon-container", target: "_blank" do%>
-        <i class="fa-brands fa-internet-explorer"></i>
+
+      <p class="text-end font-bold my-3">Rechercher à proximité</p>
+      <div class="icons-container d-flex justify-content-end">
+        <%= link_to nearby_restaurants_journey_place_path(@journey, @place , category_ids: params[:category_ids]), class: "icon-container orange mx-3", target: "_blank" do%>
+          <i class="fa-solid fa-utensils card-place-add-button"></i>
         <%end %>
-        <%= link_to "", class: "icon-container", target: "_blank" do%>
-        <i class="fa-solid fa-phone"></i>
+        <%= link_to nearby_bars_journey_place_path(@journey, @place, category_ids: params[:category_ids]), class: "icon-container orange", target: "_blank" do%>
+          <i class="fa-solid fa-wine-glass card-place-add-button"></i>
         <%end %>
-      </div>
-      <div class="icons-container">
-        <div class="icon-container">
-          <%= link_to nearby_restaurants_journey_place_path(@journey, @place , category_ids: params[:category_ids]), class: "icon-container", target: "_blank" do%>
-            <i class="fa-solid fa-utensils card-place-add-button"></i>
-          <%end %>
-        </div>
-        <div class="icon-container">
-          <%= link_to nearby_bars_journey_place_path(@journey, @place, category_ids: params[:category_ids]), class: "icon-container", target: "_blank" do%>
-            <i class="fa-solid fa-wine-glass card-place-add-button"></i>
-          <%end %>
-        </div>
       </div>
   </div>
 </div>
