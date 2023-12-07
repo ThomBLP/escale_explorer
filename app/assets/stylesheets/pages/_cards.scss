@@ -15,7 +15,7 @@
 .card_place {
   display: flex;
   flex-direction: column;
-  width: 320px;
+  width: 100%;
   height: auto;
   border-radius: 8px;
   margin: 20px 0;
@@ -139,4 +139,8 @@ padding: 0px 12px 8px 12px;
 .show-notation {
   display: flex;
   justify-content: space-between;
+}
+
+.my-3 {
+  width: 100%;
 }

@@ -1,5 +1,5 @@
 .search-section {
-  width: 90%;
+  width: 100%;
   display: flex;
   justify-content: center;
   input {
@@ -32,10 +32,20 @@
 }
 
 .category_home.active {
-  background-color: #A7C4D4;
   border-radius: 50%;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
   padding: 10px;
   display: grid;
   justify-content: center;
+  position: relative;
+}
+
+.active::after {
+  content: "";
+  display: block;
+  width: 50px; /* Ajustez la largeur de la ligne selon vos besoins */
+  height: 3px; /* Ajustez l'épaisseur de la ligne selon vos besoins */
+  background-color: #000; /* Couleur de la ligne */
+  position: absolute;
+  bottom: 0;
+  left: 8px;
 }
