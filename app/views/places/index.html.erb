@@ -1,22 +1,25 @@
 <div class="container places-margin-bottom">
   <div class="my-3">
+    <div class="search-text-container">
+      <div class= "search-section">
+        <%= form_tag(journey_places_path(@journey), class: "form-search-card", method: :get) do %>
+          <%= text_field_tag :keyword, params[:keyword], class: "input-search" %>
+          <%= hidden_field_tag :weather_icon, params[:weather_icon] %>
+          <%= submit_tag "🔎", class: "search-button" %>
+        <% end %>
+      </div>
 
-    <div class= "search-section">
-      <%= form_tag(journey_places_path(@journey), class: "form-search-card", method: :get) do %>
-        <%= text_field_tag :keyword, params[:keyword], class: "input-search" %>
-        <%= hidden_field_tag :weather_icon, params[:weather_icon] %>
-        <%= submit_tag "🔎", class: "search-button" %>
-      <% end %>
+      <% total_duration_minutes = @journey.total_duration %>
+      <div>
+        <% if total_duration_minutes > 0 %>
+          <p>Le parcours prévoit <%= display_time(@journey.total_duration) %></p>
+        <% end %>
+        <% rest_time = (@journey.duration - @journey.total_duration) %>
+        <% if rest_time > 0 %>
+        <p>Il reste <%= display_time(@journey.duration - @journey.total_duration) %> de temps disponible </p>
+        <% end %>
+      </div>
     </div>
-
-    <% total_duration_minutes = @journey.total_duration %>
-    <% if total_duration_minutes > 0 %>
-      <p>Le parcours prévoit <%= display_time(@journey.total_duration) %></p>
-    <% end %>
-    <% rest_time = (@journey.duration - @journey.total_duration) %>
-    <% if rest_time > 0 %>
-    <p>Il reste <%= display_time(@journey.duration - @journey.total_duration) %> de temps disponible </p>
-    <% end %>
   </div>
 
   <div class="navbar_emoji">
@@ -35,6 +38,6 @@
 
 
 
-  <%= link_to "Voir mon parcours", journey_path(@journey, journey_params), class: "button salmon-button journey-button" %>
+  <%= link_to "Voir ton parcours", journey_path(@journey, journey_params), class: "button salmon-button journey-button" %>
   <script src = "index.js"></script>
 </div>
