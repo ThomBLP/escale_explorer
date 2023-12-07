@@ -102,8 +102,8 @@
 .nearby-places-card {
   display: flex;
   flex-direction: row;
-  width: 90%;
-  height: 80px;
+  width: 100%;
+  height: 100%;
   border-radius: 8px;
   margin: 20px 0;
   background-color: #ffffff;
@@ -113,8 +113,8 @@
 }
 
 .image-nearby-places {
-  width: 100px;
-  height: 80px;
+  width: 110px;
+  height: 100%;
 }
 
 .title-nearby-places {
